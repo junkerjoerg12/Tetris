@@ -21,9 +21,5 @@ public class DreieckTile extends Tile{
         einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
 
     }
-    public void addDreiceck(MyPanel panel){
-        for(int i=0; i<einzelteile.length; i++){
-            panel.add(einzelteile[i]);
-        }
-    }
+    
 }

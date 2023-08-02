@@ -23,13 +23,4 @@ public class LTile extends Tile{
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
     }
 
-
-
-    
-    public void addL(MyPanel panel){
-        for(int i=0; i<einzelteile.length; i++){
-            panel.add(einzelteile[i]);
-        }
-    }
-    
 }

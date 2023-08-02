@@ -23,25 +23,6 @@ public class SquareTile extends Tile{
         einzelteile[2]= new Subtile(farbe, xKoord, 50);
         einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
     
-
-
-
-
-    
     }
-    
-
-    //Die einzelnen Subtiles werden aufs Pannek geaddet, quasi sichtbar gemacht
-    public void addSquare(MyPanel panel){
-        for(int i=0; i<einzelteile.length; i++){
-            panel.add(einzelteile[i]);
-        }
-
-    }
-
-    
-
-
-
-    
+  
 }
