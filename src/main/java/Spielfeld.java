@@ -20,8 +20,8 @@ public class Spielfeld extends JFrame{
         this.setVisible(true);
 
         //Quadrat wird zu Testzwecken geaddet
-        SquareTile quadrat= new SquareTile(Color.RED);
-        quadrat.addSquare(panel);
+        LTile quadrat= new LTile(Color.RED);
+        quadrat.addL(panel);
         
     }
 
