@@ -3,12 +3,12 @@ package main.java;
 import java.awt.Color;
 import java.util.Random;
 
-public class SquareTile extends Tile{
-    
+public class StraightTile extends Tile{
 
-    public SquareTile(Color farbe){
-        Random random = new Random();
 
+    Random random = new Random();
+
+    public StraightTile(Color farbe){
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
@@ -17,12 +17,12 @@ public class SquareTile extends Tile{
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
-        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
         einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord+50, 0);
-        einzelteile[2]= new Subtile(farbe, xKoord, 50);
-        einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
-    
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+
     }
-  
+    
 }
