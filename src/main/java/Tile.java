@@ -26,7 +26,7 @@ import java.awt.event.*;
     }
 
 
-    public void setPos(int x, int y){
+    public void changeLocation(int x, int y){
         for(int i=0; i<einzelteile.length; i++){
             einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
         }
