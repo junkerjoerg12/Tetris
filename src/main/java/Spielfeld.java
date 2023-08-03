@@ -42,17 +42,24 @@ public class Spielfeld extends JFrame implements KeyListener{
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40, nach links ==37
+    public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
         System.out.println(e.getKeyCode());
 
-        //Form wird eine Ziele nach unten versetzt
-        if(e.getKeyCode()==40){
+        
+        if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
             quadrat.changeLocation(0, 50);
 
-        //Form wird nach links verschoben
-        }else if( e.getKeyCode()==37){
+        
+        }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
             quadrat.changeLocation(-50, 0);
+
+
+        }else if(e.getKeyCode()==39){
+            quadrat.changeLocation(+50, 0);
         }
+
+
+
         
     }
 
