@@ -1,15 +1,20 @@
 package main.java;
 
 import java.awt.Color;
+import java.awt.event.*;
 
-abstract class Tile {
+ abstract class Tile{
     Subtile[]einzelteile;
 
 
 
     public Tile(){
+        
 
     }
+
+
+
 
 
     //fügt die Subsquares zu panel hinzu
@@ -19,5 +24,16 @@ abstract class Tile {
         }
 
     }
+
+
+    public void changeLocation(int x, int y){
+        for(int i=0; i<einzelteile.length; i++){
+            einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
+        }
+    }
+
+
+   
+
     
 }

@@ -9,6 +9,7 @@ public class StraightTile extends Tile{
     Random random = new Random();
 
     public StraightTile(Color farbe){
+        super();
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];

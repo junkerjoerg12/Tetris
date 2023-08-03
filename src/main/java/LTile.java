@@ -6,6 +6,8 @@ import java.awt.Color;
 public class LTile extends Tile{
 
     public LTile(Color farbe){
+        super();
+
         Random random = new Random();
 
 
@@ -22,5 +24,7 @@ public class LTile extends Tile{
         einzelteile[2]= new Subtile(farbe, xKoord, 100);
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
     }
+
+
 
 }
