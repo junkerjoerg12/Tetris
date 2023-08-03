@@ -25,4 +25,6 @@ public class LTile extends Tile{
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
     }
 
+
+
 }

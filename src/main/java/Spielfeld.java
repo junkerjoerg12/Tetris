@@ -11,6 +11,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     
     MyPanel panel;
+    LTile quadrat;
 
     //Kostruktor
     public Spielfeld(){
@@ -26,7 +27,7 @@ public class Spielfeld extends JFrame implements KeyListener{
         this.setVisible(true);
 
         //Quadrat wird zu Testzwecken geaddet
-        NoNameTile quadrat= new NoNameTile(Color.RED);
+        quadrat= new LTile(Color.RED);
         quadrat.addTile(panel);
         
     }
@@ -41,7 +42,12 @@ public class Spielfeld extends JFrame implements KeyListener{
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40
+
+        //Form wird eine Ziele nach unten versetzt
+        if(e.getKeyCode()==40){
+            quadrat.setPos(0, 50);
+        }
         
     }
 
