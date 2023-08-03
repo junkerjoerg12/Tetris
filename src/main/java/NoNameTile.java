@@ -9,6 +9,8 @@ public class NoNameTile extends Tile{
     Random random = new Random();
 
     public NoNameTile(Color farbe){
+        super();
+
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];

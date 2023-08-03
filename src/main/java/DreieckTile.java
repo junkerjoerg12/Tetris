@@ -5,6 +5,8 @@ import java.awt.Color;
 
 public class DreieckTile extends Tile{
     public DreieckTile(Color farbe){
+        super();
+
         Random random = new Random();
 
 

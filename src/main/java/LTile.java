@@ -6,6 +6,8 @@ import java.awt.Color;
 public class LTile extends Tile{
 
     public LTile(Color farbe){
+        super();
+
         Random random = new Random();
 
 

@@ -7,6 +7,8 @@ public class SquareTile extends Tile{
     
 
     public SquareTile(Color farbe){
+        super();
+
         Random random = new Random();
 
 
@@ -23,6 +25,7 @@ public class SquareTile extends Tile{
         einzelteile[2]= new Subtile(farbe, xKoord, 50);
         einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
     
+        
     }
   
 }
