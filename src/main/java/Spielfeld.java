@@ -11,7 +11,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     
     MyPanel panel;
-    LTile quadrat;
+    NoNameTile quadrat;
 
     //Kostruktor
     public Spielfeld(){
@@ -27,8 +27,9 @@ public class Spielfeld extends JFrame implements KeyListener{
         this.setVisible(true);
 
         //Quadrat wird zu Testzwecken geaddet
-        quadrat= new LTile(Color.RED);
+        quadrat= new NoNameTile(Color.RED);
         quadrat.addTile(panel);
+        quadrat.drehpunkErrechnen();
         
     }
 

@@ -7,6 +7,7 @@ public class Subtile extends JPanel{
 
     int xKoord;
     int yKoord;
+    boolean drehpunkt= false;
 
 
     public Subtile(Color farbe, int xKoord, int yKoord){
@@ -17,6 +18,13 @@ public class Subtile extends JPanel{
         this.setVisible(true);
 
 
+    }
+
+    public void setDrehpunkt(boolean drehpunkt) {
+        this.drehpunkt = drehpunkt;
+        if(drehpunkt==true){
+            this.setBackground(Color.BLACK);
+        }
     }
 
 }
