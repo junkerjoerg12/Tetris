@@ -5,6 +5,8 @@ import java.awt.event.*;
 
  abstract class Tile{
     Subtile[]einzelteile;
+    int xMitte; 
+    int yMitte; 
 
 
 
@@ -38,11 +40,8 @@ import java.awt.event.*;
         int xMin=einzelteile[0].getX();
         int yMax=einzelteile[0].getY(); 
         int yMin=einzelteile[0].getY();
-        int xMitte; 
-        int yMitte; 
 
 
-    
         //Hüchste und niedrigste X und Y Koordinate der Figur wird herausgefunden
         for(int i=0; i<einzelteile.length; i++){
             if(einzelteile[i].getX()>xMax){
@@ -60,7 +59,6 @@ import java.awt.event.*;
         //Drehpunkt wird berechnet: 
         //Mittelpunt der Figur wird errechnet, wenn dieser kein Subtile ist,
         //wird das Subtile mit den nächst kleineren werten als Drehpunt festgelegt
-
 
         xMitte= (xMax+xMin)/2;
 
@@ -80,13 +78,13 @@ import java.awt.event.*;
                 einzelteile[i].setDrehpunkt(true);
             }
         }
-
-
-
     } 
 
 
    
+    public void mitUhrDrehen(){
+        //Koordinate- KOordinate Drehpunkt
+    }
 
     
 }
