@@ -7,6 +7,12 @@ public class Subtile extends JPanel{
 
     int xKoord;
     int yKoord;
+
+
+    //Koordinaten relativ zum Drehpunkt
+    int xRel; 
+    int yRel;
+
     boolean drehpunkt= false;
 
 
@@ -26,5 +32,28 @@ public class Subtile extends JPanel{
             this.setBackground(Color.BLACK);
         }
     }
+
+
+
+
+    public void setXRel(int xRel){
+        this.xRel= xRel;
+    }
+
+    
+    public void setYRel(int yRel){
+        this.yRel= yRel;
+    }
+
+    public int  getXRel(){
+        return xRel;
+    }
+
+       public int getYRel(){
+        return yRel;
+    }
+
+
+
 
 }

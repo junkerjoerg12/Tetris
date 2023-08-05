@@ -5,9 +5,15 @@ import java.awt.event.*;
 
  abstract class Tile{
     Subtile[]einzelteile;
+
+    //Koordinaten des Drehpunkts
     int xMitte; 
     int yMitte; 
 
+
+    
+
+    
 
 
     public Tile(){
@@ -86,8 +92,6 @@ import java.awt.event.*;
 
 
     //testet, ob nach dem Bewegen des Teils eines der Subtiles außerhalb des Spielfelds ist 
-
-    
     public boolean outOfBounds(int x, int y){
         boolean valid= true;
 
@@ -105,9 +109,78 @@ import java.awt.event.*;
     }
 
 
+
+
+
+
+
+
+
+
+
    
     public void mitUhrDrehen(){
         //Koordinate- KOordinate Drehpunkt
+
+        //welche Koordinate als nächstes negativ gemacht werden muss
+
+
+        boolean xnext= false;
+        boolean ynext= false;
+
+
+        int ram;
+
+        for(int i=0; i< einzelteile.length; i++){
+            einzelteile[i].setXRel(einzelteile[i].getX()-xMitte);
+            einzelteile[i].setYRel(einzelteile[i].getY()-yMitte);
+        }
+
+
+        
+        for(int i=0; i< einzelteile.length; i++){
+
+            //vorbereitungen
+            if((einzelteile[i].getXRel()==0) || (einzelteile[i].getXRel()<0 && einzelteile[i].getYRel()<0)|(einzelteile[i].getXRel()>0 && einzelteile[i].getYRel()>0)){
+                ynext= true;
+            }else {
+                xnext=true;
+            }
+            
+
+            //drehen
+
+            //1: X und Y Koordinaten Relativ zum Drehpunkt tauschen
+
+            ram =einzelteile[i].getXRel();
+            einzelteile[i].setXRel(einzelteile[i].getYRel());
+            einzelteile[i].setYRel(ram);
+            
+            
+            //2: Vorzeichen von X oder Y ändern
+            
+            if(xnext==true){
+                einzelteile[i].setXRel(einzelteile[i].getXRel()*-1);
+                xnext= false;
+                ynext = true; 
+            }else if(ynext =true){
+                einzelteile[i].setYRel(einzelteile[i].getYRel()*-1);
+                xnext= true;
+                ynext = false; 
+            }
+
+            //3: Umwandeln in Absolute Koordinaten
+
+            einzelteile[i].setLocation(einzelteile[i].getXRel()-xMitte, einzelteile[i].getYRel()-yMitte);
+
+            
+        }
+
+
+
+
+
+
     }
 
     

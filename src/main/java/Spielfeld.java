@@ -57,6 +57,10 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         }else if(e.getKeyCode()==39){
             quadrat.changeLocation(+50, 0);
+
+
+        }else if(e.getKeyCode()==38){
+            quadrat.mitUhrDrehen();
         }
 
 

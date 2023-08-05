@@ -18,6 +18,7 @@ public class MyPanel extends JPanel{
         //Das Panel ist 500x 500 Pixel groß
         this.setPreferredSize(new Dimension(500,500 ));
         
+        
 
 
         //Das Gitter im Hintergrund wird gezeichent
