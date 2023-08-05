@@ -29,8 +29,11 @@ import java.awt.event.*;
 
 
     public void changeLocation(int x, int y){
-        for(int i=0; i<einzelteile.length; i++){
-            einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
+        if(this.outOfBounds(x, y)==true){
+            System.out.println("x: "+x +  "Y: "+y);
+            for(int i=0; i<einzelteile.length; i++){
+                einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
+            }
         }
     }
 
@@ -79,6 +82,27 @@ import java.awt.event.*;
             }
         }
     } 
+
+
+
+    //testet, ob nach dem Bewegen des Teils eines der Subtiles außerhalb des Spielfelds ist 
+
+    
+    public boolean outOfBounds(int x, int y){
+        boolean valid= true;
+
+
+        for(int i=0; i<einzelteile.length; i++){
+            if(einzelteile[i].getY()+y > 450 || einzelteile[i].getX()+x < 0 || einzelteile[i].getX() + x >450 ){
+                valid= false;
+                 
+            }
+            System.out.println(valid);
+        }
+        
+        return valid;
+
+    }
 
 
    

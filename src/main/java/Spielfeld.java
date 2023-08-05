@@ -11,7 +11,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     
     MyPanel panel;
-    NoNameTile quadrat;
+    LTile quadrat;
 
     //Kostruktor
     public Spielfeld(){
@@ -27,7 +27,7 @@ public class Spielfeld extends JFrame implements KeyListener{
         this.setVisible(true);
 
         //Quadrat wird zu Testzwecken geaddet
-        quadrat= new NoNameTile(Color.RED);
+        quadrat= new LTile(Color.RED);
         quadrat.addTile(panel);
         quadrat.drehpunkErrechnen();
         
@@ -44,7 +44,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
-        System.out.println(e.getKeyCode());
+        
 
         
         if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
