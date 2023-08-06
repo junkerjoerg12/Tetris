@@ -36,8 +36,8 @@ import java.awt.event.*;
 
     public void changeLocation(int x, int y){
         if(this.outOfBounds(x, y)==true){
-            System.out.println("x: "+x +  "Y: "+y);
             for(int i=0; i<einzelteile.length; i++){
+                System.out.println(i+" "+ einzelteile[i].getX()+" "+ einzelteile[i].getY());
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
         }
@@ -101,11 +101,8 @@ import java.awt.event.*;
                 valid= false;
                  
             }
-            System.out.println(valid);
         }
-        
         return valid;
-
     }
 
 
@@ -140,6 +137,9 @@ import java.awt.event.*;
         
         for(int i=0; i< einzelteile.length; i++){
 
+            xnext= false;
+            ynext= false;
+
             //vorbereitungen
             if((einzelteile[i].getXRel()==0) || (einzelteile[i].getXRel()<0 && einzelteile[i].getYRel()<0)|(einzelteile[i].getXRel()>0 && einzelteile[i].getYRel()>0)){
                 ynext= true;
@@ -160,16 +160,21 @@ import java.awt.event.*;
             //2: Vorzeichen von X oder Y ändern
             
             if(xnext==true){
+                ram= einzelteile[i].getXRel()*-1;
                 einzelteile[i].setXRel(einzelteile[i].getXRel()*-1);
                 xnext= false;
                 ynext = true; 
-            }else if(ynext =true){
+            }else if(ynext ==true){
+                ram = einzelteile[i].getYRel()*-1;
                 einzelteile[i].setYRel(einzelteile[i].getYRel()*-1);
                 xnext= true;
                 ynext = false; 
             }
 
             //3: Umwandeln in Absolute Koordinaten
+
+            ram= einzelteile[i].getXRel()-xMitte;
+            ram = einzelteile[i].getYRel()-yMitte;
 
             einzelteile[i].setLocation(einzelteile[i].getXRel()-xMitte, einzelteile[i].getYRel()-yMitte);
 
