@@ -37,9 +37,14 @@ import java.awt.event.*;
     public void changeLocation(int x, int y){
         if(this.outOfBounds(x, y)==true){
             for(int i=0; i<einzelteile.length; i++){
-                System.out.println(i+" "+ einzelteile[i].getX()+" "+ einzelteile[i].getY());
+
+                
+                
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
+            xMitte= xMitte+x;
+            yMitte= yMitte+y;
+            System.out.println("Drehpunkt: "+ xMitte+ " "+ yMitte);
         }
     }
 
@@ -81,6 +86,8 @@ import java.awt.event.*;
         if(yMitte%50!=0){
             yMitte=yMitte-25;
         }
+
+        System.out.println("Drehopunkt: "+ xMitte+" "+ yMitte);
 
         for(int i=0; i<einzelteile.length; i++){
             if(einzelteile[i].getX()==xMitte && einzelteile[i].getY()==yMitte){
@@ -130,7 +137,14 @@ import java.awt.event.*;
 
         for(int i=0; i< einzelteile.length; i++){
             einzelteile[i].setXRel(einzelteile[i].getX()-xMitte);
+
+            
+
             einzelteile[i].setYRel(einzelteile[i].getY()-yMitte);
+
+          
+
+
         }
 
 
@@ -140,43 +154,62 @@ import java.awt.event.*;
             xnext= false;
             ynext= false;
 
-            //vorbereitungen
-            if((einzelteile[i].getXRel()==0) || (einzelteile[i].getXRel()<0 && einzelteile[i].getYRel()<0)|(einzelteile[i].getXRel()>0 && einzelteile[i].getYRel()>0)){
-                ynext= true;
-            }else {
+            System.out.print("Abs vorn Drehnung: "+einzelteile[i].getX()+ " ");
+            System.out.println(einzelteile[i].getY());
+
+
+            //vorbereitungen herausfinden welches VZ zuerst getauscht wird
+
+            //fehler in dieser bedingung vermutlich
+            if((einzelteile[i].getXRel()==0) ){
                 xnext=true;
+            }else if(einzelteile[i].getXRel()<0 && einzelteile[i].getYRel()<0){
+                xnext=true;  
+            }else if(einzelteile[i].getXRel()>0 && einzelteile[i].getYRel()>0){
+                xnext=true;
+            }else{
+                xnext= true;
             }
             
 
+            System.out.println("Relative Korodinaten vor Tausch: "+ einzelteile[i].getXRel()+ " "+ einzelteile[i].getYRel());
             //drehen
 
             //1: X und Y Koordinaten Relativ zum Drehpunkt tauschen
 
             ram =einzelteile[i].getXRel();
             einzelteile[i].setXRel(einzelteile[i].getYRel());
+            
+            System.out.print("Relative Koordinaten nanch Tausch: "+einzelteile[i].getXRel()+" ");
+
             einzelteile[i].setYRel(ram);
+            System.out.println(einzelteile[i].getYRel());
             
             
             //2: Vorzeichen von X oder Y ändern
             
             if(xnext==true){
-                ram= einzelteile[i].getXRel()*-1;
                 einzelteile[i].setXRel(einzelteile[i].getXRel()*-1);
-                xnext= false;
-                ynext = true; 
+                //xnext= false;
+                //ynext = true; 
+                System.out.println("test");
             }else if(ynext ==true){
-                ram = einzelteile[i].getYRel()*-1;
                 einzelteile[i].setYRel(einzelteile[i].getYRel()*-1);
-                xnext= true;
-                ynext = false; 
+                //xnext= true;
+                //ynext = false; 
+                System.out.println("test 2");
             }
+
+            System.out.println("Nach Vorzeichen Tausch: "+einzelteile[i].getXRel()+ " "+ einzelteile[i].getYRel());
 
             //3: Umwandeln in Absolute Koordinaten
 
-            ram= einzelteile[i].getXRel()-xMitte;
-            ram = einzelteile[i].getYRel()-yMitte;
 
-            einzelteile[i].setLocation(einzelteile[i].getXRel()-xMitte, einzelteile[i].getYRel()-yMitte);
+            System.out.println("Abs nach Drehung: "+ (einzelteile[i].getXRel()+xMitte)+ " "+(einzelteile[i].getYRel()+yMitte));
+            System.out.println("\n");
+
+
+            einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
 
             
         }
