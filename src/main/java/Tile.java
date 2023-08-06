@@ -11,18 +11,10 @@ import java.awt.event.*;
     int yMitte; 
 
 
-    
-
-    
-
-
     public Tile(){
         
 
     }
-
-
-
 
 
     //fügt die Subsquares zu panel hinzu
@@ -34,6 +26,7 @@ import java.awt.event.*;
     }
 
 
+    //Position des Tiles ändern
     public void changeLocation(int x, int y){
         if(this.outOfBounds(x, y)==true){
             for(int i=0; i<einzelteile.length; i++){
@@ -44,11 +37,11 @@ import java.awt.event.*;
             }
             xMitte= xMitte+x;
             yMitte= yMitte+y;
-            System.out.println("Drehpunkt: "+ xMitte+ " "+ yMitte);
         }
     }
 
 
+    //Rechnet das Feld aus, um das sich das Tile dehen soll
     public void drehpunkErrechnen(){
         int xMax=einzelteile[0].getX(); 
         int xMin=einzelteile[0].getX();
@@ -87,8 +80,6 @@ import java.awt.event.*;
             yMitte=yMitte-25;
         }
 
-        System.out.println("Drehopunkt: "+ xMitte+" "+ yMitte);
-
         for(int i=0; i<einzelteile.length; i++){
             if(einzelteile[i].getX()==xMitte && einzelteile[i].getY()==yMitte){
                 einzelteile[i].setDrehpunkt(true);
@@ -122,102 +113,36 @@ import java.awt.event.*;
 
 
 
+
    
     public void mitUhrDrehen(){
-        //Koordinate- KOordinate Drehpunkt
-
-        //welche Koordinate als nächstes negativ gemacht werden muss
-
-
-        boolean xnext= false;
-        boolean ynext= false;
-
-
+        
         int ram;
 
+        //Vergibt Koordinaten Relativ zum Drehpunkt
         for(int i=0; i< einzelteile.length; i++){
             einzelteile[i].setXRel(einzelteile[i].getX()-xMitte);
-
-            
-
             einzelteile[i].setYRel(einzelteile[i].getY()-yMitte);
-
-          
-
-
         }
 
-
-        
         for(int i=0; i< einzelteile.length; i++){
 
-            xnext= false;
-            ynext= false;
-
-            System.out.print("Abs vorn Drehnung: "+einzelteile[i].getX()+ " ");
             System.out.println(einzelteile[i].getY());
 
-
-            //vorbereitungen herausfinden welches VZ zuerst getauscht wird
-
-            //fehler in dieser bedingung vermutlich
-            if((einzelteile[i].getXRel()==0) ){
-                xnext=true;
-            }else if(einzelteile[i].getXRel()<0 && einzelteile[i].getYRel()<0){
-                xnext=true;  
-            }else if(einzelteile[i].getXRel()>0 && einzelteile[i].getYRel()>0){
-                xnext=true;
-            }else{
-                xnext= true;
-            }
-            
-
-            System.out.println("Relative Korodinaten vor Tausch: "+ einzelteile[i].getXRel()+ " "+ einzelteile[i].getYRel());
             //drehen
 
             //1: X und Y Koordinaten Relativ zum Drehpunkt tauschen
-
             ram =einzelteile[i].getXRel();
             einzelteile[i].setXRel(einzelteile[i].getYRel());
-            
-            System.out.print("Relative Koordinaten nanch Tausch: "+einzelteile[i].getXRel()+" ");
-
             einzelteile[i].setYRel(ram);
-            System.out.println(einzelteile[i].getYRel());
             
-            
-            //2: Vorzeichen von X oder Y ändern
-            
-            if(xnext==true){
-                einzelteile[i].setXRel(einzelteile[i].getXRel()*-1);
-                //xnext= false;
-                //ynext = true; 
-                System.out.println("test");
-            }else if(ynext ==true){
-                einzelteile[i].setYRel(einzelteile[i].getYRel()*-1);
-                //xnext= true;
-                //ynext = false; 
-                System.out.println("test 2");
-            }
-
-            System.out.println("Nach Vorzeichen Tausch: "+einzelteile[i].getXRel()+ " "+ einzelteile[i].getYRel());
+            //2: Vorzeichen von X umkehren
+            einzelteile[i].setXRel(einzelteile[i].getXRel()*-1);
 
             //3: Umwandeln in Absolute Koordinaten
-
-
-            System.out.println("Abs nach Drehung: "+ (einzelteile[i].getXRel()+xMitte)+ " "+(einzelteile[i].getYRel()+yMitte));
-            System.out.println("\n");
-
-
             einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
-
-            
+ 
         }
-
-
-
-
-
 
     }
 
