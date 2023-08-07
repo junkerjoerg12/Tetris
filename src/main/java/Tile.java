@@ -49,7 +49,7 @@ import java.awt.event.*;
         int yMin=einzelteile[0].getY();
 
 
-        //Hüchste und niedrigste X und Y Koordinate der Figur wird herausgefunden
+        //Höchste und niedrigste X und Y Koordinate der Figur wird herausgefunden
         for(int i=0; i<einzelteile.length; i++){
             if(einzelteile[i].getX()>xMax){
                 xMax=einzelteile[i].getX();
@@ -104,18 +104,10 @@ import java.awt.event.*;
     }
 
 
-
-
-
-
-
-
-
-
-
-
-   
     public void mitUhrDrehen(){
+        int xNeu; 
+        int yNeu;
+        boolean valid=true; 
         
         int ram;
 
@@ -139,9 +131,21 @@ import java.awt.event.*;
             //2: Vorzeichen von X umkehren
             einzelteile[i].setXRel(einzelteile[i].getXRel()*-1);
 
-            //3: Umwandeln in Absolute Koordinaten
-            einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
+
+
+            //3: Überprüfen, ob keines der Felder außerhalb des Spielfelds ist
+            if(!(einzelteile[i].getXRel()+xMitte<450 && einzelteile[i].getXRel()+xMitte >  0 && einzelteile[i].getYRel()+yMitte >0 && einzelteile[i].getYRel()+yMitte <450 && valid==true)){
+                valid=false;
+                } 
+            
  
+        }
+
+        //Position der Felder aus dem spielfeld ändern, wenn keines der Felder außerhalb des spielfelds ist
+        if(valid==true){
+           for(int i=0; i< einzelteile.length; i++){
+                einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
+           }
         }
 
     }
