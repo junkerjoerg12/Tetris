@@ -2,13 +2,13 @@ package main.java;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class MyPanel extends JPanel{
 
     int anzahlSpalten=10;
-    int anzahlZeilen=20; 
+    int anzahlZeilen=20;
+    ArrayList<Integer> speicher= new ArrayList<Integer>(); 
 
     public MyPanel(){
 
@@ -33,6 +33,12 @@ public class MyPanel extends JPanel{
 
 
     }
+
+
+
+
+
+
 
 
 

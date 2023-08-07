@@ -26,11 +26,14 @@ public class Spielfeld extends JFrame implements KeyListener{
         this.setLocationRelativeTo(null); 
         this.setVisible(true);
 
-        //Quadrat wird zu Testzwecken geaddet
+
+    }
+
+    public void lTileAdden(){
+        
         quadrat= new LTile(Color.RED);
         quadrat.addTile(panel);
         quadrat.drehpunkErrechnen();
-        
     }
 
 
