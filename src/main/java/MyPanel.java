@@ -68,14 +68,17 @@ public class MyPanel extends JPanel{
     public boolean reihePruefen(){
 
         boolean reiheVoll= true;
+        System.out.println(speicherKoords);
 
-        for(int i=0; i<10; i++){
+        //for(int i=0; i<10; i++){
             for(int j=0; j<10; j++){
-                if(!(vergleichen(j*50, i* 50)== true && reiheVoll== true)){
+                if(vergleichen(j*50,450)== true && reiheVoll== true){
+                    
+                }else {
                     reiheVoll= false; 
                 }
             }
-        }
+        //}
         System.out.println("Die Reihe ist voll: "+ reiheVoll);
         return reiheVoll;
     }
@@ -97,7 +100,6 @@ public class MyPanel extends JPanel{
     public void deleteTile(){
         lTile= null;
         spielfeld.deleteTile();
-        System.out.println("gelöscht");
     }
 
 

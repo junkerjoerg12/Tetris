@@ -14,7 +14,7 @@ public class Christenkreuz extends Tile{
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[6];
         int xKoord= random.nextInt(9)*50;
-        System.out.println(xKoord);
+        
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 

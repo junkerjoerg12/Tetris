@@ -41,7 +41,7 @@ import java.awt.event.*;
             yMitte= yMitte+y;
         }
 
-        System.out.println(zugBeendet());
+        
 
         if(zugBeendet()==true){
             umspeichern();
@@ -129,7 +129,6 @@ import java.awt.event.*;
 
         for(int i=0; i< einzelteile.length; i++){
 
-            System.out.println(einzelteile[i].getY());
 
             //drehen
 
@@ -163,13 +162,24 @@ import java.awt.event.*;
 
     //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
     public boolean zugBeendet(){
+        boolean beendet= false;
 
         for(int i=0; i<einzelteile.length; i++){
 
             if(einzelteile[i].getY()==450){
-                return true;
+                beendet= true;
+                
             }
         }
+
+        if(beendet== true){
+            for(int i=0; i<einzelteile.length; i++){
+                panel.speichern(einzelteile[i].getX(), einzelteile[i].getY());
+            }
+            panel.reihePruefen();
+            panel.deleteTile();
+        }
+        
         return false;
     }
 

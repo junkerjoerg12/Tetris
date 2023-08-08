@@ -15,7 +15,7 @@ public class SquareTile extends Tile{
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
         int xKoord= random.nextInt(9)*50;
-        System.out.println(xKoord);
+        
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
