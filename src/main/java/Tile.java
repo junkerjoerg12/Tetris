@@ -38,6 +38,8 @@ import java.awt.event.*;
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
+
+        System.out.println(zugBeendet());
     }
 
 
@@ -150,5 +152,15 @@ import java.awt.event.*;
 
     }
 
-    
+
+    //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
+    public boolean zugBeendet(){
+        for(int i=0; i<einzelteile.length; i++){
+
+            if(einzelteile[i].getY()==450){
+                return true;
+            }
+        }
+        return false;
+    }
 }
