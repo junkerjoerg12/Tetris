@@ -8,7 +8,12 @@ public class MyPanel extends JPanel{
 
     int anzahlSpalten=10;
     int anzahlZeilen=20;
-    ArrayList<String> speicher= new ArrayList<String>(); 
+
+    ArrayList<String> speicherKoords= new ArrayList<String>(); 
+    ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
+
+    LTile lTiel; 
+    
 
     public MyPanel(){
 
@@ -36,17 +41,17 @@ public class MyPanel extends JPanel{
 
     //speichert x und y als String im Speicher
     public void speichern(int x, int y){
-        speicher.add(x+ " "+ y);
+        speicherKoords.add(x+ " "+ y);
     }
 
     //löscht den String, der x und y enthält aus dem Speicher
     public void loeschen(int x, int y){
-        speicher.remove(x+ " "+ y);
+        speicherKoords.remove(x+ " "+ y);
     }
 
     //gibt true zurück, wenn 
     public boolean vergleichen(int x, int y){
-        if(speicher.contains(x+ " "+ y)){
+        if(speicherKoords.contains(x+ " "+ y)){
             return true;
         }
         return false;
@@ -70,7 +75,12 @@ public class MyPanel extends JPanel{
         return reiheVoll;
     }
 
+    public void addSpeicherTiles(Subtile subtile){
+        if(!(speicherTiles.contains(subtile))){
+            speicherTiles.add( subtile);
+        }
 
+    }
 
 
 

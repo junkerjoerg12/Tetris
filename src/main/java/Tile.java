@@ -8,10 +8,12 @@ import java.awt.event.*;
 
     //Koordinaten des Drehpunkts
     int xMitte; 
-    int yMitte; 
+    int yMitte;
+    MyPanel panel;  
 
 
-    public Tile(){
+    public Tile(MyPanel panel){
+        this.panel= panel;
         
 
     }
@@ -40,6 +42,11 @@ import java.awt.event.*;
         }
 
         System.out.println(zugBeendet());
+
+        if(zugBeendet()==true){
+            umspeichern();
+            System.out.println("Ich bin so gut, wie gelöscht");
+        }
     }
 
 
@@ -155,6 +162,7 @@ import java.awt.event.*;
 
     //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
     public boolean zugBeendet(){
+
         for(int i=0; i<einzelteile.length; i++){
 
             if(einzelteile[i].getY()==450){
@@ -163,4 +171,15 @@ import java.awt.event.*;
         }
         return false;
     }
+
+
+
+
+    public void umspeichern(){
+        for(int i=0; i<einzelteile.length; i++){
+            panel.addSpeicherTiles(einzelteile[i]);
+        }
+    }
+
+
 }

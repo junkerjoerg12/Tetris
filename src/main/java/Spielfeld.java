@@ -31,7 +31,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     public void lTileAdden(){
         
-        quadrat= new LTile(Color.RED);
+        quadrat= new LTile(Color.RED, panel);
         quadrat.addTile(panel);
         quadrat.drehpunkErrechnen();
     }
