@@ -12,10 +12,15 @@ public class MyPanel extends JPanel{
     ArrayList<String> speicherKoords= new ArrayList<String>(); 
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
-    LTile lTiel; 
+    LTile lTile;
+    
+    
+    Spielfeld spielfeld;
     
 
-    public MyPanel(){
+    public MyPanel(Spielfeld spielfeld){
+
+        this.spielfeld= spielfeld;
 
         //kein Layout manager d.h. alee Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
@@ -83,9 +88,17 @@ public class MyPanel extends JPanel{
     }
 
 
+    public void setTile(LTile tile){
+        lTile= tile; 
+    }
 
 
 
+    public void deleteTile(){
+        lTile= null;
+        spielfeld.deleteTile();
+        System.out.println("gelöscht");
+    }
 
 
     

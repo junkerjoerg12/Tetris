@@ -45,7 +45,8 @@ import java.awt.event.*;
 
         if(zugBeendet()==true){
             umspeichern();
-            System.out.println("Ich bin so gut, wie gelöscht");
+            
+            panel.deleteTile();
         }
     }
 
