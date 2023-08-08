@@ -8,7 +8,7 @@ public class MyPanel extends JPanel{
 
     int anzahlSpalten=10;
     int anzahlZeilen=20;
-    ArrayList<Integer> speicher= new ArrayList<Integer>(); 
+    ArrayList<String> speicher= new ArrayList<String>(); 
 
     public MyPanel(){
 
@@ -32,6 +32,42 @@ public class MyPanel extends JPanel{
         }
 
 
+    }
+
+    //speichert x und y als String im Speicher
+    public void speichern(int x, int y){
+        speicher.add(x+ " "+ y);
+    }
+
+    //löscht den String, der x und y enthält aus dem Speicher
+    public void loeschen(int x, int y){
+        speicher.remove(x+ " "+ y);
+    }
+
+    //gibt true zurück, wenn 
+    public boolean vergleichen(int x, int y){
+        if(speicher.contains(x+ " "+ y)){
+            return true;
+        }
+        return false;
+    }
+
+
+
+    //Überprüft jede reihe, ob sie voll ist
+    public boolean reihePruefen(){
+
+        boolean reiheVoll= true;
+
+        for(int i=0; i<10; i++){
+            for(int j=0; j<10; j++){
+                if(!(vergleichen(j*50, i* 50)== true && reiheVoll== true)){
+                    reiheVoll= false; 
+                }
+            }
+        }
+        System.out.println("Die Reihe ist voll: "+ reiheVoll);
+        return reiheVoll;
     }
 
 
