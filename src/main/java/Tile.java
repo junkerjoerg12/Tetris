@@ -174,9 +174,13 @@ import java.awt.event.*;
 
         if(beendet== true){
             for(int i=0; i<einzelteile.length; i++){
-                panel.speichern(einzelteile[i].getX(), einzelteile[i].getY());
+                panel.speichern(einzelteile[i]);
             }
             panel.reihePruefen();
+            
+            
+
+
             panel.deleteTile();
         }
         
@@ -188,7 +192,7 @@ import java.awt.event.*;
 
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){
-            panel.addSpeicherTiles(einzelteile[i]);
+            panel.speichern(einzelteile[i]);
         }
     }
 
