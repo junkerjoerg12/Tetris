@@ -8,10 +8,12 @@ import java.awt.event.*;
 
     //Koordinaten des Drehpunkts
     int xMitte; 
-    int yMitte; 
+    int yMitte;
+    MyPanel panel;  
 
 
-    public Tile(){
+    public Tile(MyPanel panel){
+        this.panel= panel;
         
 
     }
@@ -37,6 +39,14 @@ import java.awt.event.*;
             }
             xMitte= xMitte+x;
             yMitte= yMitte+y;
+        }
+
+        
+
+        if(zugBeendet()==true){
+            umspeichern();
+            
+            panel.deleteTile();
         }
     }
 
@@ -119,7 +129,6 @@ import java.awt.event.*;
 
         for(int i=0; i< einzelteile.length; i++){
 
-            System.out.println(einzelteile[i].getY());
 
             //drehen
 
@@ -134,7 +143,7 @@ import java.awt.event.*;
 
 
             //3: Überprüfen, ob keines der Felder außerhalb des Spielfelds ist
-            if(!(einzelteile[i].getXRel()+xMitte<450 && einzelteile[i].getXRel()+xMitte >  0 && einzelteile[i].getYRel()+yMitte >0 && einzelteile[i].getYRel()+yMitte <450 && valid==true)){
+            if(!(einzelteile[i].getXRel()+xMitte<500 && einzelteile[i].getXRel()+xMitte >=  0 && einzelteile[i].getYRel()+yMitte >=0 && einzelteile[i].getYRel()+yMitte <450 && valid==true)){
                 valid=false;
                 } 
             
@@ -150,5 +159,48 @@ import java.awt.event.*;
 
     }
 
-    
+
+    //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
+    public boolean zugBeendet(){
+        boolean beendet= false;
+
+        for(int i=0; i<einzelteile.length; i++){
+
+            if(einzelteile[i].getY()==450){
+                beendet= true;
+                
+            }
+        }
+
+        if(beendet== true){
+            for(int i=0; i<einzelteile.length; i++){
+                panel.speichern(einzelteile[i]);
+            }
+            panel.reihePruefen();
+            
+            
+
+            deletSubtiles();
+            panel.deleteTile();
+        }
+        
+        return false;
+    }
+
+
+
+
+    public void umspeichern(){
+        for(int i=0; i<einzelteile.length; i++){
+            panel.speichern(einzelteile[i]);
+        }
+    }
+
+    public void deletSubtiles(){
+        for (int i=0; i<einzelteile.length; i++){
+            einzelteile[i]= null;
+        }
+    }
+
+
 }

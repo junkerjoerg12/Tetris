@@ -11,14 +11,14 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     
     MyPanel panel;
-    LTile quadrat;
+    LTile lTile;
 
     //Kostruktor
     public Spielfeld(){
 
         this.addKeyListener(this);
 
-        panel= new MyPanel();
+        panel= new MyPanel(this);
         this.add(panel);
 
         this.pack();
@@ -26,11 +26,14 @@ public class Spielfeld extends JFrame implements KeyListener{
         this.setLocationRelativeTo(null); 
         this.setVisible(true);
 
-        //Quadrat wird zu Testzwecken geaddet
-        quadrat= new LTile(Color.RED);
-        quadrat.addTile(panel);
-        quadrat.drehpunkErrechnen();
+
+    }
+
+    public void lTileAdden(){
         
+        lTile= new LTile(Color.RED, panel);
+        lTile.addTile(panel);
+        lTile.drehpunkErrechnen();
     }
 
 
@@ -48,19 +51,19 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         
         if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
-            quadrat.changeLocation(0, 50);
+            lTile.changeLocation(0, 50);
 
         
         }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
-            quadrat.changeLocation(-50, 0);
+            lTile.changeLocation(-50, 0);
 
 
         }else if(e.getKeyCode()==39){
-            quadrat.changeLocation(+50, 0);
+            lTile.changeLocation(+50, 0);
 
 
         }else if(e.getKeyCode()==38){
-            quadrat.mitUhrDrehen();
+            lTile.mitUhrDrehen();
         }
 
 
@@ -74,5 +77,9 @@ public class Spielfeld extends JFrame implements KeyListener{
     }
 
 
+    public void deleteTile(){
+        lTile= null;
+        lTileAdden();
+    }
     
 }
