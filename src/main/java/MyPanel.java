@@ -104,7 +104,7 @@ public class MyPanel extends JPanel{
                 reiheEntfernen(i * 50);
                 aufrutschen(i*50);
 
-                score=+10;
+                score+=10;
                 System.out.println("Score: "+score);
             }
         }
@@ -134,24 +134,18 @@ public class MyPanel extends JPanel{
 
     //Versciebt Subtiles nach unten, wenn eine Reihe gelöscht wurde und ändert die Koordinaten im String
     public void aufrutschen(int y){
-        
-        int index;
-       
-        
-        for(int i=y; i>0; i-=50){
-            
-            for(int j=0; j<10; j++){
-                if(speicherKoords.contains((j*50)+" "+ i)){
-                    index= getIndex(j*50, i);
-                    System.out.println("Koordinate " +speicherKoords);
-                    System.out.println("angekommen"+ j*50 +"  "+i + " index: "+ index + "\n");
-                    
-                    speicherKoords.set(index, (j*50)+ " "+ (i-50));
-                    speicherTiles.get(index).setLocation(j*50, (i-50));
-                }
+
+
+        for(int i=0; i<speicherTiles.size(); i++){
+
+            if(speicherTiles.get(i).getY()<y){
+                speicherTiles.get(i).setLocation(speicherTiles.get(i).getX(), speicherTiles.get(i).getY()+50);
+                speicherKoords.set(i, speicherTiles.get(i).getX()+" " +speicherTiles.get(i).getY());
             }
         }
-
+        System.out.println(speicherKoords);
+       
+        
     }
 
 
