@@ -180,7 +180,7 @@ import java.awt.event.*;
             
             
 
-
+            deletSubtiles();
             panel.deleteTile();
         }
         
@@ -193,6 +193,12 @@ import java.awt.event.*;
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){
             panel.speichern(einzelteile[i]);
+        }
+    }
+
+    public void deletSubtiles(){
+        for (int i=0; i<einzelteile.length; i++){
+            einzelteile[i]= null;
         }
     }
 

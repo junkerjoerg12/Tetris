@@ -83,45 +83,48 @@ public class MyPanel extends JPanel{
     public void reihePruefen(){
 
         boolean reiheVoll= true;
-        System.out.println(speicherKoords);
 
+        //jede Reieh wird geprüft 
         for(int i=10; i>0; i--){
             reiheVoll = true;
+
+            //und jede Spalte in der betreffenden Reihe
             for(int j=0; j<10; j++){
                 if(vergleichen(j*50,i*50)== true && reiheVoll== true){
                     
                 }else {
                     reiheVoll= false; 
                 }
-
                 
             }
-            System.out.println("Reihe voll: "+ reiheVoll );
+
+            //Wenn ja wird die Entsprechende Reihe gelöscht
             if(reiheVoll==true){
                 reiheEntfernen(i * 50);
 
-
-                }
+            }
         }
         
         
     }
 
+
+    //entfernt die Reihe auf der Übergebenen Y Koordinate
     public void reiheEntfernen( int y){
-        int index; 
+        int index;
 
         
         for(int j=0; j< 10; j++){
+            
+            //setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie koordinate als auch das Subtile
             index= getIndex (j*50, y);
             System.out.println(index);
-            speicherKoords.set(index , null);
             speicherKoords.remove(index);
+            speicherTiles.get(index).setVisible(false);
             speicherTiles.remove(index);
-            speicherTiles.set(index, null);
-            System.out.println("reihe entfernt");
+            
+            
         }
-        System.out.println(speicherKoords);
-        System.out.println(speicherTiles);
     }
 
 
