@@ -8,6 +8,7 @@ public class MyPanel extends JPanel{
 
     int anzahlSpalten=10;
     int anzahlZeilen=20;
+    int score;
 
     ArrayList<String> speicherKoords= new ArrayList<String>(); 
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
@@ -102,6 +103,8 @@ public class MyPanel extends JPanel{
             if(reiheVoll==true){
                 reiheEntfernen(i * 50);
 
+                score=+10;
+                System.out.println("Score: "+score);
             }
         }
         
@@ -125,6 +128,12 @@ public class MyPanel extends JPanel{
             
             
         }
+    }
+
+
+    //
+    public void aufrutschen(int y){
+
     }
 
 
