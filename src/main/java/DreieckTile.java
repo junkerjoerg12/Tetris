@@ -4,8 +4,8 @@ import java.util.Random;
 import java.awt.Color;
 
 public class DreieckTile extends Tile{
-    public DreieckTile(Color farbe){
-        super();
+    public DreieckTile(Color farbe, MyPanel panel){
+        super(panel);
 
         Random random = new Random();
 

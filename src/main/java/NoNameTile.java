@@ -8,8 +8,8 @@ public class NoNameTile extends Tile{
 
     Random random = new Random();
 
-    public NoNameTile(Color farbe){
-        super();
+    public NoNameTile(Color farbe, MyPanel panel){
+        super(panel);
 
 
         //Spawn Koordinate wird random generiert

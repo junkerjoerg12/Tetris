@@ -1,7 +1,6 @@
 package main.java;
 
-import java.awt.Color;
-import java.awt.event.*;
+
 
  abstract class Tile{
     Subtile[]einzelteile;
@@ -115,8 +114,7 @@ import java.awt.event.*;
 
 
     public void mitUhrDrehen(){
-        int xNeu; 
-        int yNeu;
+
         boolean valid=true; 
         
         int ram;

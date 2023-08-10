@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Christenkreuz extends Tile{
 
-    public Christenkreuz(Color farbe){
-        super();
+    public Christenkreuz(Color farbe, MyPanel panel){
+        super(panel);
 
         Random random = new Random();
 
