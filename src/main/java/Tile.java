@@ -40,7 +40,6 @@ package main.java;
             yMitte= yMitte+y;
         }
 
-        
 
         if(zugBeendet()==true){
             umspeichern();
@@ -162,6 +161,10 @@ package main.java;
     public boolean zugBeendet(){
         boolean beendet= false;
 
+        if(kollisionPruefen() == true){
+            beendet = true;
+        }
+
         for(int i=0; i<einzelteile.length; i++){
 
             if(einzelteile[i].getY()==450){
@@ -183,6 +186,22 @@ package main.java;
         }
         
         return false;
+    }
+
+    public boolean kollisionPruefen(){
+
+        boolean kollision= false;
+
+        //Kollision nach unten wird geprüft
+        for(int i=0; i<einzelteile.length; i++){
+            if(panel.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY()+50))){
+                kollision= true;
+            }
+        }
+        
+        
+        System.out.println("Kollision: " + kollision);
+        return kollision;
     }
 
 
