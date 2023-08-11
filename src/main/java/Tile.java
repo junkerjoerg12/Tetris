@@ -29,13 +29,14 @@ package main.java;
 
     //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        if(this.outOfBounds(x, y)==true){
+        if(outOfBounds(x, y)==true){
             for(int i=0; i<einzelteile.length; i++){
 
                 
                 
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
+            
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
@@ -161,7 +162,7 @@ package main.java;
     public boolean zugBeendet(){
         boolean beendet= false;
 
-        if(kollisionPruefen() == true){
+        if(kollisionUnten() == true){
             beendet = true;
         }
 
@@ -188,7 +189,7 @@ package main.java;
         return false;
     }
 
-    public boolean kollisionPruefen(){
+    public boolean kollisionUnten(){
 
         boolean kollision= false;
 
@@ -198,14 +199,36 @@ package main.java;
                 kollision= true;
             }
         }
-        
-        
-        System.out.println("Kollision: " + kollision);
         return kollision;
     }
 
 
+    public boolean kollisionRechts(){
 
+        boolean kollision =false;
+
+        for(int i=0; i<einzelteile.length; i++){
+            if(panel.getKoords().contains((einzelteile[i].getX()+50) + " " + (einzelteile[i].getY()))){
+                kollision= true;
+            }
+        }
+        System.out.println("Kollision Rechts: "+ kollision);
+        return kollision;
+    }
+
+
+    public boolean kollisionLinks(){
+
+        boolean kollision =false;
+
+        for(int i=0; i<einzelteile.length; i++){
+            if(panel.getKoords().contains((einzelteile[i].getX()-50) + " " + (einzelteile[i].getY()))){
+                kollision= true;
+            }
+        }
+        System.out.println("Kollision Links: "+ kollision);
+        return kollision;
+    }
 
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){

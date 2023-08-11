@@ -55,11 +55,14 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         
         }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
-            lTile.changeLocation(-50, 0);
-
+            if(lTile.kollisionLinks()==false){
+                lTile.changeLocation(-50, 0);
+            }
 
         }else if(e.getKeyCode()==39){
-            lTile.changeLocation(+50, 0);
+            if(lTile.kollisionRechts() == false){
+                lTile.changeLocation(+50, 0);
+            }
 
 
         }else if(e.getKeyCode()==38){
