@@ -173,15 +173,16 @@ package main.java;
                 
             }
         }
-
+        //Speichert die Subtiles aufs panle
         if(beendet== true){
             for(int i=0; i<einzelteile.length; i++){
                 panel.speichern(einzelteile[i]);
             }
+            //Prüft, ob eine Reihe voll ist
             panel.reihePruefen();
             
             
-
+            //und löscht das Teil
             deletSubtiles();
             panel.deleteTile();
         }
@@ -203,6 +204,8 @@ package main.java;
     }
 
 
+
+    //Überprüft, ob das Teil ein anderes nach recht berührt
     public boolean kollisionRechts(){
 
         boolean kollision =false;
@@ -212,10 +215,12 @@ package main.java;
                 kollision= true;
             }
         }
-        System.out.println("Kollision Rechts: "+ kollision);
         return kollision;
     }
 
+
+
+    //Überprüft, ob das Teil ein anderes nach links berührt
 
     public boolean kollisionLinks(){
 
@@ -226,16 +231,21 @@ package main.java;
                 kollision= true;
             }
         }
-        System.out.println("Kollision Links: "+ kollision);
         return kollision;
     }
 
+
+
+
+    //Speichert die subtiles im Panel 
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){
             panel.speichern(einzelteile[i]);
         }
     }
 
+
+    //ist glaube ich unnötig
     public void deletSubtiles(){
         for (int i=0; i<einzelteile.length; i++){
             einzelteile[i]= null;
