@@ -122,7 +122,6 @@ public class MyPanel extends JPanel{
             
             //setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie koordinate als auch das Subtile
             index= getIndex (j*50, y);
-            System.out.println(index);
             speicherKoords.remove(index);
             speicherTiles.get(index).setVisible(false);
             speicherTiles.remove(index);
@@ -143,9 +142,6 @@ public class MyPanel extends JPanel{
                 speicherKoords.set(i, speicherTiles.get(i).getX()+" " +speicherTiles.get(i).getY());
             }
         }
-        System.out.println(speicherKoords);
-       
-        
     }
 
 
@@ -159,6 +155,10 @@ public class MyPanel extends JPanel{
     public void deleteTile(){
         lTile= null;
         spielfeld.deleteTile();
+    }
+
+    public ArrayList<String> getKoords(){
+        return speicherKoords; 
     }
 
 

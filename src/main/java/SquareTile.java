@@ -6,8 +6,8 @@ import java.util.Random;
 public class SquareTile extends Tile{
     
 
-    public SquareTile(Color farbe){
-        super();
+    public SquareTile(Color farbe, MyPanel panel){
+        super(panel);
 
         Random random = new Random();
 

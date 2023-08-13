@@ -1,7 +1,6 @@
 package main.java;
 
-import java.awt.Color;
-import java.awt.event.*;
+
 
  abstract class Tile{
     Subtile[]einzelteile;
@@ -30,18 +29,18 @@ import java.awt.event.*;
 
     //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        if(this.outOfBounds(x, y)==true){
+        if(outOfBounds(x, y)==true){
             for(int i=0; i<einzelteile.length; i++){
 
                 
                 
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
+            
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
 
-        
 
         if(zugBeendet()==true){
             umspeichern();
@@ -115,8 +114,7 @@ import java.awt.event.*;
 
 
     public void mitUhrDrehen(){
-        int xNeu; 
-        int yNeu;
+
         boolean valid=true; 
         
         int ram;
@@ -164,6 +162,10 @@ import java.awt.event.*;
     public boolean zugBeendet(){
         boolean beendet= false;
 
+        if(kollisionUnten() == true){
+            beendet = true;
+        }
+
         for(int i=0; i<einzelteile.length; i++){
 
             if(einzelteile[i].getY()==450){
@@ -171,15 +173,16 @@ import java.awt.event.*;
                 
             }
         }
-
+        //Speichert die Subtiles aufs panle
         if(beendet== true){
             for(int i=0; i<einzelteile.length; i++){
                 panel.speichern(einzelteile[i]);
             }
+            //Prüft, ob eine Reihe voll ist
             panel.reihePruefen();
             
             
-
+            //und löscht das Teil
             deletSubtiles();
             panel.deleteTile();
         }
@@ -187,15 +190,62 @@ import java.awt.event.*;
         return false;
     }
 
+    public boolean kollisionUnten(){
+
+        boolean kollision= false;
+
+        //Kollision nach unten wird geprüft
+        for(int i=0; i<einzelteile.length; i++){
+            if(panel.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY()+50))){
+                kollision= true;
+            }
+        }
+        return kollision;
+    }
 
 
 
+    //Überprüft, ob das Teil ein anderes nach recht berührt
+    public boolean kollisionRechts(){
+
+        boolean kollision =false;
+
+        for(int i=0; i<einzelteile.length; i++){
+            if(panel.getKoords().contains((einzelteile[i].getX()+50) + " " + (einzelteile[i].getY()))){
+                kollision= true;
+            }
+        }
+        return kollision;
+    }
+
+
+
+    //Überprüft, ob das Teil ein anderes nach links berührt
+
+    public boolean kollisionLinks(){
+
+        boolean kollision =false;
+
+        for(int i=0; i<einzelteile.length; i++){
+            if(panel.getKoords().contains((einzelteile[i].getX()-50) + " " + (einzelteile[i].getY()))){
+                kollision= true;
+            }
+        }
+        return kollision;
+    }
+
+
+
+
+    //Speichert die subtiles im Panel 
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){
             panel.speichern(einzelteile[i]);
         }
     }
 
+
+    //ist glaube ich unnötig
     public void deletSubtiles(){
         for (int i=0; i<einzelteile.length; i++){
             einzelteile[i]= null;
