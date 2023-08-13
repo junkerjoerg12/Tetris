@@ -3,9 +3,9 @@ package main.java;
 import java.awt.Color;
 import java.util.Random;
 
-public class Christenkreuz extends Tile{
+public class KreuzTile extends Tile{
 
-    public Christenkreuz(Color farbe, MyPanel panel){
+    public KreuzTile(Color farbe, MyPanel panel){
         super(panel);
 
         Random random = new Random();
