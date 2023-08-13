@@ -7,11 +7,25 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
+import java.util.Random;
+
 public class Spielfeld extends JFrame implements KeyListener{
 
     
+    Random random = new Random();
+
     MyPanel panel;
+
     LTile lTile;
+    KreuzTile kreuz; 
+    NoNameTile noNameTile;
+    SquareTile square;
+    StraightTile linie;
+    DreieckTile dreieck;
+
+
+
+
 
     //Kostruktor
     public Spielfeld(){
@@ -29,7 +43,69 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     }
 
-    public void lTileAdden(){
+
+    public void spielen(){
+
+        int x;
+
+        x=random.nextInt(5);
+
+        if(x== 0){
+            kreuzAdden();
+
+        }else if(x==1){
+            dreieckAdden();
+
+        }else if(x==2) {
+            noNameAdden();
+
+        }else if(x==3){
+            squareAdden();
+
+        }else if(x==4){
+            linieAdden();
+
+        }else if(x==5){
+            LTileAdden();
+
+        }
+
+
+
+    }
+
+
+    public void kreuzAdden(){
+        
+        kreuz= new KreuzTile(Color.GREEN, panel);
+        kreuz.addTile(panel);
+        kreuz.drehpunkErrechnen();
+    }
+    public void dreieckAdden(){
+        
+        dreieck= new DreieckTile(Color.BLUE, panel);
+        dreieck.addTile(panel);
+        dreieck.drehpunkErrechnen();
+    }
+    public void noNameAdden(){
+        
+        noNameTile= new NoNameTile(Color.YELLOW, panel);
+        noNameTile.addTile(panel);
+        noNameTile.drehpunkErrechnen();
+    }
+    public void squareAdden(){
+        
+        square= new SquareTile(Color.MAGENTA, panel);
+        square.addTile(panel);
+        square.drehpunkErrechnen();
+    }
+    public void linieAdden(){
+        
+        linie= new StraightTile(Color.ORANGE, panel);
+        linie.addTile(panel);
+        linie.drehpunkErrechnen();
+    }
+    public void LTileAdden(){
         
         lTile= new LTile(Color.RED, panel);
         lTile.addTile(panel);
@@ -82,7 +158,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     public void deleteTile(){
         lTile= null;
-        lTileAdden();
+        spielen();
     }
     
 }
