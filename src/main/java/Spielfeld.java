@@ -23,6 +23,8 @@ public class Spielfeld extends JFrame implements KeyListener{
     StraightTile linie;
     DreieckTile dreieck;
 
+    int x;
+
 
 
 
@@ -46,7 +48,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     public void spielen(){
 
-        int x;
+        
 
         x=random.nextInt(5);
 
@@ -127,22 +129,115 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         
         if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
+            
+        if(x== 0){
+            kreuz.changeLocation(0, 50);
+
+        }else if(x==1){
+            dreieck.changeLocation(0, 50);
+
+        }else if(x==2) {
+            noNameTile.changeLocation(0, 50);
+
+        }else if(x==3){
+            square.changeLocation(0, 50);
+
+        }else if(x==4){
+            linie.changeLocation(0, 50);
+
+        }else if(x==5){
             lTile.changeLocation(0, 50);
+
+        }
 
         
         }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
-            if(lTile.kollisionLinks()==false){
-                lTile.changeLocation(-50, 0);
+            
+
+            if(x== 0){
+                if(kreuz.kollisionLinks()==false){
+                    kreuz.changeLocation(-50, 0);
+                }    
+
+            }else if(x==1){
+                if(dreieck.kollisionLinks()==false){
+                    dreieck.changeLocation(-50, 0);
+                }
+            }else if(x==2) {
+                if(noNameTile.kollisionLinks()==false){
+                    noNameTile.changeLocation(-50, 0);
+                }
+            }else if(x==3){
+                if(square.kollisionLinks()==false){
+                    square.changeLocation(-50, 0);
+                }
+
+            }else if(x==4){
+                if(linie.kollisionLinks()==false){
+                    linie.changeLocation(-50, 0);
+                }
+
+            }else if(x==5){
+                if(lTile.kollisionLinks()==false){
+                    lTile.changeLocation(-50, 0);
+                }
+
             }
+            
 
         }else if(e.getKeyCode()==39){
-            if(lTile.kollisionRechts() == false){
-                lTile.changeLocation(+50, 0);
+            
+            if(x== 0){
+                if(kreuz.kollisionRechts() == false){
+                    kreuz.changeLocation(+50, 0);
+                }
+
+            }else if(x==1){
+                if(dreieck.kollisionRechts() == false){
+                    dreieck.changeLocation(+50, 0);
+                }
+
+            }else if(x==2) {
+                if(noNameTile.kollisionRechts() == false){
+                    noNameTile.changeLocation(+50, 0);
+                }
+
+            }else if(x==3){
+                if(square.kollisionRechts() == false){
+                    square.changeLocation(+50, 0);
+                }
+            }else if(x==4){
+                if(linie.kollisionRechts() == false){
+                    linie.changeLocation(+50, 0);
+                }
+            }else if(x==5){
+                if(lTile.kollisionRechts() == false){
+                    lTile.changeLocation(+50, 0);
+                }
+
             }
 
 
         }else if(e.getKeyCode()==38){
-            lTile.mitUhrDrehen();
+            if(x== 0){
+                kreuz.mitUhrDrehen();
+
+            }else if(x==1){
+                dreieck.mitUhrDrehen();
+
+            }else if(x==2) {
+                noNameTile.mitUhrDrehen();
+
+            }else if(x==3){
+                square.mitUhrDrehen();
+
+            }else if(x==4){
+                linie.mitUhrDrehen();
+
+            }else if(x==5){
+                lTile.mitUhrDrehen();
+
+            }
         }
 
 
@@ -158,6 +253,12 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     public void deleteTile(){
         lTile= null;
+        square= null;
+        linie= null;
+        kreuz= null; 
+        noNameTile= null;
+        dreieck= null;
+
         spielen();
     }
     
