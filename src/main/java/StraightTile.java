@@ -8,12 +8,12 @@ public class StraightTile extends Tile{
 
     Random random = new Random();
 
-    public StraightTile(Color farbe, MyPanel panel){
+    public StraightTile(Color farbe, MyPanel panel, int breite){
         super(panel);
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(9)*50;
+        int xKoord= random.nextInt(breite-1)*50;
         
 
 

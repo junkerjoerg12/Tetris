@@ -5,7 +5,7 @@ import java.awt.Color;
 
 public class LTile extends Tile{
 
-    public LTile(Color farbe, MyPanel panel){
+    public LTile(Color farbe, MyPanel panel, int breite){
         super(panel);
 
         Random random = new Random();
@@ -13,7 +13,7 @@ public class LTile extends Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(9)*50;
+        int xKoord= random.nextInt(breite- 1)*50;
         
 
 

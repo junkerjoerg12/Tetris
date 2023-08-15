@@ -6,7 +6,7 @@ import java.util.Random;
 public class SquareTile extends Tile{
     
 
-    public SquareTile(Color farbe, MyPanel panel){
+    public SquareTile(Color farbe, MyPanel panel, int breite){
         super(panel);
 
         Random random = new Random();
@@ -14,7 +14,7 @@ public class SquareTile extends Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(9)*50;
+        int xKoord= random.nextInt(breite- 1)*50;
         
 
 

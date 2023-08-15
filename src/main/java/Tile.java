@@ -8,11 +8,17 @@ package main.java;
     //Koordinaten des Drehpunkts
     int xMitte; 
     int yMitte;
+
+    int breite;
+    int hoehe;
+
     MyPanel panel;  
 
 
     public Tile(MyPanel panel){
         this.panel= panel;
+        breite= panel.getBreite();
+        hoehe= panel.getHoehe();
         
 
     }
@@ -104,7 +110,11 @@ package main.java;
 
 
         for(int i=0; i<einzelteile.length; i++){
-            if(einzelteile[i].getY()+y > 450 || einzelteile[i].getX()+x < 0 || einzelteile[i].getX() + x >450 ){
+
+           // System.out.println("hoehe_ 50: " + (hoehe-50));
+            //System.out.println("breite- 50: "+ (breite-50));
+
+            if(einzelteile[i].getY()+y > hoehe*50-50 || einzelteile[i].getX()+x < 0 || einzelteile[i].getX() + x >breite*50-50 ){
                 valid= false;
                  
             }
@@ -162,13 +172,15 @@ package main.java;
     public boolean zugBeendet(){
         boolean beendet= false;
 
+
+        //der ZUg ist beedet, wenn ien teil auf einem anderen aufliegt
         if(kollisionUnten() == true){
             beendet = true;
         }
 
         for(int i=0; i<einzelteile.length; i++){
 
-            if(einzelteile[i].getY()==450){
+            if(einzelteile[i].getY()==hoehe* 50- 50){
                 beendet= true;
                 
             }

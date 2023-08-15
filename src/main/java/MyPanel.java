@@ -9,6 +9,8 @@ public class MyPanel extends JPanel{
     int anzahlSpalten;
     int anzahlZeilen;
     int score;
+    int breite; 
+    int hoehe; 
 
     ArrayList<String> speicherKoords= new ArrayList<String>(); 
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
@@ -20,6 +22,9 @@ public class MyPanel extends JPanel{
     
 
     public MyPanel(Spielfeld spielfeld, int breite, int hoehe){
+
+        this. breite= breite; 
+        this.hoehe= hoehe;
 
         anzahlSpalten= breite;
         anzahlZeilen= hoehe;
@@ -163,6 +168,15 @@ public class MyPanel extends JPanel{
     public ArrayList<String> getKoords(){
         return speicherKoords; 
     }
+
+    public int getBreite(){
+        return breite;
+    }
+
+    public int getHoehe(){
+        return hoehe;
+    }
+
 
 
     
