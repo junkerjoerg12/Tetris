@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class MyPanel extends JPanel{
 
-    int anzahlSpalten=10;
-    int anzahlZeilen=20;
+    int anzahlSpalten;
+    int anzahlZeilen;
     int score;
 
     ArrayList<String> speicherKoords= new ArrayList<String>(); 
@@ -30,7 +30,7 @@ public class MyPanel extends JPanel{
         this.setLayout(null);
 
         //Das Panel ist 500x 500 Pixel groß
-        this.setPreferredSize(new Dimension(500,500 ));
+        this.setPreferredSize(new Dimension(anzahlSpalten*50, anzahlZeilen*50));
         
         
 
