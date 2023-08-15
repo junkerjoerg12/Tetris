@@ -19,7 +19,10 @@ public class MyPanel extends JPanel{
     Spielfeld spielfeld;
     
 
-    public MyPanel(Spielfeld spielfeld){
+    public MyPanel(Spielfeld spielfeld, int breite, int hoehe){
+
+        anzahlSpalten= breite;
+        anzahlZeilen= hoehe;
 
         this.spielfeld= spielfeld;
 
@@ -33,12 +36,12 @@ public class MyPanel extends JPanel{
 
 
         //Das Gitter im Hintergrund wird gezeichent
-        for(int i=1; i<10; i++){
-            Line x= new Line(true, i*50);
+        for(int i=1; i<anzahlSpalten; i++){
+            Line x= new Line(true, i*50, anzahlZeilen*50);
             this.add(x);
         }
-        for(int i=1; i<10; i++){
-            Line x= new Line(false, i*50);
+        for(int i=1; i<anzahlZeilen; i++){
+            Line x= new Line(false, i*50, anzahlSpalten*50);
             this.add(x);
         }
 

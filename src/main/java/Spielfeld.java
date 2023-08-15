@@ -38,10 +38,10 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         this.breite= breite; 
         this.hoehe= hoehe;
-        
+
         this.addKeyListener(this);
 
-        panel= new MyPanel(this);
+        panel= new MyPanel(this, breite, hoehe);
         this.add(panel);
 
         this.pack();
