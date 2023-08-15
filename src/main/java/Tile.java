@@ -185,7 +185,7 @@ package main.java;
                 
             }
         }
-        //Speichert die Subtiles aufs panle
+        //Speichert die Subtiles aufs panel
         if(beendet== true){
             for(int i=0; i<einzelteile.length; i++){
                 panel.speichern(einzelteile[i]);
