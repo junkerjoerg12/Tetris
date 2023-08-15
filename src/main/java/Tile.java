@@ -151,7 +151,7 @@ package main.java;
 
 
             //3: Überprüfen, ob keines der Felder außerhalb des Spielfelds ist
-            if(!(einzelteile[i].getXRel()+xMitte<500 && einzelteile[i].getXRel()+xMitte >=  0 && einzelteile[i].getYRel()+yMitte >=0 && einzelteile[i].getYRel()+yMitte <450 && valid==true)){
+            if(!(einzelteile[i].getXRel()+xMitte< (breite*50) && einzelteile[i].getXRel()+xMitte >=  0 && einzelteile[i].getYRel()+yMitte >=0 && einzelteile[i].getYRel()+yMitte < (hoehe*50-50) && valid==true)){
                 valid=false;
                 } 
             
