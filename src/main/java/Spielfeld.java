@@ -25,16 +25,23 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     int x;
 
+    int breite;
+    int hoehe;
+
 
 
 
 
     //Kostruktor
-    public Spielfeld(){
+    public Spielfeld(int breite, int hoehe){
+
+
+        this.breite= breite; 
+        this.hoehe= hoehe;
 
         this.addKeyListener(this);
 
-        panel= new MyPanel(this);
+        panel= new MyPanel(this, breite, hoehe);
         this.add(panel);
 
         this.pack();
@@ -79,37 +86,37 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     public void kreuzAdden(){
         
-        kreuz= new KreuzTile(Color.GREEN, panel);
+        kreuz= new KreuzTile(Color.GREEN, panel, breite);
         kreuz.addTile(panel);
         kreuz.drehpunkErrechnen();
     }
     public void dreieckAdden(){
         
-        dreieck= new DreieckTile(Color.BLUE, panel);
+        dreieck= new DreieckTile(Color.BLUE, panel, breite);
         dreieck.addTile(panel);
         dreieck.drehpunkErrechnen();
     }
     public void noNameAdden(){
         
-        noNameTile= new NoNameTile(Color.YELLOW, panel);
+        noNameTile= new NoNameTile(Color.YELLOW, panel, breite);
         noNameTile.addTile(panel);
         noNameTile.drehpunkErrechnen();
     }
     public void squareAdden(){
         
-        square= new SquareTile(Color.MAGENTA, panel);
+        square= new SquareTile(Color.MAGENTA, panel, breite);
         square.addTile(panel);
         square.drehpunkErrechnen();
     }
     public void linieAdden(){
         
-        linie= new StraightTile(Color.ORANGE, panel);
+        linie= new StraightTile(Color.ORANGE, panel, breite);
         linie.addTile(panel);
         linie.drehpunkErrechnen();
     }
     public void LTileAdden(){
         
-        lTile= new LTile(Color.RED, panel);
+        lTile= new LTile(Color.RED, panel, breite);
         lTile.addTile(panel);
         lTile.drehpunkErrechnen();
     }

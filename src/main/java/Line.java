@@ -7,12 +7,12 @@ import java.awt.*;
 public class Line extends JPanel{
     
     
-    public Line(boolean vertical, int start){
+    public Line(boolean vertical, int start, int ende){
         this.setBackground(Color.BLACK);
         if (vertical== true){
-            this.setBounds(start, 0, 1, 500);
+            this.setBounds(start, 0, 1, ende);
         }else{
-            this.setBounds(0, start, 500, 1);
+            this.setBounds(0, start, ende, 1);
         }
     }
 }

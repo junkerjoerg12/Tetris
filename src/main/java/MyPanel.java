@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 public class MyPanel extends JPanel{
 
-    int anzahlSpalten=10;
-    int anzahlZeilen=20;
+    int anzahlSpalten;
+    int anzahlZeilen;
     int score;
+    int breite; 
+    int hoehe; 
 
     ArrayList<String> speicherKoords= new ArrayList<String>(); 
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
@@ -19,7 +21,13 @@ public class MyPanel extends JPanel{
     Spielfeld spielfeld;
     
 
-    public MyPanel(Spielfeld spielfeld){
+    public MyPanel(Spielfeld spielfeld, int breite, int hoehe){
+
+        this. breite= breite; 
+        this.hoehe= hoehe;
+
+        anzahlSpalten= breite;
+        anzahlZeilen= hoehe;
 
         this.spielfeld= spielfeld;
 
@@ -27,18 +35,18 @@ public class MyPanel extends JPanel{
         this.setLayout(null);
 
         //Das Panel ist 500x 500 Pixel groß
-        this.setPreferredSize(new Dimension(500,500 ));
+        this.setPreferredSize(new Dimension(anzahlSpalten*50, anzahlZeilen*50));
         
         
 
 
         //Das Gitter im Hintergrund wird gezeichent
-        for(int i=1; i<10; i++){
-            Line x= new Line(true, i*50);
+        for(int i=1; i<anzahlSpalten; i++){
+            Line x= new Line(true, i*50, anzahlZeilen*50);
             this.add(x);
         }
-        for(int i=1; i<10; i++){
-            Line x= new Line(false, i*50);
+        for(int i=1; i<anzahlZeilen; i++){
+            Line x= new Line(false, i*50, anzahlSpalten*50);
             this.add(x);
         }
 
@@ -86,11 +94,11 @@ public class MyPanel extends JPanel{
         boolean reiheVoll= true;
 
         //jede Reieh wird geprüft 
-        for(int i=10; i>0; i--){
+        for(int i=anzahlSpalten; i>0; i--){
             reiheVoll = true;
 
             //und jede Spalte in der betreffenden Reihe
-            for(int j=0; j<10; j++){
+            for(int j=0; j<anzahlZeilen; j++){
                 if(vergleichen(j*50,i*50)== true && reiheVoll== true){
                     
                 }else {
@@ -160,6 +168,15 @@ public class MyPanel extends JPanel{
     public ArrayList<String> getKoords(){
         return speicherKoords; 
     }
+
+    public int getBreite(){
+        return breite;
+    }
+
+    public int getHoehe(){
+        return hoehe;
+    }
+
 
 
     
