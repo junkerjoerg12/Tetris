@@ -61,6 +61,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         if(x== 0){
             kreuzAdden();
+            
 
         }else if(x==1){
             dreieckAdden();
@@ -89,36 +90,42 @@ public class Spielfeld extends JFrame implements KeyListener{
         kreuz= new KreuzTile(Color.GREEN, panel, breite);
         kreuz.addTile(panel);
         kreuz.drehpunkErrechnen();
+        kreuz.zugBeendet();
     }
     public void dreieckAdden(){
         
         dreieck= new DreieckTile(Color.BLUE, panel, breite);
         dreieck.addTile(panel);
         dreieck.drehpunkErrechnen();
+        dreieck.zugBeendet();
     }
     public void noNameAdden(){
         
         noNameTile= new NoNameTile(Color.YELLOW, panel, breite);
         noNameTile.addTile(panel);
         noNameTile.drehpunkErrechnen();
+        noNameTile.zugBeendet();
     }
     public void squareAdden(){
         
         square= new SquareTile(Color.MAGENTA, panel, breite);
         square.addTile(panel);
         square.drehpunkErrechnen();
+        square.zugBeendet();
     }
     public void linieAdden(){
         
         linie= new StraightTile(Color.ORANGE, panel, breite);
         linie.addTile(panel);
         linie.drehpunkErrechnen();
+        linie.zugBeendet();
     }
     public void LTileAdden(){
         
         lTile= new LTile(Color.RED, panel, breite);
         lTile.addTile(panel);
         lTile.drehpunkErrechnen();
+        lTile.zugBeendet();
     }
 
 

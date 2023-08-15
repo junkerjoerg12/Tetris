@@ -1,8 +1,8 @@
 package main.java;
 
+import java.awt.TextArea;
 
-
- abstract class Tile{
+abstract class Tile{
     Subtile[]einzelteile;
 
     //Koordinaten des Drehpunkts
@@ -47,10 +47,9 @@ package main.java;
             yMitte= yMitte+y;
         }
 
+        zugBeendet();
 
-        if(zugBeendet()==true){
-            
-        }
+
     }
 
 
@@ -167,7 +166,8 @@ package main.java;
 
 
     //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
-    public boolean zugBeendet(){
+    public void zugBeendet(){
+
         boolean beendet= false;
 
 
@@ -191,7 +191,19 @@ package main.java;
 
             //es wird geprüft, ob ein Subtile oben anstößt
             if(verlorenPruefen() == true){
-                return beendet;
+
+                System.out.println("häää");
+
+                //Subtiles werden aufs panel gespeicehrt
+                umspeichern();
+
+                //Subtiles werden aus this gelöscht
+                deletSubtiles();
+
+                //this wird gelöscht
+                panel.deleteTile();
+                
+                //panel.add(new TextArea("Verloren"));
             }
 
             //Subtiles werden aufs panel gespeicehrt
@@ -206,7 +218,7 @@ package main.java;
 
         }
         
-        return beendet;
+        
     }
 
     public boolean kollisionUnten(){
