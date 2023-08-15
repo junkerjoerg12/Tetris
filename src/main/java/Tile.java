@@ -49,9 +49,7 @@ package main.java;
 
 
         if(zugBeendet()==true){
-            umspeichern();
             
-            panel.deleteTile();
         }
     }
 
@@ -187,19 +185,28 @@ package main.java;
         }
         //Speichert die Subtiles aufs panel
         if(beendet== true){
-            for(int i=0; i<einzelteile.length; i++){
-                panel.speichern(einzelteile[i]);
-            }
-            //Prüft, ob eine Reihe voll ist
+
+            //wird geprüft, ob reihe entfernt werden muss
             panel.reihePruefen();
-            
-            
-            //und löscht das Teil
+
+            //es wird geprüft, ob ein Subtile oben anstößt
+            if(verlorenPruefen() == true){
+                return beendet;
+            }
+
+            //Subtiles werden aufs panel gespeicehrt
+            umspeichern();
+
+            //Subtiles werden aus this gelöscht
             deletSubtiles();
+
+            //this wird gelöscht
             panel.deleteTile();
+
+
         }
         
-        return false;
+        return beendet;
     }
 
     public boolean kollisionUnten(){
@@ -262,6 +269,20 @@ package main.java;
         for (int i=0; i<einzelteile.length; i++){
             einzelteile[i]= null;
         }
+    }
+
+    public boolean verlorenPruefen(){
+        boolean verloren= false;
+
+        for(int i=0; i< einzelteile.length; i++){
+
+            if(einzelteile[i].getY()==0){
+                verloren = true;
+            }
+        }
+        
+        System.out.println("verloren: " + verloren);
+        return verloren;
     }
 
 
