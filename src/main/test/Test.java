@@ -5,7 +5,13 @@ import main.java.Spielfeld;
 public class Test {
     public static void main(String args[]){
 
-        Spielfeld feld= new Spielfeld();
+        int spielfeldbreite =12;
+        int spielfeldhoehe = 15;
+
+
+
+
+        Spielfeld feld= new Spielfeld(spielfeldbreite, spielfeldhoehe);
         feld.spielen();
         
 
