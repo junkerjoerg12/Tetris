@@ -89,11 +89,11 @@ public class MyPanel extends JPanel{
         boolean reiheVoll= true;
 
         //jede Reieh wird geprüft 
-        for(int i=10; i>0; i--){
+        for(int i=anzahlSpalten; i>0; i--){
             reiheVoll = true;
 
             //und jede Spalte in der betreffenden Reihe
-            for(int j=0; j<10; j++){
+            for(int j=0; j<anzahlZeilen; j++){
                 if(vergleichen(j*50,i*50)== true && reiheVoll== true){
                     
                 }else {
