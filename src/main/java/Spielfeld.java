@@ -265,7 +265,7 @@ public class Spielfeld extends JFrame implements KeyListener{
     }
 
 
-    public void deleteTile(){
+    public void deleteTile(boolean verloren){
         lTile= null;
         square= null;
         linie= null;
@@ -273,7 +273,12 @@ public class Spielfeld extends JFrame implements KeyListener{
         noNameTile= null;
         dreieck= null;
 
-        spielen();
+        //darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
+        if(verloren == false){
+            spielen();
+        }else{
+            System.out.println("hier kommt nichts mehr");
+        }
     }
     
 }

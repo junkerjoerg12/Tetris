@@ -191,8 +191,9 @@ abstract class Tile{
 
             //es wird geprüft, ob ein Subtile oben anstößt
             if(verlorenPruefen() == true){
+                
 
-                System.out.println("häää");
+                System.out.println("Sie haben verloren!!");
 
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
@@ -201,19 +202,21 @@ abstract class Tile{
                 deletSubtiles();
 
                 //this wird gelöscht
-                panel.deleteTile();
+                panel.deleteTile(true);
                 
                 //panel.add(new TextArea("Verloren"));
+            }else{
+
+                //Subtiles werden aufs panel gespeicehrt
+                umspeichern();
+                
+                //Subtiles werden aus this gelöscht
+                deletSubtiles();
+    
+                //this wird gelöscht
+                panel.deleteTile(false);
             }
 
-            //Subtiles werden aufs panel gespeicehrt
-            umspeichern();
-
-            //Subtiles werden aus this gelöscht
-            deletSubtiles();
-
-            //this wird gelöscht
-            panel.deleteTile();
 
 
         }
