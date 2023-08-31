@@ -31,7 +31,7 @@ public class Subtile extends JPanel{
     public void setDrehpunkt(boolean drehpunkt) {
         this.drehpunkt = drehpunkt;
         if(drehpunkt==true){
-            //this.setBackground(Color.BLACK);
+            this.setBackground(Color.BLACK);
         }
     }
 

@@ -150,7 +150,17 @@ abstract class Tile{
             //3: Überprüfen, ob keines der Felder außerhalb des Spielfelds ist
             if(!(einzelteile[i].getXRel()+xMitte< (breite*50) && einzelteile[i].getXRel()+xMitte >=  0 && einzelteile[i].getYRel()+yMitte >=0 && einzelteile[i].getYRel()+yMitte < (hoehe*50-50) && valid==true)){
                 valid=false;
-                } 
+            }
+
+            
+            //4: überprüfen, ob keines der felder ein anderes Tile überlapt
+
+            System.out.println("tatsächliche KOordinaten: "+ einzelteile[i].getXRel()+xMitte+ " "+ einzelteile[i].getYRel()+yMitte + "Koordinatensammlung: "+ panel.getKoords());
+
+            if((panel.getKoords().contains(einzelteile[i].getXRel()+xMitte+ " "+ einzelteile[i].getYRel()+yMitte))){
+                System.out.println("überlappung");
+                valid = false;
+            }
             
  
         }
