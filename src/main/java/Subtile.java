@@ -17,11 +17,13 @@ public class Subtile extends JPanel{
 
 
     public Subtile(Color farbe, int xKoord, int yKoord){
+
         this.xKoord=xKoord;
         this.yKoord=yKoord;
         this.setBounds(xKoord, yKoord, 50, 50);
         this.setBackground(farbe);
         this.setVisible(true);
+
 
 
     }

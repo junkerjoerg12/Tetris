@@ -79,6 +79,8 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         }
 
+        repaint();
+
 
 
     }
