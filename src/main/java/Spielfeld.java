@@ -57,7 +57,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         
 
-        x=random.nextInt(5);
+        x=random.nextInt(6  );
 
         if(x== 0){
             kreuzAdden();
