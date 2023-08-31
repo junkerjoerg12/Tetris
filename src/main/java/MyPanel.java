@@ -112,7 +112,7 @@ public class MyPanel extends JPanel{
                 reiheEntfernen(i * 50);
                 aufrutschen(i*50);
 
-                score+=10;
+                score+=breite;
                 System.out.println("Score: "+score);
             }
         }
