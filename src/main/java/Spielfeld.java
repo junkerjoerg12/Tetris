@@ -141,117 +141,129 @@ public class Spielfeld extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
         
 
-        
-        if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
-            
-        if(x== 0){
-            kreuz.changeLocation(0, 50);
-
-        }else if(x==1){
-            dreieck.changeLocation(0, 50);
-
-        }else if(x==2) {
-            noNameTile.changeLocation(0, 50);
-
-        }else if(x==3){
-            square.changeLocation(0, 50);
-
-        }else if(x==4){
-            linie.changeLocation(0, 50);
-
-        }else if(x==5){
-            lTile.changeLocation(0, 50);
-
-        }
-
-        
-        }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
-            
-
+        try{
+            if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
+                
             if(x== 0){
-                if(kreuz.kollisionLinks()==false){
-                    kreuz.changeLocation(-50, 0);
-                }    
+                kreuz.changeLocation(0, 50);
 
             }else if(x==1){
-                if(dreieck.kollisionLinks()==false){
-                    dreieck.changeLocation(-50, 0);
-                }
-            }else if(x==2) {
-                if(noNameTile.kollisionLinks()==false){
-                    noNameTile.changeLocation(-50, 0);
-                }
-            }else if(x==3){
-                if(square.kollisionLinks()==false){
-                    square.changeLocation(-50, 0);
-                }
-
-            }else if(x==4){
-                if(linie.kollisionLinks()==false){
-                    linie.changeLocation(-50, 0);
-                }
-
-            }else if(x==5){
-                if(lTile.kollisionLinks()==false){
-                    lTile.changeLocation(-50, 0);
-                }
-
-            }
-            
-
-        }else if(e.getKeyCode()==39){
-            
-            if(x== 0){
-                if(kreuz.kollisionRechts() == false){
-                    kreuz.changeLocation(+50, 0);
-                }
-
-            }else if(x==1){
-                if(dreieck.kollisionRechts() == false){
-                    dreieck.changeLocation(+50, 0);
-                }
+                dreieck.changeLocation(0, 50);
 
             }else if(x==2) {
-                if(noNameTile.kollisionRechts() == false){
-                    noNameTile.changeLocation(+50, 0);
-                }
+                noNameTile.changeLocation(0, 50);
 
             }else if(x==3){
-                if(square.kollisionRechts() == false){
-                    square.changeLocation(+50, 0);
-                }
+                square.changeLocation(0, 50);
+
             }else if(x==4){
-                if(linie.kollisionRechts() == false){
-                    linie.changeLocation(+50, 0);
-                }
+                linie.changeLocation(0, 50);
+
             }else if(x==5){
-                if(lTile.kollisionRechts() == false){
-                    lTile.changeLocation(+50, 0);
-                }
+                lTile.changeLocation(0, 50);
+
+            }else{
 
             }
 
+            
+            }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
+                
 
-        }else if(e.getKeyCode()==38){
-            if(x== 0){
-                kreuz.mitUhrDrehen();
+                if(x== 0){
+                    if(kreuz.kollisionLinks()==false){
+                        kreuz.changeLocation(-50, 0);
+                    }    
 
-            }else if(x==1){
-                dreieck.mitUhrDrehen();
+                }else if(x==1){
+                    if(dreieck.kollisionLinks()==false){
+                        dreieck.changeLocation(-50, 0);
+                    }
+                }else if(x==2) {
+                    if(noNameTile.kollisionLinks()==false){
+                        noNameTile.changeLocation(-50, 0);
+                    }
+                }else if(x==3){
+                    if(square.kollisionLinks()==false){
+                        square.changeLocation(-50, 0);
+                    }
 
-            }else if(x==2) {
-                noNameTile.mitUhrDrehen();
+                }else if(x==4){
+                    if(linie.kollisionLinks()==false){
+                        linie.changeLocation(-50, 0);
+                    }
 
-            }else if(x==3){
-                square.mitUhrDrehen();
+                }else if(x==5){
+                    if(lTile.kollisionLinks()==false){
+                        lTile.changeLocation(-50, 0);
+                    }
 
-            }else if(x==4){
-                linie.mitUhrDrehen();
 
-            }else if(x==5){
-                lTile.mitUhrDrehen();
+                }else{
+                        
+                    }
+                
 
+            }else if(e.getKeyCode()==39){
+                
+                if(x== 0){
+                    if(kreuz.kollisionRechts() == false){
+                        kreuz.changeLocation(+50, 0);
+                    }
+
+                }else if(x==1){
+                    if(dreieck.kollisionRechts() == false){
+                        dreieck.changeLocation(+50, 0);
+                    }
+
+                }else if(x==2) {
+                    if(noNameTile.kollisionRechts() == false){
+                        noNameTile.changeLocation(+50, 0);
+                    }
+
+                }else if(x==3){
+                    if(square.kollisionRechts() == false){
+                        square.changeLocation(+50, 0);
+                    }
+                }else if(x==4){
+                    if(linie.kollisionRechts() == false){
+                        linie.changeLocation(+50, 0);
+                    }
+                }else if(x==5){
+                    if(lTile.kollisionRechts() == false){
+                        lTile.changeLocation(+50, 0);
+                    }
+
+                }
+
+
+            }else if(e.getKeyCode()==38){
+                if(x== 0){
+                    kreuz.mitUhrDrehen();
+
+                }else if(x==1){
+                    dreieck.mitUhrDrehen();
+
+                }else if(x==2) {
+                    noNameTile.mitUhrDrehen();
+
+                }else if(x==3){
+                    square.mitUhrDrehen();
+
+                }else if(x==4){
+                    linie.mitUhrDrehen();
+
+                }else if(x==5){
+                    lTile.mitUhrDrehen();
+
+                }else{
+
+                }
+                
             }
+
+        }catch(NullPointerException exception){
+            System.out.println("Du hast schon längst verloren");
         }
 
 
