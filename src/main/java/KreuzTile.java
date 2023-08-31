@@ -13,8 +13,8 @@ public class KreuzTile extends Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[6];
-        int xKoord= random.nextInt(breite-1)*50;
-        
+        int xKoord= random.nextInt(1, breite-1)*50;
+
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
