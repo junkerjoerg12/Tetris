@@ -194,7 +194,7 @@ abstract class Tile{
                 
 
                 System.out.println("Sie haben verloren!!");
-
+                System.out.println("Ihr Highscore : " + panel.getScore());
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
 
@@ -296,7 +296,7 @@ abstract class Tile{
             }
         }
         
-        System.out.println("verloren: " + verloren);
+        //System.out.println("verloren: " + verloren);
         return verloren;
     }
 
