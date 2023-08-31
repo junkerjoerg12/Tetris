@@ -1,8 +1,8 @@
 package main.java;
 
+import java.awt.TextArea;
 
-
- abstract class Tile{
+abstract class Tile{
     Subtile[]einzelteile;
 
     //Koordinaten des Drehpunkts
@@ -47,12 +47,9 @@ package main.java;
             yMitte= yMitte+y;
         }
 
+        zugBeendet();
 
-        if(zugBeendet()==true){
-            umspeichern();
-            
-            panel.deleteTile();
-        }
+
     }
 
 
@@ -169,7 +166,8 @@ package main.java;
 
 
     //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
-    public boolean zugBeendet(){
+    public void zugBeendet(){
+
         boolean beendet= false;
 
 
@@ -187,19 +185,43 @@ package main.java;
         }
         //Speichert die Subtiles aufs panel
         if(beendet== true){
-            for(int i=0; i<einzelteile.length; i++){
-                panel.speichern(einzelteile[i]);
-            }
-            //Prüft, ob eine Reihe voll ist
+
+            //wird geprüft, ob reihe entfernt werden muss
             panel.reihePruefen();
-            
-            
-            //und löscht das Teil
-            deletSubtiles();
-            panel.deleteTile();
+
+            //es wird geprüft, ob ein Subtile oben anstößt
+            if(verlorenPruefen() == true){
+                
+
+                System.out.println("Sie haben verloren!!");
+
+                //Subtiles werden aufs panel gespeicehrt
+                umspeichern();
+
+                //Subtiles werden aus this gelöscht
+                deletSubtiles();
+
+                //this wird gelöscht
+                panel.deleteTile(true);
+                
+                //panel.add(new TextArea("Verloren"));
+            }else{
+
+                //Subtiles werden aufs panel gespeicehrt
+                umspeichern();
+                
+                //Subtiles werden aus this gelöscht
+                deletSubtiles();
+    
+                //this wird gelöscht
+                panel.deleteTile(false);
+            }
+
+
+
         }
         
-        return false;
+        
     }
 
     public boolean kollisionUnten(){
@@ -262,6 +284,20 @@ package main.java;
         for (int i=0; i<einzelteile.length; i++){
             einzelteile[i]= null;
         }
+    }
+
+    public boolean verlorenPruefen(){
+        boolean verloren= false;
+
+        for(int i=0; i< einzelteile.length; i++){
+
+            if(einzelteile[i].getY()==0){
+                verloren = true;
+            }
+        }
+        
+        System.out.println("verloren: " + verloren);
+        return verloren;
     }
 
 

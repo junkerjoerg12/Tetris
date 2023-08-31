@@ -57,10 +57,11 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         
 
-        x=random.nextInt(5);
+        x=random.nextInt(6  );
 
         if(x== 0){
             kreuzAdden();
+            
 
         }else if(x==1){
             dreieckAdden();
@@ -89,36 +90,42 @@ public class Spielfeld extends JFrame implements KeyListener{
         kreuz= new KreuzTile(Color.GREEN, panel, breite);
         kreuz.addTile(panel);
         kreuz.drehpunkErrechnen();
+        kreuz.zugBeendet();
     }
     public void dreieckAdden(){
         
         dreieck= new DreieckTile(Color.BLUE, panel, breite);
         dreieck.addTile(panel);
         dreieck.drehpunkErrechnen();
+        dreieck.zugBeendet();
     }
     public void noNameAdden(){
         
         noNameTile= new NoNameTile(Color.YELLOW, panel, breite);
         noNameTile.addTile(panel);
         noNameTile.drehpunkErrechnen();
+        noNameTile.zugBeendet();
     }
     public void squareAdden(){
         
         square= new SquareTile(Color.MAGENTA, panel, breite);
         square.addTile(panel);
         square.drehpunkErrechnen();
+        square.zugBeendet();
     }
     public void linieAdden(){
         
         linie= new StraightTile(Color.ORANGE, panel, breite);
         linie.addTile(panel);
         linie.drehpunkErrechnen();
+        linie.zugBeendet();
     }
     public void LTileAdden(){
         
         lTile= new LTile(Color.RED, panel, breite);
         lTile.addTile(panel);
         lTile.drehpunkErrechnen();
+        lTile.zugBeendet();
     }
 
 
@@ -134,117 +141,129 @@ public class Spielfeld extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
         
 
-        
-        if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
-            
-        if(x== 0){
-            kreuz.changeLocation(0, 50);
-
-        }else if(x==1){
-            dreieck.changeLocation(0, 50);
-
-        }else if(x==2) {
-            noNameTile.changeLocation(0, 50);
-
-        }else if(x==3){
-            square.changeLocation(0, 50);
-
-        }else if(x==4){
-            linie.changeLocation(0, 50);
-
-        }else if(x==5){
-            lTile.changeLocation(0, 50);
-
-        }
-
-        
-        }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
-            
-
+        try{
+            if(e.getKeyCode()==40){             //Form wird eine Ziele nach unten versetzt
+                
             if(x== 0){
-                if(kreuz.kollisionLinks()==false){
-                    kreuz.changeLocation(-50, 0);
-                }    
+                kreuz.changeLocation(0, 50);
 
             }else if(x==1){
-                if(dreieck.kollisionLinks()==false){
-                    dreieck.changeLocation(-50, 0);
-                }
-            }else if(x==2) {
-                if(noNameTile.kollisionLinks()==false){
-                    noNameTile.changeLocation(-50, 0);
-                }
-            }else if(x==3){
-                if(square.kollisionLinks()==false){
-                    square.changeLocation(-50, 0);
-                }
-
-            }else if(x==4){
-                if(linie.kollisionLinks()==false){
-                    linie.changeLocation(-50, 0);
-                }
-
-            }else if(x==5){
-                if(lTile.kollisionLinks()==false){
-                    lTile.changeLocation(-50, 0);
-                }
-
-            }
-            
-
-        }else if(e.getKeyCode()==39){
-            
-            if(x== 0){
-                if(kreuz.kollisionRechts() == false){
-                    kreuz.changeLocation(+50, 0);
-                }
-
-            }else if(x==1){
-                if(dreieck.kollisionRechts() == false){
-                    dreieck.changeLocation(+50, 0);
-                }
+                dreieck.changeLocation(0, 50);
 
             }else if(x==2) {
-                if(noNameTile.kollisionRechts() == false){
-                    noNameTile.changeLocation(+50, 0);
-                }
+                noNameTile.changeLocation(0, 50);
 
             }else if(x==3){
-                if(square.kollisionRechts() == false){
-                    square.changeLocation(+50, 0);
-                }
+                square.changeLocation(0, 50);
+
             }else if(x==4){
-                if(linie.kollisionRechts() == false){
-                    linie.changeLocation(+50, 0);
-                }
+                linie.changeLocation(0, 50);
+
             }else if(x==5){
-                if(lTile.kollisionRechts() == false){
-                    lTile.changeLocation(+50, 0);
-                }
+                lTile.changeLocation(0, 50);
+
+            }else{
 
             }
 
+            
+            }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
+                
 
-        }else if(e.getKeyCode()==38){
-            if(x== 0){
-                kreuz.mitUhrDrehen();
+                if(x== 0){
+                    if(kreuz.kollisionLinks()==false){
+                        kreuz.changeLocation(-50, 0);
+                    }    
 
-            }else if(x==1){
-                dreieck.mitUhrDrehen();
+                }else if(x==1){
+                    if(dreieck.kollisionLinks()==false){
+                        dreieck.changeLocation(-50, 0);
+                    }
+                }else if(x==2) {
+                    if(noNameTile.kollisionLinks()==false){
+                        noNameTile.changeLocation(-50, 0);
+                    }
+                }else if(x==3){
+                    if(square.kollisionLinks()==false){
+                        square.changeLocation(-50, 0);
+                    }
 
-            }else if(x==2) {
-                noNameTile.mitUhrDrehen();
+                }else if(x==4){
+                    if(linie.kollisionLinks()==false){
+                        linie.changeLocation(-50, 0);
+                    }
 
-            }else if(x==3){
-                square.mitUhrDrehen();
+                }else if(x==5){
+                    if(lTile.kollisionLinks()==false){
+                        lTile.changeLocation(-50, 0);
+                    }
 
-            }else if(x==4){
-                linie.mitUhrDrehen();
 
-            }else if(x==5){
-                lTile.mitUhrDrehen();
+                }else{
+                        
+                    }
+                
 
+            }else if(e.getKeyCode()==39){
+                
+                if(x== 0){
+                    if(kreuz.kollisionRechts() == false){
+                        kreuz.changeLocation(+50, 0);
+                    }
+
+                }else if(x==1){
+                    if(dreieck.kollisionRechts() == false){
+                        dreieck.changeLocation(+50, 0);
+                    }
+
+                }else if(x==2) {
+                    if(noNameTile.kollisionRechts() == false){
+                        noNameTile.changeLocation(+50, 0);
+                    }
+
+                }else if(x==3){
+                    if(square.kollisionRechts() == false){
+                        square.changeLocation(+50, 0);
+                    }
+                }else if(x==4){
+                    if(linie.kollisionRechts() == false){
+                        linie.changeLocation(+50, 0);
+                    }
+                }else if(x==5){
+                    if(lTile.kollisionRechts() == false){
+                        lTile.changeLocation(+50, 0);
+                    }
+
+                }
+
+
+            }else if(e.getKeyCode()==38){
+                if(x== 0){
+                    kreuz.mitUhrDrehen();
+
+                }else if(x==1){
+                    dreieck.mitUhrDrehen();
+
+                }else if(x==2) {
+                    noNameTile.mitUhrDrehen();
+
+                }else if(x==3){
+                    square.mitUhrDrehen();
+
+                }else if(x==4){
+                    linie.mitUhrDrehen();
+
+                }else if(x==5){
+                    lTile.mitUhrDrehen();
+
+                }else{
+
+                }
+                
             }
+
+        }catch(NullPointerException exception){
+            System.out.println("Du hast schon längst verloren");
         }
 
 
@@ -258,7 +277,7 @@ public class Spielfeld extends JFrame implements KeyListener{
     }
 
 
-    public void deleteTile(){
+    public void deleteTile(boolean verloren){
         lTile= null;
         square= null;
         linie= null;
@@ -266,7 +285,12 @@ public class Spielfeld extends JFrame implements KeyListener{
         noNameTile= null;
         dreieck= null;
 
-        spielen();
+        //darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
+        if(verloren == false){
+            spielen();
+        }else{
+            System.out.println("hier kommt nichts mehr");
+        }
     }
     
 }

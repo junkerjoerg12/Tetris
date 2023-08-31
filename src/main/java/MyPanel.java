@@ -160,9 +160,10 @@ public class MyPanel extends JPanel{
 
 
 
-    public void deleteTile(){
+    public void deleteTile(boolean verloren){
+        
         lTile= null;
-        spielfeld.deleteTile();
+        spielfeld.deleteTile(verloren);
     }
 
     public ArrayList<String> getKoords(){
@@ -176,6 +177,9 @@ public class MyPanel extends JPanel{
     public int getHoehe(){
         return hoehe;
     }
+
+
+
 
 
 
