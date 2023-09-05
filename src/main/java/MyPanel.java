@@ -101,12 +101,16 @@ public class MyPanel extends JPanel {
                 }
 
             }
-            System.out.println("Reihe voll: "+ reiheVoll);
+            
+            System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
                 reiheEntfernen(i * 50);
                 aufrutschen(i * 50);
+
+                //weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden 
+                i++;
 
                 score += breite;
                 //System.out.println("Score: " + score);
