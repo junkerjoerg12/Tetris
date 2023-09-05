@@ -148,9 +148,19 @@ abstract class Tile{
 
 
             //3: Überprüfen, ob keines der Felder außerhalb des Spielfelds ist
-            if(!(einzelteile[i].getXRel()+xMitte< (breite*50) && einzelteile[i].getXRel()+xMitte >=  0 && einzelteile[i].getYRel()+yMitte >=0 && einzelteile[i].getYRel()+yMitte < (hoehe*50-50) && valid==true)){
+            if(!(einzelteile[i].getXRel()+xMitte< (breite*50) && einzelteile[i].getXRel()+xMitte >=  0 && einzelteile[i].getYRel()+yMitte >=0 && einzelteile[i].getYRel()+yMitte < (hoehe*50) && valid==true)){
                 valid=false;
-                } 
+            }
+
+            
+            //4: überprüfen, ob keines der felder ein anderes Tile überlapt
+
+            //System.out.println("tatsächliche KOordinaten: x:"+ (einzelteile[i].getXRel()+xMitte)+ "  y:"+ (einzelteile[i].getYRel()+yMitte) + "  Koordinatensammlung: "+ panel.getKoords());
+
+            if((panel.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
+                System.out.println("überlappung");
+                valid = false;
+            }
             
  
         }
@@ -161,6 +171,8 @@ abstract class Tile{
                 einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
            }
         }
+
+        changeLocation(0, 0);
 
     }
 
@@ -187,14 +199,14 @@ abstract class Tile{
         if(beendet== true){
 
             //wird geprüft, ob reihe entfernt werden muss
-            panel.reihePruefen();
+            
 
             //es wird geprüft, ob ein Subtile oben anstößt
             if(verlorenPruefen() == true){
                 
 
                 System.out.println("Sie haben verloren!!");
-
+                System.out.println("Ihr Highscore : " + panel.getScore());
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
 
@@ -216,6 +228,8 @@ abstract class Tile{
                 //this wird gelöscht
                 panel.deleteTile(false);
             }
+
+            panel.reihePruefen();
 
 
 
@@ -296,7 +310,7 @@ abstract class Tile{
             }
         }
         
-        System.out.println("verloren: " + verloren);
+        //System.out.println("verloren: " + verloren);
         return verloren;
     }
 

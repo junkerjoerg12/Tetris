@@ -56,13 +56,15 @@ public class Spielfeld extends JFrame implements KeyListener{
     public void spielen(){
 
         
+        //wieder auf 6 zurückändern
+        x=random.nextInt(6);
 
-        x=random.nextInt(6  );
+        //tests
+        //x=4;
 
         if(x== 0){
             kreuzAdden();
             
-
         }else if(x==1){
             dreieckAdden();
 
@@ -79,6 +81,8 @@ public class Spielfeld extends JFrame implements KeyListener{
             LTileAdden();
 
         }
+
+        repaint();
 
 
 

@@ -1,7 +1,0 @@
-Kreuz kann zu Teilen ausßerhalb des Spielfelds spawnen
-Zeile wird erst im zug nachdem sie voll ist gelöscht
-beim drehen können überlappungen entstehen
-nach einer drehung wird keine Kollion nach unten geprüft
-zu entfernende Reieh wird im rechten Spielfeldbreiech nich trichtig entfernt glaube ab spalte 10
-Score wird immer um 10 erhöht, egal wie greoß das Spielfeld ist
-neu gespawnte teile sind erst nach 1x bewegen sichtbar
