@@ -1,5 +1,3 @@
 
 zu entfernende Reihe wird im rechten Spielfeldbreiech nich trichtig entfernt glaube ab spalte 10 und nur letzte reihe
 
-
-nicht die ganze reihe wird auf vollheit geprüft
