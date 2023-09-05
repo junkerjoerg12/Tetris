@@ -119,7 +119,7 @@ public class MyPanel extends JPanel {
     public void reiheEntfernen(int y) {
         int index;
 
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < anzahlSpalten; j++) {
 
             // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie
             // koordinate als auch das Subtile
