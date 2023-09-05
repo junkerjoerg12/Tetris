@@ -199,7 +199,7 @@ abstract class Tile{
         if(beendet== true){
 
             //wird geprüft, ob reihe entfernt werden muss
-            panel.reihePruefen();
+            
 
             //es wird geprüft, ob ein Subtile oben anstößt
             if(verlorenPruefen() == true){
@@ -228,6 +228,8 @@ abstract class Tile{
                 //this wird gelöscht
                 panel.deleteTile(false);
             }
+
+            panel.reihePruefen();
 
 
 
