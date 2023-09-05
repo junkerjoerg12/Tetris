@@ -87,9 +87,8 @@ public class MyPanel extends JPanel {
 
         boolean reiheVoll = true;
 
-        // jede Reieh wird geprüft
+        // jede Zeile wird geprüft
 
-        //zeilen und spalten in for schleifen getauscht
         for (int i = anzahlZeilen; i > 0; i--) {
             reiheVoll = true;
 
@@ -102,6 +101,7 @@ public class MyPanel extends JPanel {
                 }
 
             }
+            System.out.println("Reihe voll: "+ reiheVoll);
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {

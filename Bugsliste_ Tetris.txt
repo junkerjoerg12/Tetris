@@ -1,3 +1,1 @@
-
-zu entfernende Reihe wird im rechten Spielfeldbreiech nich trichtig entfernt glaube ab spalte 10 und nur untersten reihe
-
+nur zwei zeilen werden auf einmalk entfernt ka warum oder was überhaupt
