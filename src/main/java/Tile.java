@@ -155,9 +155,9 @@ abstract class Tile{
             
             //4: überprüfen, ob keines der felder ein anderes Tile überlapt
 
-            System.out.println("tatsächliche KOordinaten: "+ einzelteile[i].getXRel()+xMitte+ " "+ einzelteile[i].getYRel()+yMitte + "Koordinatensammlung: "+ panel.getKoords());
+            //System.out.println("tatsächliche KOordinaten: x:"+ (einzelteile[i].getXRel()+xMitte)+ "  y:"+ (einzelteile[i].getYRel()+yMitte) + "  Koordinatensammlung: "+ panel.getKoords());
 
-            if((panel.getKoords().contains(einzelteile[i].getXRel()+xMitte+ " "+ einzelteile[i].getYRel()+yMitte))){
+            if((panel.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
                 System.out.println("überlappung");
                 valid = false;
             }
@@ -171,6 +171,8 @@ abstract class Tile{
                 einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
            }
         }
+
+        changeLocation(0, 0);
 
     }
 
