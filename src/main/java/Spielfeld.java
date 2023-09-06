@@ -79,7 +79,12 @@ public class Spielfeld extends JFrame implements KeyListener{
         try{
             if(e.getKeyCode()==40){             //Form wird eine Zeile nach unten versetzt
              
+
+                tile.getTimerThread().interrupt();
                 tile.changeLocation(0,50);
+                //tile.getTimerThread().start();
+                
+                
                 
 
             

@@ -19,6 +19,9 @@ public class Tile{
 
     Random random= new Random();
 
+    ZeitMesser timer;
+    Thread thread1;
+
 
     public Tile( MyPanel panel, int x){
         this.panel= panel;
@@ -45,9 +48,9 @@ public class Tile{
 
         }
 
-        ZeitMesser timer= new ZeitMesser(this);
+         timer= new ZeitMesser(this);
 
-        Thread thread1= new Thread(timer);
+        thread1= new Thread(timer);
 
         thread1.start();
 
@@ -58,7 +61,7 @@ public class Tile{
         }
 
 
-        timer.haloosSagen();
+       
  
 
 
@@ -216,6 +219,14 @@ public class Tile{
     //Position des Tiles ändern
     public void changeLocation(int x, int y){
         if(outOfBounds(x, y)==true){
+
+            try {
+                thread1.start();
+            } catch (IllegalThreadStateException e) {
+                System.out.println("IllegalThreadStateException");
+            }
+
+            
             for(int i=0; i<einzelteile.length; i++){
 
                 
@@ -228,6 +239,7 @@ public class Tile{
         }
 
         zugBeendet();
+
 
 
     }
@@ -357,7 +369,7 @@ public class Tile{
     }
 
 
-    //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
+   
     public void zugBeendet(){
 
         boolean beendet= false;
@@ -495,4 +507,7 @@ public class Tile{
     }
 
 
+    public Thread getTimerThread(){
+        return thread1;
+    }
 }

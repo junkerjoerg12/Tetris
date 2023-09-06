@@ -13,21 +13,17 @@ public class ZeitMesser implements Runnable{
 
     @Override
     public void run() {
-        for(int i=0; i<10; i++){
-            try {
-                Thread.sleep(1000);
-                System.out.println("Ich bin 1 Thread");
-            }catch(InterruptedException e){
-                System.out.println("somethings wrong");
 
-            }
-            tile.changeLocation(0, 50);
-    }
+        System.out.println("Thread 1 gestartet");
+
+
+        try {
+            Thread.sleep(1000);
+        }catch(InterruptedException e){
+            System.out.println("Timer has failed");
+
         }
-        
-
-    public void haloosSagen(){
-        System.out.println("hallo");
+        tile.changeLocation(0, 50);
     }
-    
+        
 }
