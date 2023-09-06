@@ -1,5 +1,8 @@
 package main.test;
 
+import java.util.Timer;
+
+import main.java.MyRunable;
 import main.java.Spielfeld;
 
 public class Test {
@@ -9,10 +12,24 @@ public class Test {
         int spielfeldhoehe = 20;
 
 
+        MyRunable timer= new MyRunable();
+
+        Thread thread1= new Thread(timer);
+
+        thread1.start();
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+
+        }
 
 
-        Spielfeld feld= new Spielfeld(spielfeldbreite, spielfeldhoehe);
-        feld.spielen();
+        timer.haloosSagen();
+
+
+       // Spielfeld feld= new Spielfeld(spielfeldbreite, spielfeldhoehe);
+        //feld.spielen();
         
 
     }
