@@ -20,7 +20,6 @@ public class MyPanel extends JPanel {
 
     public MyPanel(Spielfeld spielfeld, int breite, int hoehe) {
 
-        System.out.println("panel erstellt");
 
         this.breite = breite;
         this.hoehe = hoehe;
