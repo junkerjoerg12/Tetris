@@ -1,6 +1,12 @@
 package main.java;
 
-public class MyRunable implements Runnable{
+public class ZeitMesser implements Runnable{
+
+    public ZeitMesser(){
+
+    }
+
+
 
     @Override
     public void run() {

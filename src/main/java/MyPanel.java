@@ -45,6 +45,25 @@ public class MyPanel extends JPanel {
             this.add(x);
         }
 
+
+        
+        ZeitMesser timer= new ZeitMesser();
+
+        Thread thread1= new Thread(timer);
+
+        thread1.start();
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+
+        }
+
+
+        timer.haloosSagen();
+
+
+
     }
 
     // speichert x und y als String im Speicher
