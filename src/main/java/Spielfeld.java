@@ -22,6 +22,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     int breite;
     int hoehe;
+    Tile tile;
 
 
 
@@ -30,13 +31,14 @@ public class Spielfeld extends JFrame implements KeyListener{
     //Kostruktor
     public Spielfeld(int breite, int hoehe){
 
-
+        System.out.println("Spielfeld erstellt");
         this.breite= breite; 
         this.hoehe= hoehe;
 
         this.addKeyListener(this);
 
         panel= new MyPanel(this, breite, hoehe);
+        System.out.println("Nach dem das Panel erstellt werden sollte");
         this.add(panel);
 
         this.pack();
@@ -56,7 +58,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         //tests
         //x=4;
-        Tile tile =  new Tile(panel, x);
+        tile =  new Tile(panel, x);
 /*
         if(x== 0){
             kreuzAdden();
@@ -278,12 +280,8 @@ public class Spielfeld extends JFrame implements KeyListener{
 
 
     public void deleteTile(boolean verloren){
-        lTile= null;
-        square= null;
-        linie= null;
-        kreuz= null; 
-        noNameTile= null;
-        dreieck= null;
+        tile= null;
+
 
         //darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
         if(verloren == false){

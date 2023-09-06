@@ -20,6 +20,8 @@ public class MyPanel extends JPanel {
 
     public MyPanel(Spielfeld spielfeld, int breite, int hoehe) {
 
+        System.out.println("panel erstellt");
+
         this.breite = breite;
         this.hoehe = hoehe;
 
@@ -166,13 +168,13 @@ public class MyPanel extends JPanel {
         }
     }
 
-    public void setTile(LTile tile) {
-        lTile = tile;
-    }
+    //public void setTile(Tile tile) {
+        //Tile = tile;
+    //}
 
     public void deleteTile(boolean verloren) {
 
-        lTile = null;
+       tile = null;
         spielfeld.deleteTile(verloren);
     }
 
