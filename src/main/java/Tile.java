@@ -45,7 +45,27 @@ public class Tile{
 
         }
 
+        ZeitMesser timer= new ZeitMesser(this);
+
+        Thread thread1= new Thread(timer);
+
+        thread1.start();
+
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException e) {
+
+        }
+
+
+        timer.haloosSagen();
+ 
+
+
     }
+
+
+    
 
 
     public void kreuzAdden(){

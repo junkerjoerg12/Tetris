@@ -134,5 +134,9 @@ public class Spielfeld extends JFrame implements KeyListener{
             System.out.println("hier kommt nichts mehr");
         }
     }
+ 
     
+    public Tile getTile(){
+        return tile;
+    }
 }

@@ -18,6 +18,8 @@ public class MyPanel extends JPanel {
 
     Spielfeld spielfeld;
 
+    
+
     public MyPanel(Spielfeld spielfeld, int breite, int hoehe) {
 
 
@@ -45,23 +47,7 @@ public class MyPanel extends JPanel {
             this.add(x);
         }
 
-
-        /*
-        ZeitMesser timer= new ZeitMesser();
-
-        Thread thread1= new Thread(timer);
-
-        thread1.start();
-
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException e) {
-
-        }
-
-
-        timer.haloosSagen();
- */
+ 
 
 
     }
@@ -121,7 +107,7 @@ public class MyPanel extends JPanel {
 
             }
             
-            System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
+            //System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
