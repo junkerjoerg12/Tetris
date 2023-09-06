@@ -15,7 +15,6 @@ public class MyPanel extends JPanel {
     ArrayList<String> speicherKoords = new ArrayList<String>();
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
-    LTile lTile;
 
     Spielfeld spielfeld;
 
@@ -46,7 +45,7 @@ public class MyPanel extends JPanel {
         }
 
 
-        
+        /*
         ZeitMesser timer= new ZeitMesser();
 
         Thread thread1= new Thread(timer);
@@ -61,7 +60,7 @@ public class MyPanel extends JPanel {
 
 
         timer.haloosSagen();
-
+ */
 
 
     }

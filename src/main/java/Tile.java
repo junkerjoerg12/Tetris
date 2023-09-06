@@ -1,8 +1,10 @@
 package main.java;
 
+import java.awt.Color;
 import java.awt.TextArea;
+import java.util.Random;
 
-abstract class Tile{
+public class Tile{
     Subtile[]einzelteile;
 
     //Koordinaten des Drehpunkts
@@ -15,13 +17,171 @@ abstract class Tile{
     MyPanel panel;  
 
 
-    public Tile(MyPanel panel){
+    Random random= new Random();
+
+
+    public Tile( MyPanel panel, int x){
         this.panel= panel;
         breite= panel.getBreite();
         hoehe= panel.getHoehe();
-        
+
+        if(x== 0){
+            kreuzAdden();
+            
+        }else if(x==1){
+            dreieckAdden();
+
+        }else if(x==2) {
+            noNameAdden();
+
+        }else if(x==3){
+            squareAdden();
+
+        }else if(x==4){
+            linieAdden();
+
+        }else if(x==5){
+            LTileAdden();
+
+        }
 
     }
+
+
+    public void kreuzAdden(){
+
+        Color farbe = Color.GREEN;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[6];
+        int xKoord= random.nextInt(1, breite-1)*50;
+
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+        einzelteile[4]= new Subtile(farbe, xKoord -50, 100);
+        einzelteile[5]= new Subtile(farbe, xKoord +50, 100);
+
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void dreieckAdden(){
+
+        Color farbe = Color.BLUE;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[3];
+        int xKoord= random.nextInt(breite -1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void noNameAdden(){
+
+        Color farbe = Color.YELLOW;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite-1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
+
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void squareAdden(){
+
+        Color farbe = Color.MAGENTA;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite- 1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord+50, 0);
+        einzelteile[2]= new Subtile(farbe, xKoord, 50);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
+
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void linieAdden(){
+        
+
+
+        Color farbe = Color.ORANGE;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite-1)*50;
+        
+
+        System.out.println("Jo");
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void LTileAdden(){
+
+        Color farbe = Color.RED;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite- 1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem L zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
+        
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+
 
 
     //fügt die Subsquares zu panel hinzu

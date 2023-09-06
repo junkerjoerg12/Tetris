@@ -16,12 +16,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
     MyPanel panel;
 
-    LTile lTile;
-    KreuzTile kreuz; 
-    NoNameTile noNameTile;
-    SquareTile square;
-    StraightTile linie;
-    DreieckTile dreieck;
+   
 
     int x;
 
@@ -61,7 +56,8 @@ public class Spielfeld extends JFrame implements KeyListener{
 
         //tests
         //x=4;
-
+        Tile tile =  new Tile(panel, x);
+/*
         if(x== 0){
             kreuzAdden();
             
@@ -81,13 +77,13 @@ public class Spielfeld extends JFrame implements KeyListener{
             LTileAdden();
 
         }
-
+*/
         repaint();
 
 
 
     }
-
+/*
 
     public void kreuzAdden(){
         
@@ -132,7 +128,7 @@ public class Spielfeld extends JFrame implements KeyListener{
         lTile.zugBeendet();
     }
 
-
+*/
 
 
     //User Input
