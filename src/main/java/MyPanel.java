@@ -173,7 +173,6 @@ public class MyPanel extends JPanel {
 
     public void deleteTile(boolean verloren) {
 
-       tile = null;
         spielfeld.deleteTile(verloren);
     }
 
