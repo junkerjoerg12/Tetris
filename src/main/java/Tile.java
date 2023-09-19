@@ -1,7 +1,6 @@
 package main.java;
 
 import java.awt.Color;
-import java.awt.TextArea;
 import java.util.Random;
 
 public class Tile{

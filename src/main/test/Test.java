@@ -1,7 +1,6 @@
 package main.test;
 
 
-import main.java.ZeitMesser;
 import main.java.Spielfeld;
 
 public class Test {
