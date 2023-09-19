@@ -168,7 +168,7 @@ public class Tile{
         int xKoord= random.nextInt(breite-1)*50;
         
 
-        System.out.println("Jo");
+        
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
         einzelteile[0]= new Subtile(farbe, xKoord, 0);
@@ -376,7 +376,7 @@ public class Tile{
         boolean beendet= false;
 
 
-        //der ZUg ist beedet, wenn ien teil auf einem anderen aufliegt
+        //der Zug ist beedet, wenn ein teil auf einem anderen aufliegt
         if(kollisionUnten() == true){
             beendet = true;
         }
@@ -400,6 +400,11 @@ public class Tile{
 
                 System.out.println("Sie haben verloren!!");
                 System.out.println("Ihr Highscore : " + panel.getScore());
+ 
+
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deletTimer();
+                
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
 
@@ -411,6 +416,8 @@ public class Tile{
                 
                 //panel.add(new TextArea("Verloren"));
             }else{
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deletTimer();
 
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
@@ -420,6 +427,7 @@ public class Tile{
     
                 //this wird gelöscht
                 panel.deleteTile(false);
+
             }
 
             panel.reihePruefen();
@@ -429,6 +437,12 @@ public class Tile{
         }
         
         
+    }
+
+    //löscht den timer
+    public void deletTimer(){
+        timer=null;
+        thread1=null;
     }
 
     public boolean kollisionUnten(){
