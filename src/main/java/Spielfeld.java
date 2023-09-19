@@ -79,6 +79,7 @@ public class Spielfeld extends JFrame implements KeyListener{
              
 
                 tile.getTimerThread().interrupt();
+                System.out.println("Timer sollte unterbrochen sein");
                 tile.changeLocation(0,50);
                 //tile.getTimerThread().start();
                 

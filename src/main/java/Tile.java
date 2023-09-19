@@ -47,17 +47,16 @@ public class Tile{
 
         }
 
-         timer= new ZeitMesser(this);
+        timer= new ZeitMesser(this);
 
         thread1= new Thread(timer);
 
         thread1.start();
+        //timer.irgendwas();
+        //thread1.interrupt();
+        //timer.irgendwas();
 
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException e) {
-
-        }
+        
 
 
        
@@ -219,15 +218,11 @@ public class Tile{
     public void changeLocation(int x, int y){
         if(outOfBounds(x, y)==true){
 
-            try {
-                thread1.start();
-            } catch (IllegalThreadStateException e) {
-                System.out.println("IllegalThreadStateException");
-            }
-
+            System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
+            
             
             for(int i=0; i<einzelteile.length; i++){
-
+                
                 
                 
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
@@ -236,10 +231,17 @@ public class Tile{
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
-
+        
         zugBeendet();
-
-
+        
+        
+        try {
+            timer.zeitStoppen();
+        } catch (IllegalThreadStateException e) {
+            System.out.println("Illigal THread State Exception");
+            //thread1.interrupt();
+            //thread1.start();
+        }
 
     }
 
