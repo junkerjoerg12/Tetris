@@ -74,14 +74,15 @@ public class Spielfeld extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent e) {        //Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
         
 
-        try{
+        //try{
             if(e.getKeyCode()==40){             //Form wird eine Zeile nach unten versetzt
              
 
                 tile.getTimerThread().interrupt();
-                System.out.println("Timer sollte unterbrochen sein");
+                tile.deletTimer();
+                System.out.println("Location changed by key input");
                 tile.changeLocation(0,50);
-                //tile.getTimerThread().start();
+                tile.timerStarten();
                 
                 
                 
@@ -112,9 +113,9 @@ public class Spielfeld extends JFrame implements KeyListener{
  
             }
 
-        }catch(NullPointerException exception){
-            System.out.println("Du hast schon längst verloren");
-        }
+        //}catch(NullPointerException exception){
+          //  System.out.println("Du hast schon längst verloren");
+        //}
 
 
 

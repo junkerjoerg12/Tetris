@@ -22,13 +22,16 @@ public class ZeitMesser implements Runnable{
     public void zeitStoppen(){
         
         
+        
                 try {
                     Thread.sleep(1000);
+                    System.out.println("location changed by timer");
+                    tile.changeLocation(0, 50);
                 }catch(InterruptedException e){
-                    System.out.println("Timer has failed");
+                    System.out.println("Timer unterbrochen");
         
                 }
-                tile.changeLocation(0, 50);
+                
 
     }
 

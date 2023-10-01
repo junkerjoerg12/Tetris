@@ -1,0 +1,3 @@
+wenn man inerhalb einer sekunde, nachdem ein neues tile gespawnt wird dasselbe mithilfe 
+des Pfeils nach unten zu verscieben so wird es dannach jede sekunde um zwei, nicht wiede 
+gewillt um 1 feld nach unten verschoben
