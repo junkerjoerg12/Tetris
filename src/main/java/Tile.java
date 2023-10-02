@@ -47,16 +47,22 @@ public class Tile{
 
         }
 
-        timerStarten();
+        if(timer==null){
+            timerErstellen();
+        }
 
     }
 
-    public void timerStarten(){
+    public void timerErstellen(){
 
         timer= new ZeitMesser(this);
 
         thread1= new Thread(timer);
 
+        thread1.start();
+    }
+
+    public void timerStarten(){
         thread1.start();
     }
 
@@ -403,8 +409,9 @@ public class Tile{
  
 
                 //löscht hoffentlich den Timer und führt so zu keinem crash
-                deletTimer();
-                
+                deleteTimer();
+                System.out.println("in zugBeendet");
+
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
 
@@ -417,7 +424,8 @@ public class Tile{
                 //panel.add(new TextArea("Verloren"));
             }else{
                 //löscht hoffentlich den Timer und führt so zu keinem crash
-                deletTimer();
+                deleteTimer();
+                System.out.println("in zugBeendet");
 
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
@@ -440,9 +448,13 @@ public class Tile{
     }
 
     //löscht den timer
-    public void deletTimer(){
-        timer=null;
-        thread1=null;
+    public void deleteTimer(){
+        if(timer!=null){
+            System.out.println("Timer gelöscht: "+ timer.toString());
+            
+            timer=null;
+            thread1=null;
+        }
     }
 
     public boolean kollisionUnten(){

@@ -31,7 +31,7 @@ public class MyPanel extends JPanel {
 
         this.spielfeld = spielfeld;
 
-        // kein Layout manager d.h. alee Koordinaten müssen absolut eingetragen werden
+        // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
         // Das Panel ist 500x 500 Pixel groß
@@ -158,8 +158,9 @@ public class MyPanel extends JPanel {
     //}
 
     public void deleteTile(boolean verloren) {
-
+        
         spielfeld.deleteTile(verloren);
+        
     }
 
     public ArrayList<String> getKoords() {
