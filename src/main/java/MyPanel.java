@@ -16,11 +16,11 @@ public class MyPanel extends JPanel {
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
 
-    Spielfeld spielfeld;
+    MainWindow spielfeld;
 
     
 
-    public MyPanel(Spielfeld spielfeld, int breite, int hoehe) {
+    public MyPanel(MainWindow spielfeld, int breite, int hoehe) {
 
 
         this.breite = breite;

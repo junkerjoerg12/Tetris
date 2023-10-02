@@ -7,7 +7,7 @@ import javax.swing.*;
 
 import java.util.Random;
 
-public class Spielfeld extends JFrame implements KeyListener{
+public class MainWindow extends JFrame implements KeyListener{
 
     
     Random random = new Random();
@@ -27,7 +27,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
 
     //Kostruktor
-    public Spielfeld(int breite, int hoehe){
+    public MainWindow(int breite, int hoehe){
 
         this.breite= breite; 
         this.hoehe= hoehe;
@@ -80,7 +80,7 @@ public class Spielfeld extends JFrame implements KeyListener{
 
                 tile.getTimerThread().interrupt();
                 tile.deletTimer();
-                System.out.println("Location changed by key input");
+                //System.out.println("Location changed by key input");
                 tile.changeLocation(0,50);
                 tile.timerStarten();
                 

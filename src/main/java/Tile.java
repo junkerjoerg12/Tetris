@@ -49,24 +49,15 @@ public class Tile{
 
         timerStarten();
 
-        
-
-
-       
- 
-
-
     }
 
     public void timerStarten(){
+
         timer= new ZeitMesser(this);
 
         thread1= new Thread(timer);
 
         thread1.start();
-        //timer.irgendwas();
-        //thread1.interrupt();
-        //timer.irgendwas();
     }
 
     
@@ -219,7 +210,7 @@ public class Tile{
 
     //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        System.out.println("Location changed");
+        //System.out.println("Location changed");
         if(outOfBounds(x, y)==true){
 
 

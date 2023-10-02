@@ -1,3 +1,7 @@
-wenn man inerhalb einer sekunde, nachdem ein neues tile gespawnt wird dasselbe mithilfe 
-des Pfeils nach unten zu verscieben so wird es dannach jede sekunde um zwei, nicht wiede 
-gewillt um 1 feld nach unten verschoben
+tile wird um 2, nicht um 1 feld nach unten verschoben tritt auf, wenn das vorige tile via key input auf die unterste Position verschoben wurde
+
+subtiles lösen sich aus tile selber grund, wie oben, aber nicht ausnahmslos
+
+mehr als 1 tile gespawnt
+
+beim drehen, bewegen nahc links und rechts freezt das tiel, bis es unten angekommen ist
