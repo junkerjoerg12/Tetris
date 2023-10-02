@@ -1,7 +1,5 @@
-tile wird um 2, nicht um 1 feld nach unten verschoben tritt auf, wenn das vorige tile via key input auf die unterste Position verschoben wurde
-
 subtiles lösen sich aus tile selber grund, wie oben, aber nicht ausnahmslos
 
-mehr als 1 tile gespawnt
+mehr als 1 tile gespawnt (noch nicht wieder aufgetreten)
 
-beim drehen, bewegen nahc links und rechts freezt das tiel, bis es unten angekommen ist
+beim drehen, bewegen nach links und rechts freezt das tiel, bis es unten angekommen ist

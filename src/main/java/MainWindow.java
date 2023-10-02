@@ -80,8 +80,6 @@ public class MainWindow extends JFrame implements KeyListener{
 
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();
-                System.out.println("in keyPressen");
-                //System.out.println("Location changed by key input");
                 tile.changeLocation(0,50);
                 
                 if(tile.getTimerThread()== null){

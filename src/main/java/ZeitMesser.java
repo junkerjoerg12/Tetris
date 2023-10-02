@@ -14,7 +14,7 @@ public class ZeitMesser implements Runnable{
     @Override
     public void run() {
 
-        System.out.println("Thread 1 gestartet");
+        //System.out.println("Thread 1 gestartet");
         zeitStoppen();
     }
     
@@ -25,10 +25,9 @@ public class ZeitMesser implements Runnable{
         
                 try {
                     Thread.sleep(1000);
-                    System.out.println("location changed by timer: "+ this.toString() );
                     tile.changeLocation(0, 50);
                 }catch(InterruptedException e){
-                    System.out.println("Timer unterbrochen");
+                    //System.out.println("Timer unterbrochen");
         
                 }
                 

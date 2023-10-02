@@ -410,7 +410,6 @@ public class Tile{
 
                 //löscht hoffentlich den Timer und führt so zu keinem crash
                 deleteTimer();
-                System.out.println("in zugBeendet");
 
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
@@ -425,7 +424,6 @@ public class Tile{
             }else{
                 //löscht hoffentlich den Timer und führt so zu keinem crash
                 deleteTimer();
-                System.out.println("in zugBeendet");
 
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
@@ -450,8 +448,7 @@ public class Tile{
     //löscht den timer
     public void deleteTimer(){
         if(timer!=null){
-            System.out.println("Timer gelöscht: "+ timer.toString());
-            
+
             timer=null;
             thread1=null;
         }
