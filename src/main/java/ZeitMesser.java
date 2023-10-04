@@ -30,7 +30,7 @@ public class ZeitMesser implements Runnable{
         try {
             Thread.sleep(zeit);
             System.out.println("location changed by: " + this);
-            tile.changeLocation(0, 50);
+            tile.changeLocationDown(0, 50);
         }catch(InterruptedException e){
             //System.out.println("Timer unterbrochen");
         

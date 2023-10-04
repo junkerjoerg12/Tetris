@@ -81,7 +81,7 @@ public class MainWindow extends JFrame implements KeyListener{
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();
 
-                tile.changeLocation(0,50);
+                tile.changeLocationDown(0,50);
                 
                 if(tile.getTimerThread()== null){
                     tile.timerErstellen(1000);
@@ -93,36 +93,28 @@ public class MainWindow extends JFrame implements KeyListener{
 
             
             }else if( e.getKeyCode()==37){      //Form wird nach links verschoben
-                
-                //raus
-                tile.getTimerThread().interrupt();
-                tile.deleteTimer();
-
 
                 if(tile.kollisionLinks()==false){
                     tile.changeLocation(-50, 0);
                 
                 }
-
+                panel.repaint();
+ 
+            }else if(e.getKeyCode()==39){       //Form wird nach rechts verschoben
+                            
+                if(tile.kollisionRechts()==false){
+                    tile.changeLocation(50, 0);
                 
-                if(tile.getTimerThread()== null){
-                    tile.timerErstellen(1);
                 }
+                panel.repaint();
+
+            }else if(e.getKeyCode()==38){       //Form wird um 90°im Uhrzeigersinn gedreht
+                tile.mitUhrDrehen();
+
 
                 panel.repaint();
  
 
-            }else if(e.getKeyCode()==39){
-
-                if(tile.kollisionRechts() == false){
-                        tile.changeLocation(+50, 0);
-                    }
-  
-
-
-            }else if(e.getKeyCode()==38){
-
-                tile.mitUhrDrehen();
                 
                 
  

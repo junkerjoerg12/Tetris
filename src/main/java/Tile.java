@@ -221,7 +221,7 @@ public class Tile{
 
 
     //Position des Tiles ändern
-    public void changeLocation(int x, int y){
+    public void changeLocationDown(int x, int y){
         System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
             
@@ -248,9 +248,46 @@ public class Tile{
         } catch (IllegalThreadStateException e) {
             System.out.println("Illigal THread State Exception");
         } catch(NullPointerException e){
-            
+            System.out.println("Immernoch verloren");
         }
 
+        
+        
+        
+       
+    }
+
+        //Position des Tiles ändern
+    public void changeLocation(int x, int y){
+        System.out.println("Location changed "+ x+" "+ y);
+        if(outOfBounds(x, y)==true){
+            
+            
+            
+            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
+            
+            
+            for(int i=0; i<einzelteile.length; i++){
+                
+                
+                
+                einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
+            }
+            
+            xMitte= xMitte+x;
+            yMitte= yMitte+y;
+        }
+
+        zugBeendet();
+        /*
+        try {
+            timer.zeitStoppen(1000);
+        } catch (IllegalThreadStateException e) {
+            System.out.println("Illigal THread State Exception");
+        } catch(NullPointerException e){
+            
+        }
+*/
         
         
         
