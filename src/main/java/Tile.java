@@ -48,19 +48,25 @@ public class Tile{
         }
 
         if(timer==null){
-            timerErstellen();
+            timerErstellen(1000);
         }
 
     }
 
-    public void timerErstellen(){
+ 
 
-        timer= new ZeitMesser(this);
+        public void timerErstellen(int zeit){
 
-        thread1= new Thread(timer);
+        if(timer==null){
+            timer= new ZeitMesser(this, zeit);
+    
+            thread1= new Thread(timer);
+    
+            thread1.start();
+        }
 
-        thread1.start();
     }
+
 
     public void timerStarten(){
         thread1.start();
@@ -216,11 +222,11 @@ public class Tile{
 
     //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        //System.out.println("Location changed");
+        System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
-
-
-
+            
+            
+            
             //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
             
             
@@ -234,20 +240,20 @@ public class Tile{
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
-        
+
         zugBeendet();
+        
+        try {
+            timer.zeitStoppen(1000);
+        } catch (IllegalThreadStateException e) {
+            System.out.println("Illigal THread State Exception");
+        } catch(NullPointerException e){
+            
+        }
 
         
         
-        try {
-            timer.zeitStoppen();
-        } catch (IllegalThreadStateException e) {
-            System.out.println("Illigal THread State Exception");
-            //thread1.interrupt();
-            //thread1.start();
-        } catch(NullPointerException e){
-            System.out.println("Irgendwie falschrum");
-        }
+        
        
     }
 
@@ -371,7 +377,8 @@ public class Tile{
            }
         }
 
-        changeLocation(0, 0);
+        //bei problemen eventuell wieder reinmachen, weiß den sinn selber nicht mehr genau
+        //changeLocation(0, 0);
 
     }
 

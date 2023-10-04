@@ -3,10 +3,12 @@ package main.java;
 public class ZeitMesser implements Runnable{
 
     Tile tile;
+    int zeit;
 
-    public ZeitMesser(Tile tile){
+    public ZeitMesser(Tile tile, int zeit){
 
         this.tile=tile;
+        this.zeit=zeit;
     }
 
 
@@ -15,27 +17,31 @@ public class ZeitMesser implements Runnable{
     public void run() {
 
         //System.out.println("Thread 1 gestartet");
-        zeitStoppen();
+        zeitStoppen(zeit);
     }
     
 
-    public void zeitStoppen(){
+
+
+
+
+        public void zeitStoppen(int zeit){
         
+        try {
+            Thread.sleep(zeit);
+            System.out.println("location changed by: " + this);
+            tile.changeLocation(0, 50);
+        }catch(InterruptedException e){
+            //System.out.println("Timer unterbrochen");
         
-        
-                try {
-                    Thread.sleep(1000);
-                    tile.changeLocation(0, 50);
-                }catch(InterruptedException e){
-                    //System.out.println("Timer unterbrochen");
-        
-                }
+        }
                 
-
     }
 
-    public void irgendwas(){
-        System.out.println("Hallo irgendwas");
-    }
+
+
+
+
+    
         
 }
