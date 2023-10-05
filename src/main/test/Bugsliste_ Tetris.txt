@@ -1,0 +1,5 @@
+subtiles lösen sich aus tile selber grund, wie oben, aber nicht ausnahmslos
+
+mehr als 1 tile gespawnt (noch nicht wieder aufgetreten)
+
+beim drehen, bewegen nach links und rechts freezt das tiel, bis es unten angekommen ist

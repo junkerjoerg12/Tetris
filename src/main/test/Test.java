@@ -1,6 +1,7 @@
 package main.test;
 
-import main.java.Spielfeld;
+
+import main.java.MainWindow;
 
 public class Test {
     public static void main(String args[]){
@@ -9,9 +10,8 @@ public class Test {
         int spielfeldhoehe = 20;
 
 
-
-
-        Spielfeld feld= new Spielfeld(spielfeldbreite, spielfeldhoehe);
+        
+        MainWindow feld= new MainWindow(spielfeldbreite, spielfeldhoehe);
         feld.spielen();
         
 

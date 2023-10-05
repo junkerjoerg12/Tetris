@@ -1,8 +1,9 @@
 package main.java;
 
-import java.awt.TextArea;
+import java.awt.Color;
+import java.util.Random;
 
-abstract class Tile{
+public class Tile{
     Subtile[]einzelteile;
 
     //Koordinaten des Drehpunkts
@@ -15,13 +16,199 @@ abstract class Tile{
     MyPanel panel;  
 
 
-    public Tile(MyPanel panel){
+    Random random= new Random();
+
+    ZeitMesser timer;
+    Thread thread1;
+
+
+    public Tile( MyPanel panel, int x){
         this.panel= panel;
         breite= panel.getBreite();
         hoehe= panel.getHoehe();
-        
+
+        if(x== 0){
+            kreuzAdden();
+            
+        }else if(x==1){
+            dreieckAdden();
+
+        }else if(x==2) {
+            noNameAdden();
+
+        }else if(x==3){
+            squareAdden();
+
+        }else if(x==4){
+            linieAdden();
+
+        }else if(x==5){
+            LTileAdden();
+
+        }
+
+        if(timer==null){
+            timerErstellen(1000);
+        }
 
     }
+
+ 
+
+        public void timerErstellen(int zeit){
+
+        if(timer==null){
+            timer= new ZeitMesser(this, zeit);
+    
+            thread1= new Thread(timer);
+    
+            thread1.start();
+        }
+
+    }
+
+
+    public void timerStarten(){
+        thread1.start();
+    }
+
+    
+
+
+    public void kreuzAdden(){
+
+        Color farbe = Color.GREEN;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[6];
+        int xKoord= random.nextInt(1, breite-1)*50;
+
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+        einzelteile[4]= new Subtile(farbe, xKoord -50, 100);
+        einzelteile[5]= new Subtile(farbe, xKoord +50, 100);
+
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void dreieckAdden(){
+
+        Color farbe = Color.BLUE;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[3];
+        int xKoord= random.nextInt(breite -1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void noNameAdden(){
+
+        Color farbe = Color.YELLOW;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite-1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
+
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void squareAdden(){
+
+        Color farbe = Color.MAGENTA;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite- 1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord+50, 0);
+        einzelteile[2]= new Subtile(farbe, xKoord, 50);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
+
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void linieAdden(){
+        
+
+
+        Color farbe = Color.ORANGE;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite-1)*50;
+        
+
+        
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+    public void LTileAdden(){
+
+        Color farbe = Color.RED;
+
+        //Spawn Koordinate wird random generiert
+        einzelteile= new Subtile[4];
+        int xKoord= random.nextInt(breite- 1)*50;
+        
+
+
+        //4 Subtiles werden erstellt und ausgehend von der vorher 
+        //generierten KOordinate zu einem L zusammen gebaut
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
+        
+        
+        addTile(panel);
+        drehpunkErrechnen();
+        zugBeendet();
+    }
+
 
 
     //fügt die Subsquares zu panel hinzu
@@ -34,10 +221,17 @@ abstract class Tile{
 
 
     //Position des Tiles ändern
-    public void changeLocation(int x, int y){
+    public void changeLocationDown(int x, int y){
+        System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
+            
+            
+            
+            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
+            
+            
             for(int i=0; i<einzelteile.length; i++){
-
+                
                 
                 
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
@@ -48,8 +242,56 @@ abstract class Tile{
         }
 
         zugBeendet();
+        
+        try {
+            timer.zeitStoppen(1000);
+        } catch (IllegalThreadStateException e) {
+            System.out.println("Illigal THread State Exception");
+        } catch(NullPointerException e){
+            System.out.println("Immernoch verloren");
+        }
 
+        
+        
+        
+       
+    }
 
+        //Position des Tiles ändern
+    public void changeLocation(int x, int y){
+        System.out.println("Location changed "+ x+" "+ y);
+        if(outOfBounds(x, y)==true){
+            
+            
+            
+            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
+            
+            
+            for(int i=0; i<einzelteile.length; i++){
+                
+                
+                
+                einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
+            }
+            
+            xMitte= xMitte+x;
+            yMitte= yMitte+y;
+        }
+
+        zugBeendet();
+        /*
+        try {
+            timer.zeitStoppen(1000);
+        } catch (IllegalThreadStateException e) {
+            System.out.println("Illigal THread State Exception");
+        } catch(NullPointerException e){
+            
+        }
+*/
+        
+        
+        
+       
     }
 
 
@@ -172,18 +414,19 @@ abstract class Tile{
            }
         }
 
-        changeLocation(0, 0);
+        //bei problemen eventuell wieder reinmachen, weiß den sinn selber nicht mehr genau
+        //changeLocation(0, 0);
 
     }
 
 
-    //gibt true aus, wenn ein Teil aus der untersten ebene angekommen ist
+   
     public void zugBeendet(){
 
         boolean beendet= false;
 
 
-        //der ZUg ist beedet, wenn ien teil auf einem anderen aufliegt
+        //der Zug ist beedet, wenn ein teil auf einem anderen aufliegt
         if(kollisionUnten() == true){
             beendet = true;
         }
@@ -207,6 +450,11 @@ abstract class Tile{
 
                 System.out.println("Sie haben verloren!!");
                 System.out.println("Ihr Highscore : " + panel.getScore());
+ 
+
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deleteTimer();
+
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
 
@@ -218,6 +466,8 @@ abstract class Tile{
                 
                 //panel.add(new TextArea("Verloren"));
             }else{
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deleteTimer();
 
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
@@ -227,6 +477,7 @@ abstract class Tile{
     
                 //this wird gelöscht
                 panel.deleteTile(false);
+
             }
 
             panel.reihePruefen();
@@ -236,6 +487,15 @@ abstract class Tile{
         }
         
         
+    }
+
+    //löscht den timer
+    public void deleteTimer(){
+        if(timer!=null){
+
+            timer=null;
+            thread1=null;
+        }
     }
 
     public boolean kollisionUnten(){
@@ -315,4 +575,7 @@ abstract class Tile{
     }
 
 
+    public Thread getTimerThread(){
+        return thread1;
+    }
 }

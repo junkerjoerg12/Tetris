@@ -15,11 +15,13 @@ public class MyPanel extends JPanel {
     ArrayList<String> speicherKoords = new ArrayList<String>();
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
-    LTile lTile;
 
-    Spielfeld spielfeld;
+    MainWindow spielfeld;
 
-    public MyPanel(Spielfeld spielfeld, int breite, int hoehe) {
+    
+
+    public MyPanel(MainWindow spielfeld, int breite, int hoehe) {
+
 
         this.breite = breite;
         this.hoehe = hoehe;
@@ -29,7 +31,7 @@ public class MyPanel extends JPanel {
 
         this.spielfeld = spielfeld;
 
-        // kein Layout manager d.h. alee Koordinaten müssen absolut eingetragen werden
+        // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
         // Das Panel ist 500x 500 Pixel groß
@@ -44,6 +46,9 @@ public class MyPanel extends JPanel {
             Line x = new Line(false, i * 50, anzahlSpalten * 50);
             this.add(x);
         }
+
+ 
+
 
     }
 
@@ -102,7 +107,7 @@ public class MyPanel extends JPanel {
 
             }
             
-            System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
+            //System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
@@ -148,14 +153,14 @@ public class MyPanel extends JPanel {
         }
     }
 
-    public void setTile(LTile tile) {
-        lTile = tile;
-    }
+    //public void setTile(Tile tile) {
+        //Tile = tile;
+    //}
 
     public void deleteTile(boolean verloren) {
-
-        lTile = null;
+        
         spielfeld.deleteTile(verloren);
+        
     }
 
     public ArrayList<String> getKoords() {
