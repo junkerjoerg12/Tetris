@@ -6,7 +6,7 @@ import main.java.MainWindow;
 public class Test {
     public static void main(String args[]){
 
-        int spielfeldbreite =10;
+        int spielfeldbreite =15;
         int spielfeldhoehe = 10;
 
 

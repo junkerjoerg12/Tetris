@@ -1,5 +1,6 @@
 package main.java;
 
+import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -33,15 +34,18 @@ public class MainWindow extends JFrame implements KeyListener{
         this.hoehe= hoehe;
 
         this.addKeyListener(this);
+        this.setLayout(null);
 
-        spielfeld= new Spielfeld(this, breite, hoehe);
-        this.add(spielfeld);
-
-        //this.pack();
+        
+        this.setSize(1920, 1080);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null); 
         this.setVisible(true);
+        
+        spielfeld= new Spielfeld(this, breite, hoehe);
+        this.add(spielfeld);
+
 
 
     }

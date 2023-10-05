@@ -16,25 +16,27 @@ public class Spielfeld extends JPanel {
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
 
-    MainWindow spielfeld;
+    MainWindow mainWindow;
 
     
 
-    public Spielfeld(MainWindow spielfeld, int breite, int hoehe) {
-
-
-        this.breite = breite;
-        this.hoehe = hoehe;
+    public Spielfeld(MainWindow mainWindow, int breite, int hoehe) {
 
         anzahlSpalten = breite;
         anzahlZeilen = hoehe;
 
-        this.spielfeld = spielfeld;
+        this.breite = anzahlSpalten*50;
+        this.hoehe = anzahlZeilen*50;
+
+        System.out.println(breite+ " "+ hoehe);
+
+
+        this.mainWindow = mainWindow;
 
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
-        this.setPreferredSize(new Dimension(anzahlSpalten * 50, anzahlZeilen * 50));
+        this.setPreferredSize(new Dimension(this.breite, this.hoehe));
 
         // Das Gitter im Hintergrund wird gezeichent
         for (int i = 0; i < anzahlSpalten+1; i++) {
@@ -45,6 +47,9 @@ public class Spielfeld extends JPanel {
             Line x = new Line(false, i * 50, anzahlSpalten * 50);
             this.add(x);
         }
+
+        this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe)/2, this.breite+ 1, this.hoehe+ 1);
+        //this.setBounds(mainWindow.getWidth()/2, mainWindow.getHeight()/2, 500, 500);
 
  
 
@@ -158,7 +163,7 @@ public class Spielfeld extends JPanel {
 
     public void deleteTile(boolean verloren) {
         
-        spielfeld.deleteTile(verloren);
+        mainWindow.deleteTile(verloren);
         
     }
 
