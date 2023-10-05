@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MyPanel extends JPanel {
+public class Spielfeld extends JPanel {
 
     int anzahlSpalten;
     int anzahlZeilen;
@@ -20,7 +20,7 @@ public class MyPanel extends JPanel {
 
     
 
-    public MyPanel(MainWindow spielfeld, int breite, int hoehe) {
+    public Spielfeld(MainWindow spielfeld, int breite, int hoehe) {
 
 
         this.breite = breite;
@@ -34,7 +34,6 @@ public class MyPanel extends JPanel {
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
-        // Das Panel ist 500x 500 Pixel groß
         this.setPreferredSize(new Dimension(anzahlSpalten * 50, anzahlZeilen * 50));
 
         // Das Gitter im Hintergrund wird gezeichent

@@ -13,7 +13,7 @@ public class Tile{
     int breite;
     int hoehe;
 
-    MyPanel panel;  
+    Spielfeld spielfeld;  
 
 
     Random random= new Random();
@@ -22,10 +22,10 @@ public class Tile{
     Thread thread1;
 
 
-    public Tile( MyPanel panel, int x){
-        this.panel= panel;
-        breite= panel.getBreite();
-        hoehe= panel.getHoehe();
+    public Tile( Spielfeld spielfeld, int x){
+        this.spielfeld= spielfeld;
+        breite= spielfeld.getBreite();
+        hoehe= spielfeld.getHoehe();
 
         if(x== 0){
             kreuzAdden();
@@ -95,7 +95,7 @@ public class Tile{
         einzelteile[5]= new Subtile(farbe, xKoord +50, 100);
 
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -115,7 +115,7 @@ public class Tile{
         einzelteile[1]= new Subtile(farbe, xKoord, 50);
         einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -137,7 +137,7 @@ public class Tile{
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
 
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -159,7 +159,7 @@ public class Tile{
         einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
 
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -182,7 +182,7 @@ public class Tile{
         einzelteile[2]= new Subtile(farbe, xKoord, 100);
         einzelteile[3]= new Subtile(farbe, xKoord, 150);
 
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -204,7 +204,7 @@ public class Tile{
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
         
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -212,9 +212,9 @@ public class Tile{
 
 
     //fügt die Subsquares zu panel hinzu
-    public void addTile(MyPanel panel){
+    public void addTile(Spielfeld spielfeld){
         for(int i=0; i<einzelteile.length; i++){
-            panel.add(einzelteile[i]);
+            spielfeld.add(einzelteile[i]);
         }
 
     }
@@ -399,7 +399,7 @@ public class Tile{
 
             //System.out.println("tatsächliche KOordinaten: x:"+ (einzelteile[i].getXRel()+xMitte)+ "  y:"+ (einzelteile[i].getYRel()+yMitte) + "  Koordinatensammlung: "+ panel.getKoords());
 
-            if((panel.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
+            if((spielfeld.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
                 System.out.println("überlappung");
                 valid = false;
             }
@@ -449,7 +449,7 @@ public class Tile{
                 
 
                 System.out.println("Sie haben verloren!!");
-                System.out.println("Ihr Highscore : " + panel.getScore());
+                System.out.println("Ihr Highscore : " + spielfeld.getScore());
  
 
                 //löscht hoffentlich den Timer und führt so zu keinem crash
@@ -462,7 +462,7 @@ public class Tile{
                 deletSubtiles();
 
                 //this wird gelöscht
-                panel.deleteTile(true);
+                spielfeld.deleteTile(true);
                 
                 //panel.add(new TextArea("Verloren"));
             }else{
@@ -476,11 +476,11 @@ public class Tile{
                 deletSubtiles();
     
                 //this wird gelöscht
-                panel.deleteTile(false);
+                spielfeld.deleteTile(false);
 
             }
 
-            panel.reihePruefen();
+            spielfeld.reihePruefen();
 
 
 
@@ -504,7 +504,7 @@ public class Tile{
 
         //Kollision nach unten wird geprüft
         for(int i=0; i<einzelteile.length; i++){
-            if(panel.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY()+50))){
+            if(spielfeld.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY()+50))){
                 kollision= true;
             }
         }
@@ -519,7 +519,7 @@ public class Tile{
         boolean kollision =false;
 
         for(int i=0; i<einzelteile.length; i++){
-            if(panel.getKoords().contains((einzelteile[i].getX()+50) + " " + (einzelteile[i].getY()))){
+            if(spielfeld.getKoords().contains((einzelteile[i].getX()+50) + " " + (einzelteile[i].getY()))){
                 kollision= true;
             }
         }
@@ -535,7 +535,7 @@ public class Tile{
         boolean kollision =false;
 
         for(int i=0; i<einzelteile.length; i++){
-            if(panel.getKoords().contains((einzelteile[i].getX()-50) + " " + (einzelteile[i].getY()))){
+            if(spielfeld.getKoords().contains((einzelteile[i].getX()-50) + " " + (einzelteile[i].getY()))){
                 kollision= true;
             }
         }
@@ -548,7 +548,7 @@ public class Tile{
     //Speichert die subtiles im Panel 
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){
-            panel.speichern(einzelteile[i]);
+            spielfeld.speichern(einzelteile[i]);
         }
     }
 
