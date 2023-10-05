@@ -37,11 +37,11 @@ public class Spielfeld extends JPanel {
         this.setPreferredSize(new Dimension(anzahlSpalten * 50, anzahlZeilen * 50));
 
         // Das Gitter im Hintergrund wird gezeichent
-        for (int i = 1; i < anzahlSpalten; i++) {
+        for (int i = 0; i < anzahlSpalten+1; i++) {
             Line x = new Line(true, i * 50, anzahlZeilen * 50);
             this.add(x);
         }
-        for (int i = 1; i < anzahlZeilen; i++) {
+        for (int i = 0; i < anzahlZeilen+1; i++) {
             Line x = new Line(false, i * 50, anzahlSpalten * 50);
             this.add(x);
         }

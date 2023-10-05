@@ -12,7 +12,7 @@ public class MainWindow extends JFrame implements KeyListener{
     
     Random random = new Random();
 
-    MyPanel panel;
+    Spielfeld spielfeld;
 
    
 
@@ -34,10 +34,11 @@ public class MainWindow extends JFrame implements KeyListener{
 
         this.addKeyListener(this);
 
-        panel= new MyPanel(this, breite, hoehe);
-        this.add(panel);
+        spielfeld= new Spielfeld(this, breite, hoehe);
+        this.add(spielfeld);
 
-        this.pack();
+        //this.pack();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null); 
         this.setVisible(true);
@@ -54,7 +55,7 @@ public class MainWindow extends JFrame implements KeyListener{
 
         //tests
         //x=4;
-        tile =  new Tile(panel, x);
+        tile =  new Tile(spielfeld, x);
 
         repaint();
 
@@ -87,7 +88,7 @@ public class MainWindow extends JFrame implements KeyListener{
                     tile.timerErstellen(1000);
                 }
 
-                panel.repaint();
+                spielfeld.repaint();
                 
                 
 
@@ -98,7 +99,7 @@ public class MainWindow extends JFrame implements KeyListener{
                     tile.changeLocation(-50, 0);
                 
                 }
-                panel.repaint();
+                spielfeld.repaint();
  
             }else if(e.getKeyCode()==39){       //Form wird nach rechts verschoben
                             
@@ -106,13 +107,13 @@ public class MainWindow extends JFrame implements KeyListener{
                     tile.changeLocation(50, 0);
                 
                 }
-                panel.repaint();
+                spielfeld.repaint();
 
             }else if(e.getKeyCode()==38){       //Form wird um 90°im Uhrzeigersinn gedreht
                 tile.mitUhrDrehen();
 
 
-                panel.repaint();
+                spielfeld.repaint();
  
 
                 
