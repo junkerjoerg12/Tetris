@@ -42,6 +42,7 @@ public class MainWindow extends JFrame implements KeyListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null); 
         this.setVisible(true);
+        this.setResizable(false);
         
         spielfeld= new Spielfeld(this, breite, hoehe);
         this.add(spielfeld);
