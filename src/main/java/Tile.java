@@ -27,6 +27,11 @@ public class Tile{
         breite= spielfeld.getBreite();
         hoehe= spielfeld.getHoehe();
 
+        
+        //einzelteile= new Subtile[1];
+        //einzelteile[0]= new Subtile(Color.BLACK, 00, 00);
+        //addTile(spielfeld);
+
         if(x== 0){
             kreuzAdden();
             
@@ -53,7 +58,7 @@ public class Tile{
 
     }
 
- 
+
 
         public void timerErstellen(int zeit){
 
@@ -81,18 +86,21 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[6];
+        System.out.println("Breite: "+ breite);
         int xKoord= random.nextInt(1, breite-1)*50;
+        
+
 
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord, 50);
-        einzelteile[2]= new Subtile(farbe, xKoord, 100);
-        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 );
+        einzelteile[1]= new Subtile(farbe, xKoord, 50 );
+        einzelteile[2]= new Subtile(farbe, xKoord, 100 );
+        einzelteile[3]= new Subtile(farbe, xKoord, 150 );
         einzelteile[4]= new Subtile(farbe, xKoord -50, 100);
-        einzelteile[5]= new Subtile(farbe, xKoord +50, 100);
+        einzelteile[5]= new Subtile(farbe, xKoord +50, 100 );
 
         
         addTile(spielfeld);
@@ -113,7 +121,7 @@ public class Tile{
         //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
         einzelteile[0]= new Subtile(farbe, xKoord, 0);
         einzelteile[1]= new Subtile(farbe, xKoord, 50);
-        einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord+50, 50 );
         
         addTile(spielfeld);
         drehpunkErrechnen();
@@ -125,7 +133,7 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(breite-1)*50;
+        int xKoord= random.nextInt(breite-1);
         
 
 
@@ -153,10 +161,10 @@ public class Tile{
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord+50, 0);
-        einzelteile[2]= new Subtile(farbe, xKoord, 50);
-        einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 );
+        einzelteile[1]= new Subtile(farbe, xKoord+50, 0 );
+        einzelteile[2]= new Subtile(farbe, xKoord, 50 );
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 50 );
 
         
         addTile(spielfeld);
@@ -171,16 +179,17 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(breite-1)*50;
+        int xKoord= random.nextInt(breite-1)*50+spielfeld.getX();
+        int zuYAddieren= spielfeld.getY();
         
 
         
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord, 50);
-        einzelteile[2]= new Subtile(farbe, xKoord, 100);
-        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 + zuYAddieren);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50 + zuYAddieren);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100 + zuYAddieren);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150 + zuYAddieren);
 
         addTile(spielfeld);
         drehpunkErrechnen();
@@ -192,16 +201,17 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(breite- 1)*50;
+        int xKoord= random.nextInt(breite- 1)*50+spielfeld.getX();
+        int zuYAddieren= spielfeld.getY();
         
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem L zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord, 50);
-        einzelteile[2]= new Subtile(farbe, xKoord, 100);
-        einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 + zuYAddieren);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50 + zuYAddieren);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100 + zuYAddieren);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 100 + zuYAddieren);
         
         
         addTile(spielfeld);
@@ -254,7 +264,7 @@ public class Tile{
         
         
         
-       
+
     }
 
         //Position des Tiles ändern
@@ -291,7 +301,7 @@ public class Tile{
         
         
         
-       
+
     }
 
 
@@ -355,7 +365,7 @@ public class Tile{
 
             if(einzelteile[i].getY()+y > hoehe*50-50 || einzelteile[i].getX()+x < 0 || einzelteile[i].getX() + x >breite*50-50 ){
                 valid= false;
-                 
+
             }
         }
         return valid;
@@ -404,14 +414,14 @@ public class Tile{
                 valid = false;
             }
             
- 
+
         }
 
         //Position der Felder aus dem spielfeld ändern, wenn keines der Felder außerhalb des spielfelds ist
         if(valid==true){
-           for(int i=0; i< einzelteile.length; i++){
+            for(int i=0; i< einzelteile.length; i++){
                 einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
-           }
+            }
         }
 
         //bei problemen eventuell wieder reinmachen, weiß den sinn selber nicht mehr genau
@@ -420,7 +430,7 @@ public class Tile{
     }
 
 
-   
+
     public void zugBeendet(){
 
         boolean beendet= false;
@@ -450,7 +460,7 @@ public class Tile{
 
                 System.out.println("Sie haben verloren!!");
                 System.out.println("Ihr Highscore : " + spielfeld.getScore());
- 
+
 
                 //löscht hoffentlich den Timer und führt so zu keinem crash
                 deleteTimer();

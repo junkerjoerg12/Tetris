@@ -1,6 +1,6 @@
 package main.java;
 
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,7 +15,6 @@ public class MainWindow extends JFrame implements KeyListener{
 
     Spielfeld spielfeld;
 
-   
 
     int x;
 
@@ -82,7 +81,7 @@ public class MainWindow extends JFrame implements KeyListener{
 
         //try{
             if(e.getKeyCode()==40){             //Form wird eine Zeile nach unten versetzt
-             
+
 
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();
@@ -105,7 +104,7 @@ public class MainWindow extends JFrame implements KeyListener{
                 
                 }
                 spielfeld.repaint();
- 
+
             }else if(e.getKeyCode()==39){       //Form wird nach rechts verschoben
                             
                 if(tile.kollisionRechts()==false){
@@ -119,25 +118,16 @@ public class MainWindow extends JFrame implements KeyListener{
 
 
                 spielfeld.repaint();
- 
-
-                
-                
- 
             }
 
         //}catch(NullPointerException exception){
           //  System.out.println("Du hast schon längst verloren");
         //}
-
-
-
-        
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-       
+
     }
 
 
@@ -152,8 +142,8 @@ public class MainWindow extends JFrame implements KeyListener{
             System.out.println("hier kommt nichts mehr");
         }
     }
- 
-    
+
+
     public Tile getTile(){
         return tile;
     }

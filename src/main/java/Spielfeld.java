@@ -28,7 +28,7 @@ public class Spielfeld extends JPanel {
         this.breite = anzahlSpalten*50;
         this.hoehe = anzahlZeilen*50;
 
-        System.out.println(breite+ " "+ hoehe);
+        System.out.println("Breite: "+ breite+ " Höhe: "+ hoehe);
 
 
         this.mainWindow = mainWindow;
@@ -51,7 +51,7 @@ public class Spielfeld extends JPanel {
         this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe)/2, this.breite+ 1, this.hoehe+ 1);
         //this.setBounds(mainWindow.getWidth()/2, mainWindow.getHeight()/2, 500, 500);
 
- 
+        System.out.println("Punkt linke obere Ecke:" +this.getX()+ " | "+ this.getY());
 
 
     }
@@ -172,7 +172,7 @@ public class Spielfeld extends JPanel {
     }
 
     public int getBreite() {
-        return breite;
+        return anzahlSpalten;
     }
 
     public int getHoehe() {
