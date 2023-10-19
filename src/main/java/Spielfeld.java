@@ -48,13 +48,15 @@ public class Spielfeld extends JPanel {
             this.add(x);
         }
 
-        this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe)/2, this.breite+ 1, this.hoehe+ 1);
+        this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
         //this.setBounds(mainWindow.getWidth()/2, mainWindow.getHeight()/2, 500, 500);
 
-        System.out.println("Punkt linke obere Ecke:" +this.getX()+ " | "+ this.getY());
+        //System.out.println("Punkt linke obere Ecke:" +this.getX()+ " | "+ this.getY());
 
 
     }
+
+
 
     public void speichern(Subtile subtile) {
         // speichert x und y als String im Speicher

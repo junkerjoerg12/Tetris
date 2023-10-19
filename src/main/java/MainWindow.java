@@ -1,5 +1,6 @@
 package main.java;
 
+import java.awt.Dimension;
 //import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -34,17 +35,25 @@ public class MainWindow extends JFrame implements KeyListener{
 
         this.addKeyListener(this);
         this.setLayout(null);
-
-        
-        this.setSize(1920, 1080);
+        this.setUndecorated(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null); 
-        this.setVisible(true);
         this.setResizable(false);
-        
+        this.setVisible(true);
+
+
+
+
+
+        Background background= new Background(this, breite, hoehe);
+        this.add(background);
+
         spielfeld= new Spielfeld(this, breite, hoehe);
-        this.add(spielfeld);
+        background.add(spielfeld);
+
+
+
 
 
 

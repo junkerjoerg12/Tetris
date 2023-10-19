@@ -7,7 +7,7 @@ public class Test {
     public static void main(String args[]){
 
         int spielfeldbreite =15;
-        int spielfeldhoehe = 10;
+        int spielfeldhoehe = 15;
 
 
         
