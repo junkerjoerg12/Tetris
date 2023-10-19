@@ -27,7 +27,7 @@ public class Tile{
         breite= spielfeld.getBreite();
         hoehe= spielfeld.getHoehe();
 
-        //x;
+        x=5;
         //einzelteile= new Subtile[1];
         //einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
         //addTile(spielfeld);
@@ -52,6 +52,8 @@ public class Tile{
 
         }
 
+        System.out.println("Tile erstellt");
+
         if(timer==null){
             timerErstellen(1000);
         }
@@ -63,11 +65,20 @@ public class Tile{
         public void timerErstellen(int zeit){
 
         if(timer==null){
-            timer= new ZeitMesser(this, zeit);
+            this.timer= new ZeitMesser(this, zeit);
     
             thread1= new Thread(timer);
     
             thread1.start();
+
+
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                System.out.println("Somethings wrong");
+            }
+
+            
         }
 
     }
@@ -133,7 +144,7 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(breite-1);
+        int xKoord= random.nextInt(breite-1)*50;
         
 
 
@@ -179,17 +190,16 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(breite-1)*50+spielfeld.getX();
-        int zuYAddieren= spielfeld.getY();
+        int xKoord= random.nextInt(breite-1)*50;
         
 
         
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einer 1x4 Linie zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0 + zuYAddieren);
-        einzelteile[1]= new Subtile(farbe, xKoord, 50 + zuYAddieren);
-        einzelteile[2]= new Subtile(farbe, xKoord, 100 + zuYAddieren);
-        einzelteile[3]= new Subtile(farbe, xKoord, 150 + zuYAddieren);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord, 150);
 
         addTile(spielfeld);
         drehpunkErrechnen();
@@ -201,17 +211,16 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[4];
-        int xKoord= random.nextInt(breite- 1)*50+spielfeld.getX();
-        int zuYAddieren= spielfeld.getY();
+        int xKoord= random.nextInt(breite- 1)*50;
         
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem L zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0 + zuYAddieren);
-        einzelteile[1]= new Subtile(farbe, xKoord, 50 + zuYAddieren);
-        einzelteile[2]= new Subtile(farbe, xKoord, 100 + zuYAddieren);
-        einzelteile[3]= new Subtile(farbe, xKoord+50, 100 + zuYAddieren);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 );
+        einzelteile[1]= new Subtile(farbe, xKoord, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord, 100);
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
         
         
         addTile(spielfeld);
@@ -256,7 +265,7 @@ public class Tile{
         } catch (IllegalThreadStateException e) {
             System.out.println("Illigal THread State Exception");
         } catch(NullPointerException e){
-            System.out.println("Immernoch verloren");
+        //    System.out.println("Immernoch verloren");
         }
 
         
@@ -451,32 +460,34 @@ public class Tile{
                 System.out.println("Ihr Highscore : " + spielfeld.getScore());
 
 
-                //löscht hoffentlich den Timer und führt so zu keinem crash
-                deleteTimer();
-
+                
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
-
+                
                 //Subtiles werden aus this gelöscht
                 deletSubtiles();
 
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deleteTimer();
+                
                 //this wird gelöscht
                 spielfeld.deleteTile(true);
                 
-                //panel.add(new TextArea("Verloren"));
-            }else{
-                //löscht hoffentlich den Timer und führt so zu keinem crash
-                deleteTimer();
 
+            }else{
+                
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
                 
                 //Subtiles werden aus this gelöscht
                 deletSubtiles();
-    
+
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deleteTimer();
+                
                 //this wird gelöscht
                 spielfeld.deleteTile(false);
-
+                
             }
 
             spielfeld.reihePruefen();
@@ -494,6 +505,7 @@ public class Tile{
 
             timer=null;
             thread1=null;
+            //System.out.println("Timer deleted");
         }
     }
 
