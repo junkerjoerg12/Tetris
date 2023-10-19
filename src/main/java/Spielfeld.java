@@ -56,10 +56,10 @@ public class Spielfeld extends JPanel {
 
     }
 
-    // speichert x und y als String im Speicher
-    // und das Subtile in einem anderen Array, aber auf der selben position wie die
-    // die dazugehörige koordinate
     public void speichern(Subtile subtile) {
+        // speichert x und y als String im Speicher
+        // und das Subtile in einem anderen Array, aber auf der selben position wie die
+        // die dazugehörige koordinate
         if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())))
             ;
         speicherKoords.add(subtile.getX() + " " + subtile.getY());
@@ -68,12 +68,15 @@ public class Spielfeld extends JPanel {
         }
     }
 
-    // löscht den String, der x und y enthält aus dem Speicher
+
+
     public void loeschen(int x, int y) {
+        // löscht den String, der x und y enthält aus dem Speicher
         speicherKoords.remove(x + " " + y);
     }
 
-    // gibt true zurück, wenn
+
+
     public boolean vergleichen(int x, int y) {
         if (speicherKoords.contains(x + " " + y)) {
             return true;
@@ -81,9 +84,10 @@ public class Spielfeld extends JPanel {
         return false;
     }
 
-    // gibt den index zurück, auf dem das Subtile und die zugehörige koordinate
-    // gespeichert sind
+
     public int getIndex(int x, int y) {
+        // gibt den index zurück, auf dem das Subtile und die zugehörige koordinate
+        // gespeichert sind
         int index;
 
         index = speicherKoords.indexOf(x + " " + y);
@@ -91,8 +95,9 @@ public class Spielfeld extends JPanel {
 
     }
 
-    // Überprüft jede reihe, ob sie voll ist
+    
     public void reihePruefen() {
+        // Überprüft jede reihe, ob sie voll ist
 
         boolean reiheVoll = true;
 
@@ -128,8 +133,8 @@ public class Spielfeld extends JPanel {
 
     }
 
-    // entfernt die Reihe auf der Übergebenen Y Koordinate
     public void reiheEntfernen(int y) {
+        // entfernt die Reihe auf der Übergebenen Y Koordinate
         int index;
 
         for (int j = 0; j < anzahlSpalten; j++) {
@@ -144,9 +149,10 @@ public class Spielfeld extends JPanel {
         }
     }
 
-    // Versciebt Subtiles nach unten, wenn eine Reihe gelöscht wurde und ändert die
-    // Koordinaten im String
+
     public void aufrutschen(int y) {
+        // Versciebt Subtiles nach unten, wenn eine Reihe gelöscht wurde und ändert die
+        // Koordinaten im String
 
         for (int i = 0; i < speicherTiles.size(); i++) {
 
@@ -157,14 +163,10 @@ public class Spielfeld extends JPanel {
         }
     }
 
-    //public void setTile(Tile tile) {
-        //Tile = tile;
-    //}
+
 
     public void deleteTile(boolean verloren) {
-        
         mainWindow.deleteTile(verloren);
-        
     }
 
     public ArrayList<String> getKoords() {

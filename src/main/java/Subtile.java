@@ -23,10 +23,6 @@ public class Subtile extends JPanel{
         this.setBounds(xKoord, yKoord, 50, 50);
         this.setBackground(farbe);
         this.setVisible(true);
-        System.out.println("X: " + xKoord+ " Y: "+ yKoord);
-
-
-
     }
 
     public void setDrehpunkt(boolean drehpunkt) {

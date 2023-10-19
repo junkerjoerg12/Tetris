@@ -27,9 +27,9 @@ public class Tile{
         breite= spielfeld.getBreite();
         hoehe= spielfeld.getHoehe();
 
-        
+        //x;
         //einzelteile= new Subtile[1];
-        //einzelteile[0]= new Subtile(Color.BLACK, 00, 00);
+        //einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
         //addTile(spielfeld);
 
         if(x== 0){
@@ -232,7 +232,7 @@ public class Tile{
 
     //Position des Tiles ändern
     public void changeLocationDown(int x, int y){
-        System.out.println("Location changed "+ x+" "+ y);
+        //System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
             
             
@@ -241,10 +241,8 @@ public class Tile{
             
             
             for(int i=0; i<einzelteile.length; i++){
-                
-                
-                
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
+                System.out.println("X: " + einzelteile[i]. getX() + " Y: " + einzelteile[i].getY());
             }
             
             xMitte= xMitte+x;
@@ -269,7 +267,7 @@ public class Tile{
 
         //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        System.out.println("Location changed "+ x+" "+ y);
+        //System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
             
             
@@ -278,9 +276,6 @@ public class Tile{
             
             
             for(int i=0; i<einzelteile.length; i++){
-                
-                
-                
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
             
@@ -387,8 +382,6 @@ public class Tile{
         for(int i=0; i< einzelteile.length; i++){
 
 
-            //drehen
-
             //1: X und Y Koordinaten Relativ zum Drehpunkt tauschen
             ram =einzelteile[i].getXRel();
             einzelteile[i].setXRel(einzelteile[i].getYRel());
@@ -423,10 +416,6 @@ public class Tile{
                 einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
             }
         }
-
-        //bei problemen eventuell wieder reinmachen, weiß den sinn selber nicht mehr genau
-        //changeLocation(0, 0);
-
     }
 
 
@@ -443,7 +432,7 @@ public class Tile{
 
         for(int i=0; i<einzelteile.length; i++){
 
-            if(einzelteile[i].getY()==hoehe* 50- 50){
+            if(einzelteile[i].getY()==hoehe- 50){
                 beendet= true;
                 
             }
