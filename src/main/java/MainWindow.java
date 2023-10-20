@@ -42,6 +42,7 @@ public class MainWindow extends JFrame implements KeyListener{
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setVisible(true);
+        
 
 
 

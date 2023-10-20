@@ -38,7 +38,7 @@ public class Spielfeld extends JPanel {
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
-        this.setPreferredSize(new Dimension(this.breite, this.hoehe));
+        this.setPreferredSize(new Dimension(this.breite+1, this.hoehe+1));
 
         // Das Gitter im Hintergrund wird gezeichent
         for (int i = 0; i < anzahlSpalten+1; i++) {
@@ -50,8 +50,9 @@ public class Spielfeld extends JPanel {
             this.add(x);
         }
 
-        this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
-        //this.setBounds(mainWindow.getWidth()/2, mainWindow.getHeight()/2, 500, 500);
+
+        this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe)/2, this.breite+1, this.hoehe+1);
+
 
         System.out.println("Koordinaten bei erstellung: X: " + this.getX()+ " Y: "+ this.getY());
 
@@ -134,11 +135,13 @@ public class Spielfeld extends JPanel {
                 score += breite;
                 //System.out.println("Score: " + score);
                 System.out.println("Koordinaten ende Reihe prüfen in schleife: X: " + this.getX()+ " Y: "+ this.getY());
+                
 
             }
         }
         System.out.println("Koordinaten ende Reihe prüfen aus der scleife raus: X: " + this.getX()+ " Y: "+ this.getY());
-
+        System.out.println("Spielfelddimendionen: width: " + this.getWidth()+ "Height: "+ this.getHeight());
+        System.out.println("HInterunddimensionen: width:" + hintergrund.getWidth()+ "höhe: "+ hintergrund.getHeight());
     }
 
     public void reiheEntfernen(int y) {
@@ -173,7 +176,7 @@ public class Spielfeld extends JPanel {
         }
         System.out.println("Koordinaten ende aufruteschen: X: " + this.getX()+ " Y: "+ this.getY());
 
-//        this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
+        //this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
     }
 
 
