@@ -42,6 +42,7 @@ public class MainWindow extends JFrame implements KeyListener{
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setVisible(true);
+        System.out.println(this.getWidth()+ ""+ this.getHeight());
         
 
 
@@ -51,7 +52,7 @@ public class MainWindow extends JFrame implements KeyListener{
         hintergrund= new Background(this, breite, hoehe);
         this.add(hintergrund);
 
-        spielfeld= new Spielfeld(this, breite, hoehe);
+        spielfeld= new Spielfeld(hintergrund, breite, hoehe);
         hintergrund.add(spielfeld);
 
 

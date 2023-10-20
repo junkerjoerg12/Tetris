@@ -16,12 +16,11 @@ public class Spielfeld extends JPanel {
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
 
-    MainWindow mainWindow;
     Background hintergrund;
 
     
 
-    public Spielfeld(MainWindow mainWindow, int breite, int hoehe) {
+    public Spielfeld(Background hintergrund, int breite, int hoehe) {
 
         anzahlSpalten = breite;
         anzahlZeilen = hoehe;
@@ -31,9 +30,7 @@ public class Spielfeld extends JPanel {
 
         //System.out.println("Breite: "+ breite+ " Höhe: "+ hoehe);
 
-
-        this.mainWindow = mainWindow;
-        this.hintergrund= mainWindow.getHintergrund();
+        this.hintergrund= hintergrund;
 
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
@@ -55,6 +52,8 @@ public class Spielfeld extends JPanel {
 
 
         System.out.println("Koordinaten bei erstellung: X: " + this.getX()+ " Y: "+ this.getY());
+
+        //this.set
 
 
 
@@ -182,7 +181,7 @@ public class Spielfeld extends JPanel {
 
 
     public void deleteTile(boolean verloren) {
-        mainWindow.deleteTile(verloren);
+        hintergrund.getMainWindow().deleteTile(verloren);
     }
 
     public ArrayList<String> getKoords() {
