@@ -42,7 +42,6 @@ public class MainWindow extends JFrame implements KeyListener{
         this.setLocationRelativeTo(null); 
         this.setResizable(false);
         this.setVisible(true);
-        System.out.println(this.getWidth()+ ""+ this.getHeight());
         
 
 
@@ -93,9 +92,6 @@ public class MainWindow extends JFrame implements KeyListener{
 
         //try{
             if(e.getKeyCode()==40){             //Form wird eine Zeile nach unten versetzt
-                System.out.println("Koordinaten bei Tastendruck X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
-
-
 
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();

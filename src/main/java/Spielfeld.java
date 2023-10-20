@@ -28,7 +28,6 @@ public class Spielfeld extends JPanel {
         this.breite = anzahlSpalten*50;
         this.hoehe = anzahlZeilen*50;
 
-        //System.out.println("Breite: "+ breite+ " Höhe: "+ hoehe);
 
         this.hintergrund= hintergrund;
 
@@ -121,7 +120,6 @@ public class Spielfeld extends JPanel {
 
             }
             
-            //System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
@@ -131,16 +129,12 @@ public class Spielfeld extends JPanel {
                 //weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden 
                 i++;
 
-                score += breite;
-                //System.out.println("Score: " + score);
+                score += breite/50;
                 System.out.println("Koordinaten ende Reihe prüfen in schleife: X: " + this.getX()+ " Y: "+ this.getY());
                 
 
             }
         }
-        System.out.println("Koordinaten ende Reihe prüfen aus der scleife raus: X: " + this.getX()+ " Y: "+ this.getY());
-        System.out.println("Spielfelddimendionen: width: " + this.getWidth()+ "Height: "+ this.getHeight());
-        System.out.println("HInterunddimensionen: width:" + hintergrund.getWidth()+ "höhe: "+ hintergrund.getHeight());
     }
 
     public void reiheEntfernen(int y) {
@@ -148,17 +142,13 @@ public class Spielfeld extends JPanel {
         int index;
 
         for (int j = 0; j < anzahlSpalten; j++) {
-
             // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie
             // koordinate als auch das Subtile
             index = getIndex(j * 50, y);
             speicherKoords.remove(index);
             speicherTiles.get(index).setVisible(false);
             speicherTiles.remove(index);
-
         }
-        System.out.println("Koordinaten ende Reihe entfernen: X: " + this.getX()+ " Y: "+ this.getY());
-        //this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
     }
 
 
@@ -167,15 +157,11 @@ public class Spielfeld extends JPanel {
         // Koordinaten im String
 
         for (int i = 0; i < speicherTiles.size(); i++) {
-
             if (speicherTiles.get(i).getY() < y) {
                 speicherTiles.get(i).setLocation(speicherTiles.get(i).getX(), speicherTiles.get(i).getY() + 50);
                 speicherKoords.set(i, speicherTiles.get(i).getX() + " " + speicherTiles.get(i).getY());
             }
         }
-        System.out.println("Koordinaten ende aufruteschen: X: " + this.getX()+ " Y: "+ this.getY());
-
-        //this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
     }
 
 

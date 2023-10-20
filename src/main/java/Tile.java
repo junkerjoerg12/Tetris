@@ -52,13 +52,11 @@ public class Tile{
 
         }
 
-        System.out.println("Tile erstellt");
-        System.out.println("Koordinaten bei erstellung ovn tile: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
+
 
         if(timer==null){
             timerErstellen(1000);
         }
-        System.out.println("Koordinaten nach erstellung von Timer: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
 
     }
 
@@ -68,21 +66,8 @@ public class Tile{
 
         if(timer==null){
             this.timer= new ZeitMesser(this, zeit);
-    
             thread1= new Thread(timer);
-    
-            thread1.start();
-
-
-            //Unnötig i guess
-
-            //try {
-            //    Thread.sleep(1);
-            //} catch (InterruptedException e) {
-            //    System.out.println("Somethings wrong");
-            //}
-
-            
+            thread1.start();            
         }
 
     }
@@ -101,7 +86,6 @@ public class Tile{
 
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[6];
-        System.out.println("Breite: "+ breite);
         int xKoord= random.nextInt(1, breite-1)*50;
         
 
@@ -248,19 +232,10 @@ public class Tile{
 
     //Position des Tiles ändern
     public void changeLocationDown(int x, int y){
-        //System.out.println("Location changed "+ x+" "+ y);
-        System.out.println("Koordinaten direkt vor Verschiebung von tile: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
         if(outOfBounds(x, y)==true){
-            
-            
-            
-            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
-            
             
             for(int i=0; i<einzelteile.length; i++){
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
-                //System.out.println("X: " + einzelteile[i]. getX() + " Y: " + einzelteile[i].getY());
-
             }
             
             xMitte= xMitte+x;
@@ -274,7 +249,6 @@ public class Tile{
         } catch (IllegalThreadStateException e) {
             System.out.println("Illigal THread State Exception");
         } catch(NullPointerException e){
-        //    System.out.println("Immernoch verloren");
         }
 
         
@@ -285,14 +259,8 @@ public class Tile{
 
         //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        //System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
-            
-            
-            
-            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
-            
-            
+
             for(int i=0; i<einzelteile.length; i++){
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
@@ -300,21 +268,8 @@ public class Tile{
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
-
+        
         zugBeendet();
-        /*
-        try {
-            timer.zeitStoppen(1000);
-        } catch (IllegalThreadStateException e) {
-            System.out.println("Illigal THread State Exception");
-        } catch(NullPointerException e){
-            
-        }
-*/
-        
-        
-        
-
     }
 
 
@@ -373,8 +328,6 @@ public class Tile{
 
         for(int i=0; i<einzelteile.length; i++){
 
-           // System.out.println("hoehe_ 50: " + (hoehe-50));
-            //System.out.println("breite- 50: "+ (breite-50));
 
             if(einzelteile[i].getY()+y > hoehe*50-50 || einzelteile[i].getX()+x < 0 || einzelteile[i].getX() + x >breite*50-50 ){
                 valid= false;
@@ -417,11 +370,7 @@ public class Tile{
 
             
             //4: überprüfen, ob keines der felder ein anderes Tile überlapt
-
-            //System.out.println("tatsächliche KOordinaten: x:"+ (einzelteile[i].getXRel()+xMitte)+ "  y:"+ (einzelteile[i].getYRel()+yMitte) + "  Koordinatensammlung: "+ panel.getKoords());
-
             if((spielfeld.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
-                System.out.println("überlappung");
                 valid = false;
             }
             
@@ -514,7 +463,6 @@ public class Tile{
 
             timer=null;
             thread1=null;
-            //System.out.println("Timer deleted");
         }
     }
 
