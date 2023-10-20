@@ -17,6 +17,7 @@ public class Spielfeld extends JPanel {
 
 
     MainWindow mainWindow;
+    Background hintergrund;
 
     
 
@@ -28,10 +29,11 @@ public class Spielfeld extends JPanel {
         this.breite = anzahlSpalten*50;
         this.hoehe = anzahlZeilen*50;
 
-        System.out.println("Breite: "+ breite+ " Höhe: "+ hoehe);
+        //System.out.println("Breite: "+ breite+ " Höhe: "+ hoehe);
 
 
         this.mainWindow = mainWindow;
+        this.hintergrund= mainWindow.getHintergrund();
 
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
@@ -48,10 +50,11 @@ public class Spielfeld extends JPanel {
             this.add(x);
         }
 
-        this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
+        this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
         //this.setBounds(mainWindow.getWidth()/2, mainWindow.getHeight()/2, 500, 500);
 
-        //System.out.println("Punkt linke obere Ecke:" +this.getX()+ " | "+ this.getY());
+        System.out.println("Koordinaten bei erstellung: X: " + this.getX()+ " Y: "+ this.getY());
+
 
 
     }
@@ -130,8 +133,11 @@ public class Spielfeld extends JPanel {
 
                 score += breite;
                 //System.out.println("Score: " + score);
+                System.out.println("Koordinaten ende Reihe prüfen in schleife: X: " + this.getX()+ " Y: "+ this.getY());
+
             }
         }
+        System.out.println("Koordinaten ende Reihe prüfen aus der scleife raus: X: " + this.getX()+ " Y: "+ this.getY());
 
     }
 
@@ -149,6 +155,8 @@ public class Spielfeld extends JPanel {
             speicherTiles.remove(index);
 
         }
+        System.out.println("Koordinaten ende Reihe entfernen: X: " + this.getX()+ " Y: "+ this.getY());
+        //this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
     }
 
 
@@ -163,6 +171,9 @@ public class Spielfeld extends JPanel {
                 speicherKoords.set(i, speicherTiles.get(i).getX() + " " + speicherTiles.get(i).getY());
             }
         }
+        System.out.println("Koordinaten ende aufruteschen: X: " + this.getX()+ " Y: "+ this.getY());
+
+//        this.setBounds((mainWindow.getWidth()-this.breite)/2, (mainWindow.getHeight()-this.hoehe), this.breite+ 1, this.hoehe+ 1);
     }
 
 

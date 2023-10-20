@@ -13,7 +13,7 @@ public class Background extends JPanel{
 
         this.mainWindow= mainWindow;
 
-                JLabel ueberschrift= new JLabel("Tetris by Jakob Engel");
+        JLabel ueberschrift= new JLabel("Tetris by Jakob Engel");
         ueberschrift.setBounds(0, 0, 200, 200);
         this.add(ueberschrift);
 

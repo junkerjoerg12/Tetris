@@ -27,7 +27,7 @@ public class Tile{
         breite= spielfeld.getBreite();
         hoehe= spielfeld.getHoehe();
 
-        x=5;
+        x=4;
         //einzelteile= new Subtile[1];
         //einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
         //addTile(spielfeld);
@@ -53,10 +53,12 @@ public class Tile{
         }
 
         System.out.println("Tile erstellt");
+        System.out.println("Koordinaten bei erstellung ovn tile: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
 
         if(timer==null){
             timerErstellen(1000);
         }
+        System.out.println("Koordinaten nach erstellung von Timer: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
 
     }
 
@@ -72,11 +74,13 @@ public class Tile{
             thread1.start();
 
 
-            try {
-                Thread.sleep(2);
-            } catch (InterruptedException e) {
-                System.out.println("Somethings wrong");
-            }
+            //Unnötig i guess
+
+            //try {
+            //    Thread.sleep(1);
+            //} catch (InterruptedException e) {
+            //    System.out.println("Somethings wrong");
+            //}
 
             
         }
@@ -235,6 +239,9 @@ public class Tile{
         for(int i=0; i<einzelteile.length; i++){
             spielfeld.add(einzelteile[i]);
         }
+        System.out.println("Koordinaten nachdem Tile zum Spielfeld geaddet wurde: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
+
+
 
     }
 
@@ -242,6 +249,7 @@ public class Tile{
     //Position des Tiles ändern
     public void changeLocationDown(int x, int y){
         //System.out.println("Location changed "+ x+" "+ y);
+        System.out.println("Koordinaten direkt vor Verschiebung von tile: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
         if(outOfBounds(x, y)==true){
             
             
@@ -251,7 +259,8 @@ public class Tile{
             
             for(int i=0; i<einzelteile.length; i++){
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
-                System.out.println("X: " + einzelteile[i]. getX() + " Y: " + einzelteile[i].getY());
+                //System.out.println("X: " + einzelteile[i]. getX() + " Y: " + einzelteile[i].getY());
+
             }
             
             xMitte= xMitte+x;

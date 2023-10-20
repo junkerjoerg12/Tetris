@@ -15,6 +15,7 @@ public class MainWindow extends JFrame implements KeyListener{
     Random random = new Random();
 
     Spielfeld spielfeld;
+    Background hintergrund;
 
 
     int x;
@@ -46,11 +47,11 @@ public class MainWindow extends JFrame implements KeyListener{
 
 
 
-        Background background= new Background(this, breite, hoehe);
-        this.add(background);
+        hintergrund= new Background(this, breite, hoehe);
+        this.add(hintergrund);
 
         spielfeld= new Spielfeld(this, breite, hoehe);
-        background.add(spielfeld);
+        hintergrund.add(spielfeld);
 
 
 
@@ -90,6 +91,8 @@ public class MainWindow extends JFrame implements KeyListener{
 
         //try{
             if(e.getKeyCode()==40){             //Form wird eine Zeile nach unten versetzt
+                System.out.println("Koordinaten bei Tastendruck X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
+
 
 
                 tile.getTimerThread().interrupt();
@@ -155,5 +158,9 @@ public class MainWindow extends JFrame implements KeyListener{
 
     public Tile getTile(){
         return tile;
+    }
+
+    public Background getHintergrund(){
+        return hintergrund;
     }
 }
