@@ -55,6 +55,7 @@ public class MainWindow extends JFrame implements KeyListener{
         hintergrund.add(spielfeld);
 
         hintergrund.addScoreFeld();
+        hintergrund.addHighscoreFeld();
 
 
 

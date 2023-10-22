@@ -130,6 +130,7 @@ public class Spielfeld extends JPanel {
 
                 score += breite/50;
                 
+                hintergrund.scoreUpddate();
 
             }
         }

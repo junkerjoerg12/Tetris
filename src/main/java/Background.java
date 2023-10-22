@@ -51,15 +51,30 @@ public class Background extends JPanel {
         int x= mainWindow.getSpielfeld().getX()+ mainWindow.getSpielfeld().getWidth();
         int y= mainWindow.getHintergrund().getHeight()/2- hoehe;
 
-        System.out.println(x+ " " +y+ " " +breite+ " " + hoehe);
-
         scoreFeld.setBounds(x,y, breite, hoehe);
-        
-        
-
         this.add(scoreFeld);
     }
 
+
+    public void addHighscoreFeld(){
+
+        highscoreFeld= new JLabel( "Highscore: "+ mainWindow.getSpielfeld().getHighscore());
+
+        int hoehe=100;
+        int breite= (mainWindow.getHintergrund().getWidth())/2;
+        int x= mainWindow.getSpielfeld().getX()+ mainWindow.getSpielfeld().getWidth();
+        int y= mainWindow.getHintergrund().getHeight()/2+ hoehe;
+
+
+        highscoreFeld.setBounds(x,y, breite, hoehe);
+
+        this.add(highscoreFeld);
+    }
+
+    public void scoreUpddate(){
+        scoreFeld.setText("neuer Score: "+ mainWindow.getSpielfeld().getScore());
+        highscoreFeld.setText("Score: "+ mainWindow.getSpielfeld().getHighscore());
+    }
 
 
 
