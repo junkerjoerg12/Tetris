@@ -54,6 +54,8 @@ public class MainWindow extends JFrame implements KeyListener{
         spielfeld= new Spielfeld(hintergrund, breite, hoehe);
         hintergrund.add(spielfeld);
 
+        hintergrund.addScoreFeld();
+
 
 
 
@@ -160,5 +162,9 @@ public class MainWindow extends JFrame implements KeyListener{
 
     public Background getHintergrund(){
         return hintergrund;
+    }
+
+    public Spielfeld getSpielfeld(){
+        return spielfeld;
     }
 }

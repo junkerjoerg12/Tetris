@@ -9,6 +9,7 @@ public class Spielfeld extends JPanel {
     int anzahlSpalten;
     int anzahlZeilen;
     int score;
+    int highscore;
     int breite;
     int hoehe;
 
@@ -50,8 +51,7 @@ public class Spielfeld extends JPanel {
         this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe)/2, this.breite+1, this.hoehe+1);
 
 
-
-        //this.set
+        
 
 
 
@@ -182,5 +182,13 @@ public class Spielfeld extends JPanel {
 
     public int getScore(){
         return score;
+    }
+
+    public int getHighscore(){
+
+        if(score>highscore){
+            highscore= score;
+        }
+        return highscore;
     }
 }
