@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Background extends JPanel {
-    
+
     MainWindow mainWindow;
     ExitButton extiButton;
 
@@ -20,71 +20,58 @@ public class Background extends JPanel {
     JLabel scoreFeld;
     JLabel highscoreFeld;
 
+    public Background(MainWindow mainWindow, int breite, int hoehe) {
 
-    public Background(MainWindow mainWindow, int breite, int hoehe){
+        this.mainWindow = mainWindow;
 
-        this.mainWindow= mainWindow;
-
-        JLabel ueberschrift= new JLabel("Tetris by Jakob Engel");
+        JLabel ueberschrift = new JLabel("Tetris by Jakob Engel");
         ueberschrift.setBounds(0, 0, 200, 200);
         this.add(ueberschrift);
 
-        
         this.setSize(1920, 1080);
         this.setVisible(true);
         this.setLayout(null);
 
-
-        extiButton= new ExitButton(this);
+        extiButton = new ExitButton(this);
 
         this.add(extiButton);
-        
-        
+
     }
 
-    public void addScoreFeld(){
+    public void addScoreFeld() {
 
-        scoreFeld= new JLabel("Score: "+ mainWindow.getSpielfeld().getScore());
+        scoreFeld = new JLabel("Score: " + mainWindow.getSpielfeld().getScore());
 
-        int hoehe=100;
-        int breite= (mainWindow.getHintergrund().getWidth())/2;
-        int x= mainWindow.getSpielfeld().getX()+ mainWindow.getSpielfeld().getWidth();
-        int y= mainWindow.getHintergrund().getHeight()/2- hoehe;
+        int hoehe = 100;
+        int breite = (mainWindow.getHintergrund().getWidth()) / 2;
+        int x = mainWindow.getSpielfeld().getX() + mainWindow.getSpielfeld().getWidth();
+        int y = mainWindow.getHintergrund().getHeight() / 2 - hoehe;
 
-        scoreFeld.setBounds(x,y, breite, hoehe);
+        scoreFeld.setBounds(x, y, breite, hoehe);
         this.add(scoreFeld);
     }
 
+    public void addHighscoreFeld() {
 
-    public void addHighscoreFeld(){
+        highscoreFeld = new JLabel("Highscore: " + mainWindow.getSpielfeld().getHighscore());
 
-        highscoreFeld= new JLabel( "Highscore: "+ mainWindow.getSpielfeld().getHighscore());
+        int hoehe = 100;
+        int breite = (mainWindow.getHintergrund().getWidth()) / 2;
+        int x = mainWindow.getSpielfeld().getX() + mainWindow.getSpielfeld().getWidth();
+        int y = mainWindow.getHintergrund().getHeight() / 2 + hoehe;
 
-        int hoehe=100;
-        int breite= (mainWindow.getHintergrund().getWidth())/2;
-        int x= mainWindow.getSpielfeld().getX()+ mainWindow.getSpielfeld().getWidth();
-        int y= mainWindow.getHintergrund().getHeight()/2+ hoehe;
-
-
-        highscoreFeld.setBounds(x,y, breite, hoehe);
+        highscoreFeld.setBounds(x, y, breite, hoehe);
 
         this.add(highscoreFeld);
     }
 
-    public void scoreUpddate(){
-        scoreFeld.setText("neuer Score: "+ mainWindow.getSpielfeld().getScore());
-        highscoreFeld.setText("Score: "+ mainWindow.getSpielfeld().getHighscore());
+    public void scoreUpddate() {
+        scoreFeld.setText("neuer Score: " + mainWindow.getSpielfeld().getScore());
+        highscoreFeld.setText("Score: " + mainWindow.getSpielfeld().getHighscore());
     }
 
-
-
-
-    public MainWindow getMainWindow(){
+    public MainWindow getMainWindow() {
         return mainWindow;
     }
-
-
-
-
 
 }
