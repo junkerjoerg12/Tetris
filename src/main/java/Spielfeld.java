@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MyPanel extends JPanel {
+public class Spielfeld extends JPanel {
 
     int anzahlSpalten;
     int anzahlZeilen;
@@ -16,46 +16,53 @@ public class MyPanel extends JPanel {
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
 
-    MainWindow spielfeld;
+    Background hintergrund;
 
     
 
-    public MyPanel(MainWindow spielfeld, int breite, int hoehe) {
-
-
-        this.breite = breite;
-        this.hoehe = hoehe;
+    public Spielfeld(Background hintergrund, int breite, int hoehe) {
 
         anzahlSpalten = breite;
         anzahlZeilen = hoehe;
 
-        this.spielfeld = spielfeld;
+        this.breite = anzahlSpalten*50;
+        this.hoehe = anzahlZeilen*50;
+
+
+        this.hintergrund= hintergrund;
 
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
-        // Das Panel ist 500x 500 Pixel groß
-        this.setPreferredSize(new Dimension(anzahlSpalten * 50, anzahlZeilen * 50));
+        this.setPreferredSize(new Dimension(this.breite+1, this.hoehe+1));
 
         // Das Gitter im Hintergrund wird gezeichent
-        for (int i = 1; i < anzahlSpalten; i++) {
+        for (int i = 0; i < anzahlSpalten+1; i++) {
             Line x = new Line(true, i * 50, anzahlZeilen * 50);
             this.add(x);
         }
-        for (int i = 1; i < anzahlZeilen; i++) {
+        for (int i = 0; i < anzahlZeilen+1; i++) {
             Line x = new Line(false, i * 50, anzahlSpalten * 50);
             this.add(x);
         }
 
- 
+
+        this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe)/2, this.breite+1, this.hoehe+1);
+
+
+
+        //this.set
+
 
 
     }
 
-    // speichert x und y als String im Speicher
-    // und das Subtile in einem anderen Array, aber auf der selben position wie die
-    // die dazugehörige koordinate
+
+
     public void speichern(Subtile subtile) {
+        // speichert x und y als String im Speicher
+        // und das Subtile in einem anderen Array, aber auf der selben position wie die
+        // die dazugehörige koordinate
         if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())))
             ;
         speicherKoords.add(subtile.getX() + " " + subtile.getY());
@@ -64,12 +71,15 @@ public class MyPanel extends JPanel {
         }
     }
 
-    // löscht den String, der x und y enthält aus dem Speicher
+
+
     public void loeschen(int x, int y) {
+        // löscht den String, der x und y enthält aus dem Speicher
         speicherKoords.remove(x + " " + y);
     }
 
-    // gibt true zurück, wenn
+
+
     public boolean vergleichen(int x, int y) {
         if (speicherKoords.contains(x + " " + y)) {
             return true;
@@ -77,9 +87,10 @@ public class MyPanel extends JPanel {
         return false;
     }
 
-    // gibt den index zurück, auf dem das Subtile und die zugehörige koordinate
-    // gespeichert sind
+
     public int getIndex(int x, int y) {
+        // gibt den index zurück, auf dem das Subtile und die zugehörige koordinate
+        // gespeichert sind
         int index;
 
         index = speicherKoords.indexOf(x + " " + y);
@@ -87,8 +98,9 @@ public class MyPanel extends JPanel {
 
     }
 
-    // Überprüft jede reihe, ob sie voll ist
+    
     public void reihePruefen() {
+        // Überprüft jede reihe, ob sie voll ist
 
         boolean reiheVoll = true;
 
@@ -107,7 +119,6 @@ public class MyPanel extends JPanel {
 
             }
             
-            //System.out.println("Reihe "+ i+" voll: "+ reiheVoll);
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
@@ -117,35 +128,33 @@ public class MyPanel extends JPanel {
                 //weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden 
                 i++;
 
-                score += breite;
-                //System.out.println("Score: " + score);
+                score += breite/50;
+                
+
             }
         }
-
     }
 
-    // entfernt die Reihe auf der Übergebenen Y Koordinate
     public void reiheEntfernen(int y) {
+        // entfernt die Reihe auf der Übergebenen Y Koordinate
         int index;
 
         for (int j = 0; j < anzahlSpalten; j++) {
-
             // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie
             // koordinate als auch das Subtile
             index = getIndex(j * 50, y);
             speicherKoords.remove(index);
             speicherTiles.get(index).setVisible(false);
             speicherTiles.remove(index);
-
         }
     }
 
-    // Versciebt Subtiles nach unten, wenn eine Reihe gelöscht wurde und ändert die
-    // Koordinaten im String
+
     public void aufrutschen(int y) {
+        // Versciebt Subtiles nach unten, wenn eine Reihe gelöscht wurde und ändert die
+        // Koordinaten im String
 
         for (int i = 0; i < speicherTiles.size(); i++) {
-
             if (speicherTiles.get(i).getY() < y) {
                 speicherTiles.get(i).setLocation(speicherTiles.get(i).getX(), speicherTiles.get(i).getY() + 50);
                 speicherKoords.set(i, speicherTiles.get(i).getX() + " " + speicherTiles.get(i).getY());
@@ -153,14 +162,10 @@ public class MyPanel extends JPanel {
         }
     }
 
-    //public void setTile(Tile tile) {
-        //Tile = tile;
-    //}
+
 
     public void deleteTile(boolean verloren) {
-        
-        spielfeld.deleteTile(verloren);
-        
+        hintergrund.getMainWindow().deleteTile(verloren);
     }
 
     public ArrayList<String> getKoords() {
@@ -168,7 +173,7 @@ public class MyPanel extends JPanel {
     }
 
     public int getBreite() {
-        return breite;
+        return anzahlSpalten;
     }
 
     public int getHoehe() {

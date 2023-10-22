@@ -23,9 +23,6 @@ public class Subtile extends JPanel{
         this.setBounds(xKoord, yKoord, 50, 50);
         this.setBackground(farbe);
         this.setVisible(true);
-
-
-
     }
 
     public void setDrehpunkt(boolean drehpunkt) {
@@ -51,7 +48,7 @@ public class Subtile extends JPanel{
         return xRel;
     }
 
-       public int getYRel(){
+    public int getYRel(){
         return yRel;
     }
 

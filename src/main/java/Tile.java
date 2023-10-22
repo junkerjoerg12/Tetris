@@ -13,7 +13,7 @@ public class Tile{
     int breite;
     int hoehe;
 
-    MyPanel panel;  
+    Spielfeld spielfeld;  
 
 
     Random random= new Random();
@@ -22,10 +22,15 @@ public class Tile{
     Thread thread1;
 
 
-    public Tile( MyPanel panel, int x){
-        this.panel= panel;
-        breite= panel.getBreite();
-        hoehe= panel.getHoehe();
+    public Tile( Spielfeld spielfeld, int x){
+        this.spielfeld= spielfeld;
+        breite= spielfeld.getBreite();
+        hoehe= spielfeld.getHoehe();
+
+        x=4;
+        //einzelteile= new Subtile[1];
+        //einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
+        //addTile(spielfeld);
 
         if(x== 0){
             kreuzAdden();
@@ -47,22 +52,22 @@ public class Tile{
 
         }
 
+
+
         if(timer==null){
             timerErstellen(1000);
         }
 
     }
 
- 
+
 
         public void timerErstellen(int zeit){
 
         if(timer==null){
-            timer= new ZeitMesser(this, zeit);
-    
+            this.timer= new ZeitMesser(this, zeit);
             thread1= new Thread(timer);
-    
-            thread1.start();
+            thread1.start();            
         }
 
     }
@@ -82,20 +87,22 @@ public class Tile{
         //Spawn Koordinate wird random generiert
         einzelteile= new Subtile[6];
         int xKoord= random.nextInt(1, breite-1)*50;
+        
+
 
 
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord, 50);
-        einzelteile[2]= new Subtile(farbe, xKoord, 100);
-        einzelteile[3]= new Subtile(farbe, xKoord, 150);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 );
+        einzelteile[1]= new Subtile(farbe, xKoord, 50 );
+        einzelteile[2]= new Subtile(farbe, xKoord, 100 );
+        einzelteile[3]= new Subtile(farbe, xKoord, 150 );
         einzelteile[4]= new Subtile(farbe, xKoord -50, 100);
-        einzelteile[5]= new Subtile(farbe, xKoord +50, 100);
+        einzelteile[5]= new Subtile(farbe, xKoord +50, 100 );
 
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -113,9 +120,9 @@ public class Tile{
         //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
         einzelteile[0]= new Subtile(farbe, xKoord, 0);
         einzelteile[1]= new Subtile(farbe, xKoord, 50);
-        einzelteile[2]= new Subtile(farbe, xKoord+50, 50);
+        einzelteile[2]= new Subtile(farbe, xKoord+50, 50 );
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -137,7 +144,7 @@ public class Tile{
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
 
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -153,13 +160,13 @@ public class Tile{
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
-        einzelteile[1]= new Subtile(farbe, xKoord+50, 0);
-        einzelteile[2]= new Subtile(farbe, xKoord, 50);
-        einzelteile[3]= new Subtile(farbe, xKoord+50, 50);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 );
+        einzelteile[1]= new Subtile(farbe, xKoord+50, 0 );
+        einzelteile[2]= new Subtile(farbe, xKoord, 50 );
+        einzelteile[3]= new Subtile(farbe, xKoord+50, 50 );
 
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -182,7 +189,7 @@ public class Tile{
         einzelteile[2]= new Subtile(farbe, xKoord, 100);
         einzelteile[3]= new Subtile(farbe, xKoord, 150);
 
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -198,13 +205,13 @@ public class Tile{
 
         //4 Subtiles werden erstellt und ausgehend von der vorher 
         //generierten KOordinate zu einem L zusammen gebaut
-        einzelteile[0]= new Subtile(farbe, xKoord, 0);
+        einzelteile[0]= new Subtile(farbe, xKoord, 0 );
         einzelteile[1]= new Subtile(farbe, xKoord, 50);
         einzelteile[2]= new Subtile(farbe, xKoord, 100);
         einzelteile[3]= new Subtile(farbe, xKoord+50, 100);
         
         
-        addTile(panel);
+        addTile(spielfeld);
         drehpunkErrechnen();
         zugBeendet();
     }
@@ -212,28 +219,21 @@ public class Tile{
 
 
     //fügt die Subsquares zu panel hinzu
-    public void addTile(MyPanel panel){
+    public void addTile(Spielfeld spielfeld){
         for(int i=0; i<einzelteile.length; i++){
-            panel.add(einzelteile[i]);
+            spielfeld.add(einzelteile[i]);
         }
+
+
 
     }
 
 
     //Position des Tiles ändern
     public void changeLocationDown(int x, int y){
-        System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
             
-            
-            
-            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
-            
-            
             for(int i=0; i<einzelteile.length; i++){
-                
-                
-                
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
             
@@ -248,50 +248,27 @@ public class Tile{
         } catch (IllegalThreadStateException e) {
             System.out.println("Illigal THread State Exception");
         } catch(NullPointerException e){
-            System.out.println("Immernoch verloren");
         }
 
         
         
         
-       
+
     }
 
         //Position des Tiles ändern
     public void changeLocation(int x, int y){
-        System.out.println("Location changed "+ x+" "+ y);
         if(outOfBounds(x, y)==true){
-            
-            
-            
-            //System.out.println("Timer Status: am Leben: " + thread1.isInterrupted());
-            
-            
+
             for(int i=0; i<einzelteile.length; i++){
-                
-                
-                
                 einzelteile[i].setLocation(einzelteile[i].getX()+x, einzelteile[i].getY()+y);
             }
             
             xMitte= xMitte+x;
             yMitte= yMitte+y;
         }
-
+        
         zugBeendet();
-        /*
-        try {
-            timer.zeitStoppen(1000);
-        } catch (IllegalThreadStateException e) {
-            System.out.println("Illigal THread State Exception");
-        } catch(NullPointerException e){
-            
-        }
-*/
-        
-        
-        
-       
     }
 
 
@@ -350,12 +327,10 @@ public class Tile{
 
         for(int i=0; i<einzelteile.length; i++){
 
-           // System.out.println("hoehe_ 50: " + (hoehe-50));
-            //System.out.println("breite- 50: "+ (breite-50));
 
             if(einzelteile[i].getY()+y > hoehe*50-50 || einzelteile[i].getX()+x < 0 || einzelteile[i].getX() + x >breite*50-50 ){
                 valid= false;
-                 
+
             }
         }
         return valid;
@@ -377,8 +352,6 @@ public class Tile{
         for(int i=0; i< einzelteile.length; i++){
 
 
-            //drehen
-
             //1: X und Y Koordinaten Relativ zum Drehpunkt tauschen
             ram =einzelteile[i].getXRel();
             einzelteile[i].setXRel(einzelteile[i].getYRel());
@@ -396,31 +369,23 @@ public class Tile{
 
             
             //4: überprüfen, ob keines der felder ein anderes Tile überlapt
-
-            //System.out.println("tatsächliche KOordinaten: x:"+ (einzelteile[i].getXRel()+xMitte)+ "  y:"+ (einzelteile[i].getYRel()+yMitte) + "  Koordinatensammlung: "+ panel.getKoords());
-
-            if((panel.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
-                System.out.println("überlappung");
+            if((spielfeld.getKoords().contains((einzelteile[i].getXRel()+xMitte)+ " "+ (einzelteile[i].getYRel()+yMitte)))){
                 valid = false;
             }
             
- 
+
         }
 
         //Position der Felder aus dem spielfeld ändern, wenn keines der Felder außerhalb des spielfelds ist
         if(valid==true){
-           for(int i=0; i< einzelteile.length; i++){
+            for(int i=0; i< einzelteile.length; i++){
                 einzelteile[i].setLocation(einzelteile[i].getXRel()+xMitte, einzelteile[i].getYRel()+yMitte);
-           }
+            }
         }
-
-        //bei problemen eventuell wieder reinmachen, weiß den sinn selber nicht mehr genau
-        //changeLocation(0, 0);
-
     }
 
 
-   
+
     public void zugBeendet(){
 
         boolean beendet= false;
@@ -433,7 +398,7 @@ public class Tile{
 
         for(int i=0; i<einzelteile.length; i++){
 
-            if(einzelteile[i].getY()==hoehe* 50- 50){
+            if(einzelteile[i].getY()==hoehe- 50){
                 beendet= true;
                 
             }
@@ -449,38 +414,40 @@ public class Tile{
                 
 
                 System.out.println("Sie haben verloren!!");
-                System.out.println("Ihr Highscore : " + panel.getScore());
- 
+                System.out.println("Ihr Highscore : " + spielfeld.getScore());
 
-                //löscht hoffentlich den Timer und führt so zu keinem crash
-                deleteTimer();
 
+                
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
-
+                
                 //Subtiles werden aus this gelöscht
                 deletSubtiles();
 
-                //this wird gelöscht
-                panel.deleteTile(true);
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deleteTimer();
                 
-                //panel.add(new TextArea("Verloren"));
+                //this wird gelöscht
+                spielfeld.deleteTile(true);
+                
+
             }else{
-                //löscht hoffentlich den Timer und führt so zu keinem crash
-                deleteTimer();
-
+                
                 //Subtiles werden aufs panel gespeicehrt
                 umspeichern();
                 
                 //Subtiles werden aus this gelöscht
                 deletSubtiles();
-    
-                //this wird gelöscht
-                panel.deleteTile(false);
 
+                //löscht hoffentlich den Timer und führt so zu keinem crash
+                deleteTimer();
+                
+                //this wird gelöscht
+                spielfeld.deleteTile(false);
+                
             }
 
-            panel.reihePruefen();
+            spielfeld.reihePruefen();
 
 
 
@@ -504,7 +471,7 @@ public class Tile{
 
         //Kollision nach unten wird geprüft
         for(int i=0; i<einzelteile.length; i++){
-            if(panel.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY()+50))){
+            if(spielfeld.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY()+50))){
                 kollision= true;
             }
         }
@@ -519,7 +486,7 @@ public class Tile{
         boolean kollision =false;
 
         for(int i=0; i<einzelteile.length; i++){
-            if(panel.getKoords().contains((einzelteile[i].getX()+50) + " " + (einzelteile[i].getY()))){
+            if(spielfeld.getKoords().contains((einzelteile[i].getX()+50) + " " + (einzelteile[i].getY()))){
                 kollision= true;
             }
         }
@@ -535,7 +502,7 @@ public class Tile{
         boolean kollision =false;
 
         for(int i=0; i<einzelteile.length; i++){
-            if(panel.getKoords().contains((einzelteile[i].getX()-50) + " " + (einzelteile[i].getY()))){
+            if(spielfeld.getKoords().contains((einzelteile[i].getX()-50) + " " + (einzelteile[i].getY()))){
                 kollision= true;
             }
         }
@@ -548,7 +515,7 @@ public class Tile{
     //Speichert die subtiles im Panel 
     public void umspeichern(){
         for(int i=0; i<einzelteile.length; i++){
-            panel.speichern(einzelteile[i]);
+            spielfeld.speichern(einzelteile[i]);
         }
     }
 
@@ -570,7 +537,6 @@ public class Tile{
             }
         }
         
-        //System.out.println("verloren: " + verloren);
         return verloren;
     }
 

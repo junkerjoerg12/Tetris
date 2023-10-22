@@ -1,5 +1,7 @@
 package main.java;
 
+import java.awt.Dimension;
+//import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -12,9 +14,9 @@ public class MainWindow extends JFrame implements KeyListener{
     
     Random random = new Random();
 
-    MyPanel panel;
+    Spielfeld spielfeld;
+    Background hintergrund;
 
-   
 
     int x;
 
@@ -33,14 +35,28 @@ public class MainWindow extends JFrame implements KeyListener{
         this.hoehe= hoehe;
 
         this.addKeyListener(this);
-
-        panel= new MyPanel(this, breite, hoehe);
-        this.add(panel);
-
-        this.pack();
+        this.setLayout(null);
+        this.setUndecorated(true);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null); 
+        this.setResizable(false);
         this.setVisible(true);
+        
+
+
+
+
+
+        hintergrund= new Background(this, breite, hoehe);
+        this.add(hintergrund);
+
+        spielfeld= new Spielfeld(hintergrund, breite, hoehe);
+        hintergrund.add(spielfeld);
+
+
+
+
 
 
     }
@@ -54,7 +70,7 @@ public class MainWindow extends JFrame implements KeyListener{
 
         //tests
         //x=4;
-        tile =  new Tile(panel, x);
+        tile =  new Tile(spielfeld, x);
 
         repaint();
 
@@ -76,7 +92,6 @@ public class MainWindow extends JFrame implements KeyListener{
 
         //try{
             if(e.getKeyCode()==40){             //Form wird eine Zeile nach unten versetzt
-             
 
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();
@@ -87,7 +102,7 @@ public class MainWindow extends JFrame implements KeyListener{
                     tile.timerErstellen(1000);
                 }
 
-                panel.repaint();
+                spielfeld.repaint();
                 
                 
 
@@ -98,40 +113,31 @@ public class MainWindow extends JFrame implements KeyListener{
                     tile.changeLocation(-50, 0);
                 
                 }
-                panel.repaint();
- 
+                spielfeld.repaint();
+
             }else if(e.getKeyCode()==39){       //Form wird nach rechts verschoben
                             
                 if(tile.kollisionRechts()==false){
                     tile.changeLocation(50, 0);
                 
                 }
-                panel.repaint();
+                spielfeld.repaint();
 
             }else if(e.getKeyCode()==38){       //Form wird um 90°im Uhrzeigersinn gedreht
                 tile.mitUhrDrehen();
 
 
-                panel.repaint();
- 
-
-                
-                
- 
+                spielfeld.repaint();
             }
 
         //}catch(NullPointerException exception){
           //  System.out.println("Du hast schon längst verloren");
         //}
-
-
-
-        
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-       
+
     }
 
 
@@ -146,9 +152,13 @@ public class MainWindow extends JFrame implements KeyListener{
             System.out.println("hier kommt nichts mehr");
         }
     }
- 
-    
+
+
     public Tile getTile(){
         return tile;
+    }
+
+    public Background getHintergrund(){
+        return hintergrund;
     }
 }
