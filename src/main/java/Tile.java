@@ -223,7 +223,6 @@ public class Tile{
         for(int i=0; i<einzelteile.length; i++){
             spielfeld.add(einzelteile[i]);
         }
-        System.out.println("Koordinaten nachdem Tile zum Spielfeld geaddet wurde: X: " + spielfeld.getX()+ " Y: "+ spielfeld.getY());
 
 
 
@@ -538,7 +537,6 @@ public class Tile{
             }
         }
         
-        //System.out.println("verloren: " + verloren);
         return verloren;
     }
 

@@ -50,7 +50,6 @@ public class Spielfeld extends JPanel {
         this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe)/2, this.breite+1, this.hoehe+1);
 
 
-        System.out.println("Koordinaten bei erstellung: X: " + this.getX()+ " Y: "+ this.getY());
 
         //this.set
 
@@ -130,7 +129,6 @@ public class Spielfeld extends JPanel {
                 i++;
 
                 score += breite/50;
-                System.out.println("Koordinaten ende Reihe prüfen in schleife: X: " + this.getX()+ " Y: "+ this.getY());
                 
 
             }
