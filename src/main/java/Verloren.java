@@ -2,6 +2,7 @@ package main.java;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,15 +19,20 @@ public class Verloren extends JLabel {
         int xText = (spielfeldbreite / 2 - breiteText / 2);
         int yText = (spielfeldhoehe / 2 - hoeheText / 2);
 
+        int fontsize = (int) Math.round(hoeheText * 1.3);
+
         // Schriftgröße muss noch ausgerechent werden
-        this.setFont(new Font("Arial", Font.PLAIN, 310));
+        this.setFont(new Font("Arial", Font.PLAIN, fontsize));
         this.setText("Verloren");
         this.setHorizontalAlignment(SwingConstants.CENTER);
-        this.setVerticalAlignment(SwingConstants.CENTER);
+        // this.setVerticalAlignment(SwingConstants.CENTER);
         this.setForeground(Color.RED);
         this.setBackground(Color.black);
         this.setVisible(true);
 
         this.setBounds(xText, yText, breiteText, hoeheText);
+
+        FontMetrics fm = this.getFontMetrics(getFont());
+
     }
 }
