@@ -25,7 +25,7 @@ public class Tile {
         breite = spielfeld.getBreite();
         hoehe = spielfeld.getHoehe();
 
-        x = 4;
+        // x = 4;
         // einzelteile= new Subtile[1];
         // einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
         // addTile(spielfeld);

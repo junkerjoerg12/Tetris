@@ -2,37 +2,74 @@ package main.java;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Verloren extends JLabel {
+public class Verloren extends JPanel {
+
+    JLabel textFeld;
+    JButton hauptmenue;
+    JButton neustart;
 
     public Verloren(Background hintergrund, int spielfeldbreite, int spielfeldhoehe) {
-
-        System.out.println("breize: " + spielfeldbreite + " Hoehe: " + spielfeldhoehe);
 
         int breiteText = spielfeldbreite;
         int hoeheText = (int) Math.round(spielfeldbreite / 5.1111111111);
         int xText = (spielfeldbreite / 2 - breiteText / 2);
         int yText = (spielfeldhoehe / 2 - hoeheText / 2);
-
         int fontsize = (int) Math.round(hoeheText * 1.3);
 
-        // Schriftgröße muss noch ausgerechent werden
-        this.setFont(new Font("Arial", Font.PLAIN, fontsize));
-        this.setText("Verloren");
-        this.setHorizontalAlignment(SwingConstants.CENTER);
-        // this.setVerticalAlignment(SwingConstants.CENTER);
-        this.setForeground(Color.RED);
-        this.setBackground(Color.black);
+        this.setOpaque(false);
         this.setVisible(true);
+        this.setBackground(Color.BLACK);
+        this.setBounds(0, 0, spielfeldbreite, spielfeldhoehe);
 
-        this.setBounds(xText, yText, breiteText, hoeheText);
+        // Schrift anzeigen:
+        textFeld = new JLabel();
+        textFeld.setBounds(xText, yText, breiteText, hoeheText);
+        textFeld.setFont(new Font("Arial", Font.PLAIN, fontsize));
+        textFeld.setText("Verloren");
+        textFeld.setHorizontalAlignment(SwingConstants.CENTER);
+        textFeld.setVerticalAlignment(SwingConstants.CENTER);
+        textFeld.setForeground(Color.RED);
+        this.add(textFeld);
 
-        FontMetrics fm = this.getFontMetrics(getFont());
+        // Hauptmenue knopf
 
+        int breiteKnopf = 100;
+        int hoeheKnopf = 100;
+
+        int xHauptmenue = this.getWidth() / 3;
+        int yHauptmenue = this.getHeight() - hoeheKnopf;
+        hauptmenue = new JButton("Hauptmenue");
+
+        hauptmenue.setBounds(xHauptmenue, yHauptmenue, breiteKnopf, hoeheKnopf);
+        hauptmenue.setHorizontalAlignment(SwingConstants.CENTER);
+        hauptmenue.setVerticalAlignment(SwingConstants.CENTER);
+        hauptmenue.addActionListener(e -> System.out.println("Wir wollen in hauptmenue"));
+        hauptmenue.setVisible(true);
+
+        this.add(hauptmenue);
+
+        // neustart Knopf
+
+        int xNeustart = this.getWidth() / 3 * 2 - breiteKnopf;
+        int yNeustart = this.getHeight() - hoeheKnopf;
+        neustart = new JButton("neustarten");
+
+        neustart.setBounds(xNeustart, yNeustart, breiteKnopf, hoeheKnopf);
+        neustart.setHorizontalAlignment(SwingConstants.CENTER);
+        neustart.setVerticalAlignment(SwingConstants.CENTER);
+        neustart.addActionListener(e -> System.out.println("Wirl wollen neustrten"));
+        neustart.setVisible(true);
+
+        this.add(neustart);
+    }
+
+    public void showVerloren() {
+        // mach alle element sichtbar
     }
 }
