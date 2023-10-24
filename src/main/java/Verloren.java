@@ -23,7 +23,7 @@ public class Verloren extends JPanel {
         int fontsize = (int) Math.round(hoeheText * 1.3);
 
         this.setOpaque(false);
-        this.setVisible(true);
+        this.setVisible(false);
         this.setBackground(Color.BLACK);
         this.setBounds(0, 0, spielfeldbreite, spielfeldhoehe);
 
@@ -35,6 +35,7 @@ public class Verloren extends JPanel {
         textFeld.setHorizontalAlignment(SwingConstants.CENTER);
         textFeld.setVerticalAlignment(SwingConstants.CENTER);
         textFeld.setForeground(Color.RED);
+        this.setVisible(false);
         this.add(textFeld);
 
         // Hauptmenue knopf
@@ -50,7 +51,7 @@ public class Verloren extends JPanel {
         hauptmenue.setHorizontalAlignment(SwingConstants.CENTER);
         hauptmenue.setVerticalAlignment(SwingConstants.CENTER);
         hauptmenue.addActionListener(e -> System.out.println("Wir wollen in hauptmenue"));
-        hauptmenue.setVisible(true);
+        hauptmenue.setVisible(false);
 
         this.add(hauptmenue);
 
@@ -64,12 +65,15 @@ public class Verloren extends JPanel {
         neustart.setHorizontalAlignment(SwingConstants.CENTER);
         neustart.setVerticalAlignment(SwingConstants.CENTER);
         neustart.addActionListener(e -> System.out.println("Wirl wollen neustrten"));
-        neustart.setVisible(true);
+        neustart.setVisible(false);
 
         this.add(neustart);
     }
 
     public void showVerloren() {
-        // mach alle element sichtbar
+        this.setVisible(true);
+        textFeld.setVisible(true);
+        neustart.setVisible(true);
+        hauptmenue.setVisible(true);
     }
 }

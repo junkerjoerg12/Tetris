@@ -367,7 +367,7 @@ public class Tile {
             // es wird geprüft, ob ein Subtile oben anstößt
             if (verlorenPruefen() == true) {
 
-                spielfeld.setVerlorenVisible();
+                spielfeld.verloren.showVerloren();
                 System.out.println("Sie haben verloren!!");
                 System.out.println("Ihr Highscore : " + spielfeld.getScore());
 
