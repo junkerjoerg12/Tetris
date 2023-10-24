@@ -64,7 +64,7 @@ public class Verloren extends JPanel {
         neustart.setBounds(xNeustart, yNeustart, breiteKnopf, hoeheKnopf);
         neustart.setHorizontalAlignment(SwingConstants.CENTER);
         neustart.setVerticalAlignment(SwingConstants.CENTER);
-        neustart.addActionListener(e -> System.out.println("Wirl wollen neustrten"));
+        neustart.addActionListener(e -> neustarten());
         neustart.setVisible(false);
 
         this.add(neustart);
@@ -75,5 +75,10 @@ public class Verloren extends JPanel {
         textFeld.setVisible(true);
         neustart.setVisible(true);
         hauptmenue.setVisible(true);
+    }
+
+    private void neustarten() {
+        System.out.println("Wir wollen neustarten und müssen dafür jetzt eine methode schreiben");
+
     }
 }
