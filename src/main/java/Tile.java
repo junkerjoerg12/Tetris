@@ -25,7 +25,7 @@ public class Tile {
         breite = spielfeld.getBreite();
         hoehe = spielfeld.getHoehe();
 
-        // x = 4;
+        x = 4;
         // einzelteile= new Subtile[1];
         // einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
         // addTile(spielfeld);
@@ -51,7 +51,7 @@ public class Tile {
         }
 
         if (timer == null) {
-            timerErstellen(1000);
+            timerErstellen(10);
         }
 
     }
@@ -76,7 +76,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[6];
-        int xKoord = random.nextInt(1, breite - 1) * 50;
+        int xKoord = random.nextInt(1, breite) * 50;
 
         // 4 Subtiles werden erstellt und ausgehend von der vorher
         // generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
@@ -98,7 +98,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[3];
-        int xKoord = random.nextInt(breite - 1) * 50;
+        int xKoord = random.nextInt(breite) * 50;
 
         // 4 Subtiles werden erstellt und ausgehend von der vorher
         // generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
@@ -117,7 +117,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite - 1) * 50;
+        int xKoord = random.nextInt(breite) * 50;
 
         // 4 Subtiles werden erstellt und ausgehend von der vorher
         // generierten KOordinate zu einer 1x4 Linie zusammen gebaut
@@ -137,7 +137,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite - 1) * 50;
+        int xKoord = random.nextInt(breite) * 50;
 
         // 4 Subtiles werden erstellt und ausgehend von der vorher
         // generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
@@ -157,7 +157,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite - 1) * 50;
+        int xKoord = random.nextInt(breite) * 50;
 
         // 4 Subtiles werden erstellt und ausgehend von der vorher
         // generierten KOordinate zu einer 1x4 Linie zusammen gebaut
@@ -177,7 +177,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite - 1) * 50;
+        int xKoord = random.nextInt(breite) * 50;
 
         // 4 Subtiles werden erstellt und ausgehend von der vorher
         // generierten KOordinate zu einem L zusammen gebaut
@@ -214,7 +214,7 @@ public class Tile {
         zugBeendet();
 
         try {
-            timer.zeitStoppen(1000);
+            timer.zeitStoppen(10);
         } catch (IllegalThreadStateException e) {
             System.out.println("Illigal THread State Exception");
         } catch (NullPointerException e) {

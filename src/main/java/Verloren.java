@@ -13,8 +13,11 @@ public class Verloren extends JPanel {
     JLabel textFeld;
     JButton hauptmenue;
     JButton neustart;
+    Background hintergrund;
 
     public Verloren(Background hintergrund, int spielfeldbreite, int spielfeldhoehe) {
+
+        this.hintergrund = hintergrund;
 
         int breiteText = spielfeldbreite;
         int hoeheText = (int) Math.round(spielfeldbreite / 5.1111111111);
@@ -79,6 +82,19 @@ public class Verloren extends JPanel {
 
     private void neustarten() {
         System.out.println("Wir wollen neustarten und müssen dafür jetzt eine methode schreiben");
+        hideVerloren();
+        hintergrund.getMainWindow().getSpielfeld().deletAllKoords();
+        hintergrund.getMainWindow().getSpielfeld().deletAllTiles();
+        hintergrund.getMainWindow().getSpielfeld().setScoreZero();
+        hintergrund.getMainWindow().getSpielfeld().repaint();
+        hintergrund.getMainWindow().spielen();
+        hintergrund.scoreUpddate();
+    }
 
+    private void hideVerloren() {
+        this.setVisible(false);
+        textFeld.setVisible(false);
+        neustart.setVisible(false);
+        hauptmenue.setVisible(false);
     }
 }

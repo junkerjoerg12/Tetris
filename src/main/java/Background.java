@@ -66,8 +66,8 @@ public class Background extends JPanel {
     }
 
     public void scoreUpddate() {
-        scoreFeld.setText("neuer Score: " + mainWindow.getSpielfeld().getScore());
-        highscoreFeld.setText("Score: " + mainWindow.getSpielfeld().getHighscore());
+        scoreFeld.setText("Score: " + mainWindow.getSpielfeld().getScore());
+        highscoreFeld.setText("HighScore: " + mainWindow.getSpielfeld().getHighscore());
     }
 
     public MainWindow getMainWindow() {

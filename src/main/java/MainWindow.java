@@ -51,6 +51,8 @@ public class MainWindow extends JFrame implements KeyListener {
 
     public void spielen() {
 
+        System.out.println("Spiel begonnen");
+
         // wieder auf 6 zurückändern
         x = random.nextInt(6);
 
@@ -71,44 +73,45 @@ public class MainWindow extends JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
 
-        // try{
-        if (e.getKeyCode() == 40) { // Form wird eine Zeile nach unten versetzt
+        try {
+            if (e.getKeyCode() == 40) { // Form wird eine Zeile nach unten versetzt
 
-            tile.getTimerThread().interrupt();
-            tile.deleteTimer();
+                System.out.println("Key input detected");
 
-            tile.changeLocationDown(0, 50);
+                tile.getTimerThread().interrupt();
+                tile.deleteTimer();
+                tile.changeLocationDown(0, 50);
 
-            if (tile.getTimerThread() == null) {
-                tile.timerErstellen(1000);
+                if (tile.getTimerThread() == null) {
+                    tile.timerErstellen(10);
+                }
+
+                spielfeld.repaint();
+
+            } else if (e.getKeyCode() == 37) { // Form wird nach links verschoben
+
+                if (tile.kollisionLinks() == false) {
+                    tile.changeLocation(-50, 0);
+                }
+
+                spielfeld.repaint();
+
+            } else if (e.getKeyCode() == 39) { // Form wird nach rechts verschoben
+
+                if (tile.kollisionRechts() == false) {
+                    tile.changeLocation(50, 0);
+                }
+                spielfeld.repaint();
+
+            } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinn gedreht
+                tile.mitUhrDrehen();
+
+                spielfeld.repaint();
             }
 
-            spielfeld.repaint();
-
-        } else if (e.getKeyCode() == 37) { // Form wird nach links verschoben
-
-            if (tile.kollisionLinks() == false) {
-                tile.changeLocation(-50, 0);
-            }
-
-            spielfeld.repaint();
-
-        } else if (e.getKeyCode() == 39) { // Form wird nach rechts verschoben
-
-            if (tile.kollisionRechts() == false) {
-                tile.changeLocation(50, 0);
-            }
-            spielfeld.repaint();
-
-        } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinn gedreht
-            tile.mitUhrDrehen();
-
-            spielfeld.repaint();
+        } catch (NullPointerException exception) {
+            System.out.println("Du hast schon längst verloren");
         }
-
-        // }catch(NullPointerException exception){
-        // System.out.println("Du hast schon längst verloren");
-        // }
     }
 
     @Override
@@ -138,4 +141,5 @@ public class MainWindow extends JFrame implements KeyListener {
     public Spielfeld getSpielfeld() {
         return spielfeld;
     }
+
 }

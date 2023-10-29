@@ -184,4 +184,25 @@ public class Spielfeld extends JPanel {
     public void setVerlorenVisible() {
         verloren.setVisible(true);
     }
+
+    public void setScoreZero() {
+        score = 0;
+    }
+
+    public void deletAllTiles() {
+        int laenge = speicherTiles.size();
+
+        for (int i = 0; i < laenge; i++) {
+            speicherTiles.get(0).setVisible(false);
+            speicherTiles.remove(0);
+        }
+    }
+
+    public void deletAllKoords() {
+        int laenge = speicherKoords.size();
+
+        for (int i = 0; i < laenge; i++) {
+            speicherKoords.remove(0);
+        }
+    }
 }
