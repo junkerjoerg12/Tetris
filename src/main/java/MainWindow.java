@@ -29,7 +29,7 @@ public class MainWindow extends JFrame implements KeyListener {
 
         this.hoehe = hoehe;
 
-        this.addKeyListener(this);
+
         this.setLayout(null);
         this.setUndecorated(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -50,6 +50,7 @@ public class MainWindow extends JFrame implements KeyListener {
     }
 
     public void spielen() {
+		this.addKeyListener(this);
 
         System.out.println("Spiel begonnen");
 
