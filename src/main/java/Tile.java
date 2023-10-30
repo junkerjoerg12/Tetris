@@ -20,6 +20,8 @@ public class Tile {
     ZeitMesser timer;
     Thread thread1;
 
+    private final int timerZeit = 1000;
+
     public Tile(Spielfeld spielfeld, int x) {
         this.spielfeld = spielfeld;
         breite = spielfeld.getBreite();
@@ -214,7 +216,7 @@ public class Tile {
         zugBeendet();
 
         try {
-            timer.zeitStoppen(10);
+            timer.zeitStoppen(timerZeit);
         } catch (IllegalThreadStateException e) {
             System.out.println("Illigal THread State Exception");
         } catch (NullPointerException e) {

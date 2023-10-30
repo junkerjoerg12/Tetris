@@ -1,7 +1,5 @@
 package main.java;
 
-import java.awt.Dimension;
-//import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -22,13 +20,14 @@ public class MainWindow extends JFrame implements KeyListener {
     int hoehe;
     Tile tile;
 
+    private final int timerZeit = 1000;
+
     // Kostruktor
     public MainWindow(int breite, int hoehe) {
 
         this.breite = breite;
 
         this.hoehe = hoehe;
-
 
         this.setLayout(null);
         this.setUndecorated(true);
@@ -47,12 +46,10 @@ public class MainWindow extends JFrame implements KeyListener {
         hintergrund.addScoreFeld();
         hintergrund.addHighscoreFeld();
 
+        this.addKeyListener(this);
     }
 
     public void spielen() {
-		this.addKeyListener(this);
-
-        System.out.println("Spiel begonnen");
 
         // wieder auf 6 zurückändern
         x = random.nextInt(6);
@@ -74,22 +71,26 @@ public class MainWindow extends JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
 
+        System.out.println("Key input detected");
+
         try {
             if (e.getKeyCode() == 40) { // Form wird eine Zeile nach unten versetzt
 
-                System.out.println("Key input detected");
+                System.out.println("Move down");
 
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();
                 tile.changeLocationDown(0, 50);
 
                 if (tile.getTimerThread() == null) {
-                    tile.timerErstellen(10);
+                    tile.timerErstellen(timerZeit);
                 }
 
                 spielfeld.repaint();
 
             } else if (e.getKeyCode() == 37) { // Form wird nach links verschoben
+
+                System.out.println("Move left");
 
                 if (tile.kollisionLinks() == false) {
                     tile.changeLocation(-50, 0);
@@ -99,12 +100,17 @@ public class MainWindow extends JFrame implements KeyListener {
 
             } else if (e.getKeyCode() == 39) { // Form wird nach rechts verschoben
 
+                System.out.println("Move right");
+
                 if (tile.kollisionRechts() == false) {
                     tile.changeLocation(50, 0);
                 }
                 spielfeld.repaint();
 
             } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinn gedreht
+
+                System.out.println("turn");
+
                 tile.mitUhrDrehen();
 
                 spielfeld.repaint();
