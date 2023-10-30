@@ -53,7 +53,7 @@ public class Tile {
         }
 
         if (timer == null) {
-            timerErstellen(10);
+            timerErstellen(timerZeit);
         }
 
     }

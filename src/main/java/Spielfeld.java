@@ -1,8 +1,10 @@
 package main.java;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+
 import java.util.ArrayList;
+
+import javax.swing.JPanel;
 
 public class Spielfeld extends JPanel {
 
@@ -50,6 +52,8 @@ public class Spielfeld extends JPanel {
 
         this.setBounds((hintergrund.getWidth() - this.breite) / 2, (hintergrund.getHeight() - this.hoehe) / 2,
                 this.breite + 1, this.hoehe + 1);
+
+        // this.addKeyListener(this);
 
     }
 
@@ -205,4 +209,5 @@ public class Spielfeld extends JPanel {
             speicherKoords.remove(0);
         }
     }
+
 }

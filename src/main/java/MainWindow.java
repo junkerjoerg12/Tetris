@@ -60,16 +60,19 @@ public class MainWindow extends JFrame implements KeyListener {
 
         repaint();
 
+        requestFocus();
+
     }
 
     // User Input
+
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
     @Override
-    public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links ==37, nach rechts == 39
+    public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
 
         System.out.println("Key input detected");
 
@@ -107,7 +110,7 @@ public class MainWindow extends JFrame implements KeyListener {
                 }
                 spielfeld.repaint();
 
-            } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinn gedreht
+            } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinngedreht
 
                 System.out.println("turn");
 
