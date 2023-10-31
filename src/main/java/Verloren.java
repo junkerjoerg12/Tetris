@@ -53,7 +53,7 @@ public class Verloren extends JPanel {
         hauptmenue.setBounds(xHauptmenue, yHauptmenue, breiteKnopf, hoeheKnopf);
         hauptmenue.setHorizontalAlignment(SwingConstants.CENTER);
         hauptmenue.setVerticalAlignment(SwingConstants.CENTER);
-        hauptmenue.addActionListener(e -> System.out.println("Wir wollen in hauptmenue"));
+        hauptmenue.addActionListener(e -> insHauptmenue());
         hauptmenue.setVisible(false);
 
         this.add(hauptmenue);
@@ -96,5 +96,11 @@ public class Verloren extends JPanel {
         textFeld.setVisible(false);
         neustart.setVisible(false);
         hauptmenue.setVisible(false);
+    }
+
+    private void insHauptmenue() {
+        System.out.println("wir wollen ins Hauptmenue");
+        // Quasi alle UI objekte löschen, nur Highscore speichern und HIntergrund
+        // behalten
     }
 }

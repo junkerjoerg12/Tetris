@@ -37,6 +37,9 @@ public class MainWindow extends JFrame implements KeyListener {
         this.setResizable(false);
         this.setVisible(true);
 
+    }
+
+    public void uiErstellen() {
         hintergrund = new Background(this, breite, hoehe);
         this.add(hintergrund);
 
@@ -47,6 +50,7 @@ public class MainWindow extends JFrame implements KeyListener {
         hintergrund.addHighscoreFeld();
 
         this.addKeyListener(this);
+
     }
 
     public void spielen() {
