@@ -13,6 +13,7 @@ public class Background extends JPanel {
 
     JLabel scoreFeld;
     JLabel highscoreFeld;
+    MainMenue mainMenue;
 
     public Background(MainWindow mainWindow, int breite, int hoehe) {
 
@@ -29,6 +30,11 @@ public class Background extends JPanel {
         extiButton = new ExitButton(this);
 
         this.add(extiButton);
+
+        String spiele[] = { "Tetris" };
+        int highscores[] = { 0 };
+
+        mainMenue = new MainMenue(spiele, this, highscores);
 
     }
 
@@ -55,7 +61,6 @@ public class Background extends JPanel {
         int y = mainWindow.getHintergrund().getHeight() / 2 + hoehe;
 
         highscoreFeld.setBounds(x, y, breite, hoehe);
-
         this.add(highscoreFeld);
     }
 

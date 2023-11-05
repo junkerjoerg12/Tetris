@@ -87,7 +87,7 @@ public class Verloren extends JPanel {
         hintergrund.getMainWindow().getSpielfeld().deletAllTiles();
         hintergrund.getMainWindow().getSpielfeld().setScoreZero();
         hintergrund.getMainWindow().getSpielfeld().repaint();
-        hintergrund.getMainWindow().spielen();
+        hintergrund.getMainWindow().tetrisSpielen();
         hintergrund.scoreUpddate();
     }
 

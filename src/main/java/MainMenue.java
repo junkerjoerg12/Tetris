@@ -1,7 +1,5 @@
 package main.java;
 
-import java.awt.Dimension;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,39 +9,50 @@ public class MainMenue extends JPanel {
     private int anzahlSpiele;
     private JButton[] auswahlKnoepfe;
     private JLabel[] highscoreAnnzeigen;
-    private MainWindow mainWindow;
+    private Background hintergrund;
 
-    public MainMenue(String[] spielnamen, MainWindow mainWindow, int[] highscores) {
+    public MainMenue(String[] spielnamen, Background hintergrund, int[] highscores) {
 
         this.anzahlSpiele = spielnamen.length;
-        this.mainWindow = mainWindow;
+        this.hintergrund = hintergrund;
 
-        this.setPreferredSize(new Dimension(mainWindow.getWidth(), mainWindow.getHeight()));
-        mainWindow.add(this);
+        this.setBounds(0, 0, hintergrund.getWidth(), hintergrund.getHeight());
 
         auswahlKnoepfe = new JButton[anzahlSpiele];
         highscoreAnnzeigen = new JLabel[anzahlSpiele];
 
         for (int i = 0; i < auswahlKnoepfe.length; i++) {
 
+            auswahlKnoepfe[i] = new JButton();
+            highscoreAnnzeigen[i] = new JLabel();
+
             JButton knopfSpeicher = auswahlKnoepfe[i];
 
             auswahlKnoepfe[i].setText(spielnamen[i]);
             auswahlKnoepfe[i].addActionListener(e -> knopfgedrueckt(knopfSpeicher));
-            this.add(auswahlKnoepfe[i]);
-
             highscoreAnnzeigen[i].setText("Highscore: " + highscores[i]);
+
+            auswahlKnoepfe[i].setBounds(500, 500, 500, 500);
+            highscoreAnnzeigen[i].setBounds(300, 0, 200, 200);
+
+            this.add(auswahlKnoepfe[i]);
             this.add(highscoreAnnzeigen[i]);
 
-        }
+            System.out.println(spielnamen[i]);
+            System.out.println(highscores[i]);
 
+        }
+        setAllVisible(true);
+
+        hintergrund.add(this);
     }
 
     private void knopfgedrueckt(JButton knopf) {
         System.out.println("Wir wollen " + knopf.getText() + " spielen");
         // muss noch tatsächlich ausgearbeitet werden
-
-        mainWindow.spielen();
+        setAllVisible(false);
+        hintergrund.getMainWindow().spielfeldErstellen();
+        hintergrund.getMainWindow().tetrisSpielen();
     }
 
     public void setAllVisible(boolean visible) {

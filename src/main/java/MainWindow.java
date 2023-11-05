@@ -11,8 +11,8 @@ public class MainWindow extends JFrame implements KeyListener {
 
     Random random = new Random();
 
-    Spielfeld spielfeld;
-    Background hintergrund;
+    private Spielfeld spielfeld;
+    private Background hintergrund;
 
     int x;
 
@@ -26,7 +26,6 @@ public class MainWindow extends JFrame implements KeyListener {
     public MainWindow(int breite, int hoehe) {
 
         this.breite = breite;
-
         this.hoehe = hoehe;
 
         this.setLayout(null);
@@ -37,11 +36,14 @@ public class MainWindow extends JFrame implements KeyListener {
         this.setResizable(false);
         this.setVisible(true);
 
-    }
+        System.out.println(breite + " " + hoehe);
 
-    public void uiErstellen() {
         hintergrund = new Background(this, breite, hoehe);
         this.add(hintergrund);
+
+    }
+
+    public void spielfeldErstellen() {
 
         spielfeld = new Spielfeld(hintergrund, breite, hoehe);
         hintergrund.add(spielfeld);
@@ -53,7 +55,7 @@ public class MainWindow extends JFrame implements KeyListener {
 
     }
 
-    public void spielen() {
+    public void tetrisSpielen() {
 
         // wieder auf 6 zurückändern
         x = random.nextInt(6);
@@ -78,12 +80,8 @@ public class MainWindow extends JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
 
-        System.out.println("Key input detected");
-
         try {
             if (e.getKeyCode() == 40) { // Form wird eine Zeile nach unten versetzt
-
-                System.out.println("Move down");
 
                 tile.getTimerThread().interrupt();
                 tile.deleteTimer();
@@ -97,8 +95,6 @@ public class MainWindow extends JFrame implements KeyListener {
 
             } else if (e.getKeyCode() == 37) { // Form wird nach links verschoben
 
-                System.out.println("Move left");
-
                 if (tile.kollisionLinks() == false) {
                     tile.changeLocation(-50, 0);
                 }
@@ -107,16 +103,12 @@ public class MainWindow extends JFrame implements KeyListener {
 
             } else if (e.getKeyCode() == 39) { // Form wird nach rechts verschoben
 
-                System.out.println("Move right");
-
                 if (tile.kollisionRechts() == false) {
                     tile.changeLocation(50, 0);
                 }
                 spielfeld.repaint();
 
             } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinngedreht
-
-                System.out.println("turn");
 
                 tile.mitUhrDrehen();
 
@@ -138,7 +130,7 @@ public class MainWindow extends JFrame implements KeyListener {
 
         // darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
         if (verloren == false) {
-            spielen();
+            tetrisSpielen();
         } else {
             System.out.println("hier kommt nichts mehr");
         }
