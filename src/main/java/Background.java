@@ -73,4 +73,8 @@ public class Background extends JPanel {
         return mainWindow;
     }
 
+    public MainMenue getMainmenue() {
+        return mainMenue;
+    }
+
 }

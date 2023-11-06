@@ -81,7 +81,6 @@ public class Verloren extends JPanel {
     }
 
     private void neustarten() {
-        System.out.println("Wir wollen neustarten und müssen dafür jetzt eine methode schreiben");
         hideVerloren();
         hintergrund.getMainWindow().getSpielfeld().deletAllKoords();
         hintergrund.getMainWindow().getSpielfeld().deletAllTiles();
@@ -99,7 +98,13 @@ public class Verloren extends JPanel {
     }
 
     private void insHauptmenue() {
-        System.out.println("wir wollen ins Hauptmenue");
+        hideVerloren();
+        hintergrund.getMainWindow().getSpielfeld().deletAllKoords();
+        hintergrund.getMainWindow().getSpielfeld().deletAllTiles();
+        hintergrund.getMainWindow().getSpielfeld().setScoreZero();
+        hintergrund.getMainWindow().deletSpielfeld();
+        hintergrund.getMainmenue().setAllVisible(true);
+
         // Quasi alle UI objekte löschen, nur Highscore speichern und HIntergrund
         // behalten
     }

@@ -148,4 +148,8 @@ public class MainWindow extends JFrame implements KeyListener {
         return spielfeld;
     }
 
+    public void deletSpielfeld() {
+        this.spielfeld = null;
+    }
+
 }
