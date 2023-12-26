@@ -81,6 +81,7 @@ public class MainWindow extends JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
 
         try {
+
             if (e.getKeyCode() == 40) { // Form wird eine Zeile nach unten versetzt
 
                 tile.getTimerThread().interrupt();

@@ -1,5 +1,8 @@
 package main.java;
 
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,6 +15,8 @@ public class MainMenue extends JPanel {
     private Background hintergrund;
 
     public MainMenue(String[] spielnamen, Background hintergrund, int[] highscores) {
+
+        // setLayout(new LayoutManager(FlowLayout.LEFT,20,20));
 
         this.anzahlSpiele = spielnamen.length;
         this.hintergrund = hintergrund;
@@ -40,11 +45,15 @@ public class MainMenue extends JPanel {
 
             System.out.println(spielnamen[i]);
             System.out.println(highscores[i]);
-
+            auswahlKnoepfe[i].requestFocus();
         }
+        hintergrund.add(this);
         setAllVisible(true);
 
-        hintergrund.add(this);
+        System.out.println("Main Mennue: " + this.toString());
+        System.out.println("TetrisKnopF: " + auswahlKnoepfe[0].toString());
+        repaint();
+        requestFocus();
     }
 
     private void knopfgedrueckt(JButton knopf) {
@@ -56,7 +65,7 @@ public class MainMenue extends JPanel {
     }
 
     public void setAllVisible(boolean visible) {
-
+        System.out.println("Sichtbar gesetzt!");
         for (int i = 0; i < auswahlKnoepfe.length; i++) {
             auswahlKnoepfe[i].setVisible(visible);
             highscoreAnnzeigen[i].setVisible(visible);
