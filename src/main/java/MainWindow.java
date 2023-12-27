@@ -74,48 +74,51 @@ public class MainWindow extends JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
     public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
 
         try {
+            switch (e.getKeyCode()) {
+                case 40:
+                    tile.getTimerThread().interrupt();
+                    tile.deleteTimer();
+                    tile.changeLocationDown(0, 50);
 
-            if (e.getKeyCode() == 40) { // Form wird eine Zeile nach unten versetzt
+                    if (tile.getTimerThread() == null) {
+                        tile.timerErstellen(timerZeit);
+                    }
 
-                tile.getTimerThread().interrupt();
-                tile.deleteTimer();
-                tile.changeLocationDown(0, 50);
+                    spielfeld.repaint();
 
-                if (tile.getTimerThread() == null) {
-                    tile.timerErstellen(timerZeit);
-                }
+                    break;
+                case (37):
 
-                spielfeld.repaint();
+                    if (tile.kollisionLinks() == false) {
+                        tile.changeLocation(-50, 0);
+                    }
 
-            } else if (e.getKeyCode() == 37) { // Form wird nach links verschoben
+                    spielfeld.repaint();
 
-                if (tile.kollisionLinks() == false) {
-                    tile.changeLocation(-50, 0);
-                }
+                    break;
+                case (39):
 
-                spielfeld.repaint();
+                    if (tile.kollisionRechts() == false) {
+                        tile.changeLocation(50, 0);
+                    }
+                    spielfeld.repaint();
 
-            } else if (e.getKeyCode() == 39) { // Form wird nach rechts verschoben
+                    break;
+                case (38):
+                    tile.mitUhrDrehen();
 
-                if (tile.kollisionRechts() == false) {
-                    tile.changeLocation(50, 0);
-                }
-                spielfeld.repaint();
+                    spielfeld.repaint();
 
-            } else if (e.getKeyCode() == 38) { // Form wird um 90°im Uhrzeigersinngedreht
-
-                tile.mitUhrDrehen();
-
-                spielfeld.repaint();
+                    break;
+                default:
+                    break;
             }
-
         } catch (NullPointerException exception) {
             System.out.println("Du hast schon längst verloren");
         }
@@ -123,12 +126,10 @@ public class MainWindow extends JFrame implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     public void deleteTile(boolean verloren) {
         tile = null;
-
         // darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
         if (verloren == false) {
             tetrisSpielen();
