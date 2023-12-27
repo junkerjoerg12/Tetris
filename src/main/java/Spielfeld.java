@@ -1,63 +1,61 @@
 package main.java;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+
 import java.util.ArrayList;
+
+import javax.swing.JPanel;
 
 public class Spielfeld extends JPanel {
 
     int anzahlSpalten;
     int anzahlZeilen;
     int score;
+    int highscore;
     int breite;
     int hoehe;
+
+    Verloren verloren;
 
     ArrayList<String> speicherKoords = new ArrayList<String>();
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
 
-
     Background hintergrund;
-
-    
 
     public Spielfeld(Background hintergrund, int breite, int hoehe) {
 
         anzahlSpalten = breite;
         anzahlZeilen = hoehe;
 
-        this.breite = anzahlSpalten*50;
-        this.hoehe = anzahlZeilen*50;
+        this.breite = anzahlSpalten * 50;
+        this.hoehe = anzahlZeilen * 50;
 
-
-        this.hintergrund= hintergrund;
+        this.hintergrund = hintergrund;
 
         // kein Layout manager d.h. alle Koordinaten müssen absolut eingetragen werden
         this.setLayout(null);
 
-        this.setPreferredSize(new Dimension(this.breite+1, this.hoehe+1));
+        this.setPreferredSize(new Dimension(this.breite + 1, this.hoehe + 1));
+
+        verloren = new Verloren(hintergrund, this.breite, this.hoehe);
+        this.add(verloren);
 
         // Das Gitter im Hintergrund wird gezeichent
-        for (int i = 0; i < anzahlSpalten+1; i++) {
+        for (int i = 0; i < anzahlSpalten + 1; i++) {
             Line x = new Line(true, i * 50, anzahlZeilen * 50);
             this.add(x);
         }
-        for (int i = 0; i < anzahlZeilen+1; i++) {
+        for (int i = 0; i < anzahlZeilen + 1; i++) {
             Line x = new Line(false, i * 50, anzahlSpalten * 50);
             this.add(x);
         }
 
+        this.setBounds((hintergrund.getWidth() - this.breite) / 2, (hintergrund.getHeight() - this.hoehe) / 2,
+                this.breite + 1, this.hoehe + 1);
 
-        this.setBounds((hintergrund.getWidth()-this.breite)/2, (hintergrund.getHeight()-this.hoehe)/2, this.breite+1, this.hoehe+1);
-
-
-
-        //this.set
-
-
+        // this.addKeyListener(this);
 
     }
-
-
 
     public void speichern(Subtile subtile) {
         // speichert x und y als String im Speicher
@@ -71,14 +69,10 @@ public class Spielfeld extends JPanel {
         }
     }
 
-
-
     public void loeschen(int x, int y) {
         // löscht den String, der x und y enthält aus dem Speicher
         speicherKoords.remove(x + " " + y);
     }
-
-
 
     public boolean vergleichen(int x, int y) {
         if (speicherKoords.contains(x + " " + y)) {
@@ -86,7 +80,6 @@ public class Spielfeld extends JPanel {
         }
         return false;
     }
-
 
     public int getIndex(int x, int y) {
         // gibt den index zurück, auf dem das Subtile und die zugehörige koordinate
@@ -98,7 +91,6 @@ public class Spielfeld extends JPanel {
 
     }
 
-    
     public void reihePruefen() {
         // Überprüft jede reihe, ob sie voll ist
 
@@ -118,18 +110,18 @@ public class Spielfeld extends JPanel {
                 }
 
             }
-            
 
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
                 reiheEntfernen(i * 50);
                 aufrutschen(i * 50);
 
-                //weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden 
+                // weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden
                 i++;
 
-                score += breite/50;
-                
+                score += breite / 50;
+
+                hintergrund.scoreUpddate();
 
             }
         }
@@ -149,7 +141,6 @@ public class Spielfeld extends JPanel {
         }
     }
 
-
     public void aufrutschen(int y) {
         // Versciebt Subtiles nach unten, wenn eine Reihe gelöscht wurde und ändert die
         // Koordinaten im String
@@ -161,8 +152,6 @@ public class Spielfeld extends JPanel {
             }
         }
     }
-
-
 
     public void deleteTile(boolean verloren) {
         hintergrund.getMainWindow().deleteTile(verloren);
@@ -180,7 +169,45 @@ public class Spielfeld extends JPanel {
         return hoehe;
     }
 
-    public int getScore(){
+    public int getScore() {
         return score;
     }
+
+    public int getHighscore() {
+
+        if (score > highscore) {
+            highscore = score;
+        }
+        return highscore;
+    }
+
+    public Background getHIntergrund() {
+        return hintergrund;
+    }
+
+    public void setVerlorenVisible() {
+        verloren.setVisible(true);
+    }
+
+    public void setScoreZero() {
+        score = 0;
+    }
+
+    public void deletAllTiles() {
+        int laenge = speicherTiles.size();
+
+        for (int i = 0; i < laenge; i++) {
+            speicherTiles.get(0).setVisible(false);
+            speicherTiles.remove(0);
+        }
+    }
+
+    public void deletAllKoords() {
+        int laenge = speicherKoords.size();
+
+        for (int i = 0; i < laenge; i++) {
+            speicherKoords.remove(0);
+        }
+    }
+
 }
