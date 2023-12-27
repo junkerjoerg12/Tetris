@@ -1,5 +1,6 @@
 package main.test;
 
+import main.java.Background;
 import main.java.MainMenue;
 import main.java.MainWindow;
 
@@ -23,7 +24,8 @@ public class Test {
          * 
          */
 
-        MainWindow mainWindow = new MainWindow(20, 20);
+        // MainWindow mainWindow = new MainWindow(20, 20);
+        new Background(null, 0, 0);
 
     }
 }

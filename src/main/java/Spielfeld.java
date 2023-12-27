@@ -195,7 +195,13 @@ public class Spielfeld extends JPanel implements KeyListener {
 
                 score += breite / 50;
 
-                hintergrund.scoreUpddate();
+                // Sollte dringlichst wieder rein!!
+
+                //
+
+                //
+
+                // hintergrund.scoreUpddate();
 
             }
         }
@@ -283,24 +289,4 @@ public class Spielfeld extends JPanel implements KeyListener {
             speicherKoords.remove(0);
         }
     }
-
-    // @Override
-    // public void keyTyped(KeyEvent e) {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
-    // }
-
-    // @Override
-    // public void keyPressed(KeyEvent e) {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
-    // }
-
-    // @Override
-    // public void keyReleased(KeyEvent e) {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method
-    // 'keyReleased'");
-    // }
-
 }

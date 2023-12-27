@@ -20,8 +20,6 @@ public class MainWindow extends JFrame {
     int hoehe;
     Tile tile;
 
-    private final int timerZeit = 1000;
-
     // Kostruktor
     public MainWindow(int breite, int hoehe) {
 
@@ -43,33 +41,16 @@ public class MainWindow extends JFrame {
 
     }
 
-    public void spielfeldErstellen() {
-
-        spielfeld = new Spielfeld(hintergrund, breite, hoehe);
-        hintergrund.add(spielfeld);
-
-        hintergrund.addScoreFeld();
-        hintergrund.addHighscoreFeld();
-
-        // this.addKeyListener(this);
-
-    }
+    // public void spielfeldErstellen() {
+    // spielfeld = new Spielfeld(hintergrund, breite, hoehe);
+    // hintergrund.add(spielfeld);
+    // // hintergrund.addScoreFeld();
+    // // hintergrund.addHighscoreFeld();
+    // }
 
     public void tetrisSpielen() {
-
         spielfeld.spawnTile();
-        System.out.println("ja oder nein...");
-
-        // tile = new Tile(spielfeld, random.nextInt(6)); // erstellt ein neues tile,
-        // weches wird vai random entschieden
-
-        // repaint();
-        // requestFocus();
-        // spielfeld.requestFocus();
-
     }
-
-    // User Input
 
     public void deleteTile(boolean verloren) {
         tile = null;

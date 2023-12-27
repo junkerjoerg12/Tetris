@@ -15,6 +15,8 @@ public class Background extends JPanel {
     JLabel highscoreFeld;
     MainMenue mainMenue;
 
+    private Spielfeld spielfeld;
+
     public Background(MainWindow mainWindow, int breite, int hoehe) {
 
         this.mainWindow = mainWindow;
@@ -38,36 +40,45 @@ public class Background extends JPanel {
 
     }
 
-    public void addScoreFeld() {
-
-        scoreFeld = new JLabel("Score: " + mainWindow.getSpielfeld().getScore());
-
-        int hoehe = 100;
-        int breite = (mainWindow.getHintergrund().getWidth()) / 2;
-        int x = mainWindow.getSpielfeld().getX() + mainWindow.getSpielfeld().getWidth();
-        int y = mainWindow.getHintergrund().getHeight() / 2 - hoehe;
-
-        scoreFeld.setBounds(x, y, breite, hoehe);
-        this.add(scoreFeld);
+    public void spielfeldErstellen() {
+        spielfeld = new Spielfeld(this, 20, 20);
+        add(spielfeld);
     }
 
-    public void addHighscoreFeld() {
+    // public void addScoreFeld() {
 
-        highscoreFeld = new JLabel("Highscore: " + mainWindow.getSpielfeld().getHighscore());
+    // scoreFeld = new JLabel("Score: " + mainWindow.getSpielfeld().getScore());
 
-        int hoehe = 100;
-        int breite = (mainWindow.getHintergrund().getWidth()) / 2;
-        int x = mainWindow.getSpielfeld().getX() + mainWindow.getSpielfeld().getWidth();
-        int y = mainWindow.getHintergrund().getHeight() / 2 + hoehe;
+    // int hoehe = 100;
+    // int breite = (mainWindow.getHintergrund().getWidth()) / 2;
+    // int x = mainWindow.getSpielfeld().getX() +
+    // mainWindow.getSpielfeld().getWidth();
+    // int y = mainWindow.getHintergrund().getHeight() / 2 - hoehe;
 
-        highscoreFeld.setBounds(x, y, breite, hoehe);
-        this.add(highscoreFeld);
-    }
+    // scoreFeld.setBounds(x, y, breite, hoehe);
+    // this.add(scoreFeld);
+    // }
 
-    public void scoreUpddate() {
-        scoreFeld.setText("Score: " + mainWindow.getSpielfeld().getScore());
-        highscoreFeld.setText("HighScore: " + mainWindow.getSpielfeld().getHighscore());
-    }
+    // public void addHighscoreFeld() {
+
+    // highscoreFeld = new JLabel("Highscore: " +
+    // mainWindow.getSpielfeld().getHighscore());
+
+    // int hoehe = 100;
+    // int breite = (mainWindow.getHintergrund().getWidth()) / 2;
+    // int x = mainWindow.getSpielfeld().getX() +
+    // mainWindow.getSpielfeld().getWidth();
+    // int y = mainWindow.getHintergrund().getHeight() / 2 + hoehe;
+
+    // highscoreFeld.setBounds(x, y, breite, hoehe);
+    // this.add(highscoreFeld);
+    // }
+
+    // public void scoreUpddate() {
+    // scoreFeld.setText("Score: " + mainWindow.getSpielfeld().getScore());
+    // highscoreFeld.setText("HighScore: " +
+    // mainWindow.getSpielfeld().getHighscore());
+    // }
 
     public MainWindow getMainWindow() {
         return mainWindow;

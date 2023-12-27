@@ -60,7 +60,7 @@ public class MainMenue extends JPanel {
         System.out.println("Wir wollen " + knopf.getText() + " spielen");
         // muss noch tatsächlich ausgearbeitet werden
         setAllVisible(false);
-        hintergrund.getMainWindow().spielfeldErstellen();
+        hintergrund.spielfeldErstellen();
         hintergrund.getMainWindow().tetrisSpielen();
     }
 
