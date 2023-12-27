@@ -1,12 +1,22 @@
 package main.java;
 
 import java.awt.Dimension;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
-public class Spielfeld extends JPanel {
+public class Spielfeld extends JPanel implements KeyListener {
+
+    // Key Codes für die Pfeiltasten
+    private final int down = 40;
+    private final int right = 39;
+    private final int left = 37;
+    private final int turn = 38;
+
+    private final int timerZeit = 1000;
 
     int anzahlSpalten;
     int anzahlZeilen;
@@ -19,8 +29,11 @@ public class Spielfeld extends JPanel {
 
     ArrayList<String> speicherKoords = new ArrayList<String>();
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
+    Tile currentTile;
 
     Background hintergrund;
+
+    Random random = new Random();
 
     public Spielfeld(Background hintergrund, int breite, int hoehe) {
 
@@ -53,8 +66,69 @@ public class Spielfeld extends JPanel {
         this.setBounds((hintergrund.getWidth() - this.breite) / 2, (hintergrund.getHeight() - this.hoehe) / 2,
                 this.breite + 1, this.hoehe + 1);
 
-        // this.addKeyListener(this);
+        this.addKeyListener(this);
+        setFocusable(true);
+        requestFocus();
+    }
 
+    public void spawnTile() {
+        currentTile = new Tile(this, random.nextInt(6));
+        repaint();
+        requestFocus();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
+        System.out.println("Key has been pressed: " + e);
+
+        try {
+            switch (e.getKeyCode()) {
+                case down:
+                    // System.out.println("down");
+                    currentTile.getTimerThread().interrupt();
+                    currentTile.deleteTimer();
+                    currentTile.changeLocationDown(0, 50);
+
+                    if (currentTile.getTimerThread() == null) {
+                        currentTile.timerErstellen(timerZeit);
+                    }
+
+                    this.repaint();
+                    break;
+
+                case left:
+                    System.out.println("Left");
+                    if (currentTile.kollisionLinks() == false) {
+                        currentTile.changeLocation(-50, 0);
+                    }
+                    this.repaint();
+                    break;
+
+                case right:
+                    System.out.println("right");
+                    if (currentTile.kollisionRechts() == false) {
+                        currentTile.changeLocation(50, 0);
+                    }
+                    this.repaint();
+                    break;
+
+                case turn:
+                    System.out.println("turn");
+                    currentTile.mitUhrDrehen();
+                    this.repaint();
+                    break;
+            }
+        } catch (NullPointerException exception) {
+            System.out.println("Du hast schon längst verloren");
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 
     public void speichern(Subtile subtile) {
@@ -209,5 +283,24 @@ public class Spielfeld extends JPanel {
             speicherKoords.remove(0);
         }
     }
+
+    // @Override
+    // public void keyTyped(KeyEvent e) {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+    // }
+
+    // @Override
+    // public void keyPressed(KeyEvent e) {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+    // }
+
+    // @Override
+    // public void keyReleased(KeyEvent e) {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method
+    // 'keyReleased'");
+    // }
 
 }
