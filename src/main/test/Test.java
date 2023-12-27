@@ -25,7 +25,7 @@ public class Test {
          */
 
         // MainWindow mainWindow = new MainWindow(20, 20);
-        new Background(null, 0, 0);
+        new Background(null, 20, 20);
 
     }
 }

@@ -1,9 +1,10 @@
 package main.java;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Background extends JPanel {
+public class Background extends JFrame {
 
     MainWindow mainWindow;
     ExitButton extiButton;
@@ -25,9 +26,17 @@ public class Background extends JPanel {
         ueberschrift.setBounds(0, 0, 200, 200);
         this.add(ueberschrift);
 
-        this.setSize(1920, 1080);
-        this.setVisible(true);
+        // this.setSize(1920, 1080);
+        // this.setVisible(true);
+        // this.setLayout(null);
+
         this.setLayout(null);
+        this.setUndecorated(true); // kein
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setVisible(true);
 
         extiButton = new ExitButton(this);
 
@@ -37,6 +46,9 @@ public class Background extends JPanel {
         int highscores[] = { 0 };
 
         mainMenue = new MainMenue(spiele, this, highscores);
+
+        setVisible(true);
+        System.out.println("Ich bin der ihr neuer Hintergrund, hönnte ich mit bei ihnen  wohl etwas Mehl ausleihen=?");
 
     }
 
