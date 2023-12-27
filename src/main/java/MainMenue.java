@@ -31,13 +31,13 @@ public class MainMenue extends JPanel {
             auswahlKnoepfe[i] = new JButton();
             highscoreAnnzeigen[i] = new JLabel();
 
-            JButton knopfSpeicher = auswahlKnoepfe[i];
+            JButton knopfSpeicher = auswahlKnoepfe[i]; // Muss tastsächich da sein, kann nicht später ersetzt werden!!
 
             auswahlKnoepfe[i].setText(spielnamen[i]);
             auswahlKnoepfe[i].addActionListener(e -> knopfgedrueckt(knopfSpeicher));
             highscoreAnnzeigen[i].setText("Highscore: " + highscores[i]);
 
-            auswahlKnoepfe[i].setBounds(500, 500, 500, 500);
+            auswahlKnoepfe[i].setBounds(700, 500, 500, 500);
             highscoreAnnzeigen[i].setBounds(300, 0, 200, 200);
 
             this.add(auswahlKnoepfe[i]);
@@ -45,15 +45,12 @@ public class MainMenue extends JPanel {
 
             System.out.println(spielnamen[i]);
             System.out.println(highscores[i]);
-            auswahlKnoepfe[i].requestFocus();
         }
         hintergrund.add(this);
         setAllVisible(true);
 
         System.out.println("Main Mennue: " + this.toString());
         System.out.println("TetrisKnopF: " + auswahlKnoepfe[0].toString());
-        repaint();
-        requestFocus();
     }
 
     private void knopfgedrueckt(JButton knopf) {

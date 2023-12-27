@@ -26,10 +26,6 @@ public class Background extends JFrame {
         ueberschrift.setBounds(0, 0, 200, 200);
         this.add(ueberschrift);
 
-        // this.setSize(1920, 1080);
-        // this.setVisible(true);
-        // this.setLayout(null);
-
         this.setLayout(null);
         this.setUndecorated(true); // kein
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -38,18 +34,18 @@ public class Background extends JFrame {
         this.setResizable(false);
         this.setVisible(true);
 
-        extiButton = new ExitButton(this);
-
-        this.add(extiButton);
-
         String spiele[] = { "Tetris" };
         int highscores[] = { 0 };
 
         mainMenue = new MainMenue(spiele, this, highscores);
+        add(mainMenue);
 
-        setVisible(true);
-        System.out.println("Ich bin der ihr neuer Hintergrund, hönnte ich mit bei ihnen  wohl etwas Mehl ausleihen=?");
+        extiButton = new ExitButton(this);
+        this.add(extiButton);
+        // extiButton.requestFocus(); // Ohne wird der Knopf nicht angezeigt
 
+        // repaint();
+        // setVisible(true);
     }
 
     public void spielfeldErstellen() {
