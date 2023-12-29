@@ -1,4 +1,4 @@
-package main.java;
+package de.junkerjoerg12.Tetris;
 
 import java.awt.Color;
 

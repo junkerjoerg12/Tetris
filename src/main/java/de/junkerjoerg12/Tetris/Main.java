@@ -1,10 +1,8 @@
-package main.test;
+package de.junkerjoerg12.Tetris;
 
-import main.java.Background;
-import main.java.MainMenue;
-import main.java.MainWindow;
+import de.junkerjoerg12.Tetris.Background;
 
-public class Test {
+public class Main {
 
     public static void main(String args[]) {
 
@@ -23,9 +21,7 @@ public class Test {
          * 
          * 
          */
-
+        System.out.println("Ich glaube ich habs!!!");
         // MainWindow mainWindow = new MainWindow(20, 20);
-        new Background(null, 20, 20);
-
     }
 }

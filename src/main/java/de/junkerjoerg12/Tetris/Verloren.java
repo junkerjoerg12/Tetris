@@ -1,4 +1,4 @@
-package main.java;
+package de.junkerjoerg12.Tetris;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -87,7 +87,7 @@ public class Verloren extends JPanel {
         hintergrund.getMainWindow().getSpielfeld().setScoreZero();
         hintergrund.getMainWindow().getSpielfeld().repaint();
         hintergrund.getMainWindow().tetrisSpielen();
-        hintergrund.scoreUpddate();
+        // hintergrund.scoreUpddate();
     }
 
     private void hideVerloren() {

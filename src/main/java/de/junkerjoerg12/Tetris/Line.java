@@ -1,17 +1,15 @@
-package main.java;
+package de.junkerjoerg12.Tetris;
 
 import javax.swing.*;
 import java.awt.*;
 
+public class Line extends JPanel {
 
-public class Line extends JPanel{
-    
-    
-    public Line(boolean vertical, int start, int ende){
+    public Line(boolean vertical, int start, int ende) {
         this.setBackground(Color.BLACK);
-        if (vertical== true){
+        if (vertical == true) {
             this.setBounds(start, 0, 1, ende);
-        }else{
+        } else {
             this.setBounds(0, start, ende, 1);
         }
     }
