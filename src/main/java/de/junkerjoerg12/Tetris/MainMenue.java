@@ -58,7 +58,7 @@ public class MainMenue extends JPanel {
         // muss noch tatsächlich ausgearbeitet werden
         setAllVisible(false);
         hintergrund.spielfeldErstellen();
-        hintergrund.getMainWindow().tetrisSpielen();
+        hintergrund.tetrisSpielen();
     }
 
     public void setAllVisible(boolean visible) {

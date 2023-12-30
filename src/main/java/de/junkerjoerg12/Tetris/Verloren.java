@@ -82,11 +82,11 @@ public class Verloren extends JPanel {
 
     private void neustarten() {
         hideVerloren();
-        hintergrund.getMainWindow().getSpielfeld().deletAllKoords();
-        hintergrund.getMainWindow().getSpielfeld().deletAllTiles();
-        hintergrund.getMainWindow().getSpielfeld().setScoreZero();
-        hintergrund.getMainWindow().getSpielfeld().repaint();
-        hintergrund.getMainWindow().tetrisSpielen();
+        hintergrund.getSpielfeld().deletAllKoords();
+        hintergrund.getSpielfeld().deletAllTiles();
+        hintergrund.getSpielfeld().setScoreZero();
+        hintergrund.getSpielfeld().repaint();
+        hintergrund.tetrisSpielen();
         // hintergrund.scoreUpddate();
     }
 
@@ -99,10 +99,10 @@ public class Verloren extends JPanel {
 
     private void insHauptmenue() {
         hideVerloren();
-        hintergrund.getMainWindow().getSpielfeld().deletAllKoords();
-        hintergrund.getMainWindow().getSpielfeld().deletAllTiles();
-        hintergrund.getMainWindow().getSpielfeld().setScoreZero();
-        hintergrund.getMainWindow().deletSpielfeld();
+        hintergrund.getSpielfeld().deletAllKoords();
+        hintergrund.getSpielfeld().deletAllTiles();
+        hintergrund.getSpielfeld().setScoreZero();
+        hintergrund.deletSpielfeld();
         hintergrund.getMainmenue().setAllVisible(true);
 
         // Quasi alle UI objekte löschen, nur Highscore speichern und HIntergrund

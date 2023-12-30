@@ -29,7 +29,7 @@ public class Spielfeld extends JPanel implements KeyListener {
 
     ArrayList<String> speicherKoords = new ArrayList<String>();
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
-    Tile currentTile;
+    Tile curentTile;
 
     Background hintergrund;
 
@@ -72,7 +72,7 @@ public class Spielfeld extends JPanel implements KeyListener {
     }
 
     public void spawnTile() {
-        currentTile = new Tile(this, random.nextInt(6));
+        curentTile = new Tile(this, random.nextInt(6));
         repaint();
         requestFocus();
     }
@@ -89,12 +89,12 @@ public class Spielfeld extends JPanel implements KeyListener {
             switch (e.getKeyCode()) {
                 case down:
                     // System.out.println("down");
-                    currentTile.getTimerThread().interrupt();
-                    currentTile.deleteTimer();
-                    currentTile.changeLocationDown(0, 50);
+                    curentTile.getTimerThread().interrupt();
+                    curentTile.deleteTimer();
+                    curentTile.changeLocationDown(0, 50);
 
-                    if (currentTile.getTimerThread() == null) {
-                        currentTile.timerErstellen(timerZeit);
+                    if (curentTile.getTimerThread() == null) {
+                        curentTile.timerErstellen(timerZeit);
                     }
 
                     this.repaint();
@@ -102,23 +102,23 @@ public class Spielfeld extends JPanel implements KeyListener {
 
                 case left:
                     System.out.println("Left");
-                    if (currentTile.kollisionLinks() == false) {
-                        currentTile.changeLocation(-50, 0);
+                    if (curentTile.kollisionLinks() == false) {
+                        curentTile.changeLocation(-50, 0);
                     }
                     this.repaint();
                     break;
 
                 case right:
                     System.out.println("right");
-                    if (currentTile.kollisionRechts() == false) {
-                        currentTile.changeLocation(50, 0);
+                    if (curentTile.kollisionRechts() == false) {
+                        curentTile.changeLocation(50, 0);
                     }
                     this.repaint();
                     break;
 
                 case turn:
                     System.out.println("turn");
-                    currentTile.mitUhrDrehen();
+                    curentTile.mitUhrDrehen();
                     this.repaint();
                     break;
             }
@@ -234,7 +234,13 @@ public class Spielfeld extends JPanel implements KeyListener {
     }
 
     public void deleteTile(boolean verloren) {
-        hintergrund.getMainWindow().deleteTile(verloren);
+        curentTile = null;
+        // darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
+        if (!verloren){
+            spawnTile();
+        } else {
+            System.out.println("hier kommt nichts mehr");
+        }
     }
 
     public ArrayList<String> getKoords() {

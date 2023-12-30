@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 public class Background extends JFrame {
 
-    MainWindow mainWindow;
     ExitButton extiButton;
 
     int breite;
@@ -18,9 +17,8 @@ public class Background extends JFrame {
 
     private Spielfeld spielfeld;
 
-    public Background(MainWindow mainWindow, int breite, int hoehe) {
-
-        this.mainWindow = mainWindow;
+    public Background( int breite, int hoehe) {
+        System.out.println("Hintergrund wurde erstellt!");
 
         JLabel ueberschrift = new JLabel("Tetris by Jakob Engel");
         ueberschrift.setBounds(0, 0, 200, 200);
@@ -42,17 +40,21 @@ public class Background extends JFrame {
 
         extiButton = new ExitButton(this);
         this.add(extiButton);
-        // extiButton.requestFocus(); // Ohne wird der Knopf nicht angezeigt
+        extiButton.requestFocus(); // Ohne wird der Knopf nicht angezeigt
 
         // repaint();
         // setVisible(true);
     }
 
     public void spielfeldErstellen() {
-        spielfeld = new Spielfeld(this, 20, 20);
-        add(spielfeld);
+        System.out.println("Spielfeld wurde erstellt!");
+        this.spielfeld = new Spielfeld(this, 20, 20);
+        add(this.spielfeld);
     }
 
+    public void tetrisSpielen(){
+        this.spielfeld.spawnTile();
+    }
     // public void addScoreFeld() {
 
     // scoreFeld = new JLabel("Score: " + mainWindow.getSpielfeld().getScore());
@@ -88,12 +90,14 @@ public class Background extends JFrame {
     // mainWindow.getSpielfeld().getHighscore());
     // }
 
-    public MainWindow getMainWindow() {
-        return mainWindow;
+    public Spielfeld getSpielfeld(){
+        return spielfeld;
     }
 
     public MainMenue getMainmenue() {
         return mainMenue;
     }
-
+    public void deletSpielfeld() {
+        this.spielfeld = null;
+    }
 }
