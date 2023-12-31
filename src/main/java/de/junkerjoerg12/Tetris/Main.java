@@ -5,7 +5,6 @@ import de.junkerjoerg12.Tetris.Background;
 public class Main {
 
     public static void main(String args[]) {
-        System.out.println("Halli ich bin die Main methode");
         /*
          * 
          * String[] spiele = new String[1];

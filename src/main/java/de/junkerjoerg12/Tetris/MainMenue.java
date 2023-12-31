@@ -43,18 +43,13 @@ public class MainMenue extends JPanel {
             this.add(auswahlKnoepfe[i]);
             this.add(highscoreAnnzeigen[i]);
 
-            System.out.println(spielnamen[i]);
-            System.out.println(highscores[i]);
         }
         hintergrund.add(this);
         setAllVisible(true);
 
-        System.out.println("Main Mennue: " + this.toString());
-        System.out.println("TetrisKnopF: " + auswahlKnoepfe[0].toString());
     }
 
     private void knopfgedrueckt(JButton knopf) {
-        System.out.println("Wir wollen " + knopf.getText() + " spielen");
         // muss noch tatsächlich ausgearbeitet werden
         setAllVisible(false);
         hintergrund.spielfeldErstellen();
@@ -62,7 +57,6 @@ public class MainMenue extends JPanel {
     }
 
     public void setAllVisible(boolean visible) {
-        System.out.println("Sichtbar gesetzt!");
         for (int i = 0; i < auswahlKnoepfe.length; i++) {
             auswahlKnoepfe[i].setVisible(visible);
             highscoreAnnzeigen[i].setVisible(visible);

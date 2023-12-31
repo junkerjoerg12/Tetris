@@ -83,7 +83,6 @@ public class Spielfeld extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
-        System.out.println("Key has been pressed: " + e);
 
         try {
             switch (e.getKeyCode()) {
@@ -101,7 +100,6 @@ public class Spielfeld extends JPanel implements KeyListener {
                     break;
 
                 case left:
-                    System.out.println("Left");
                     if (curentTile.kollisionLinks() == false) {
                         curentTile.changeLocation(-50, 0);
                     }
@@ -109,7 +107,6 @@ public class Spielfeld extends JPanel implements KeyListener {
                     break;
 
                 case right:
-                    System.out.println("right");
                     if (curentTile.kollisionRechts() == false) {
                         curentTile.changeLocation(50, 0);
                     }
@@ -117,13 +114,11 @@ public class Spielfeld extends JPanel implements KeyListener {
                     break;
 
                 case turn:
-                    System.out.println("turn");
                     curentTile.mitUhrDrehen();
                     this.repaint();
                     break;
             }
         } catch (NullPointerException exception) {
-            System.out.println("Du hast schon längst verloren");
         }
     }
 
@@ -131,12 +126,12 @@ public class Spielfeld extends JPanel implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
+    //kann ich warscheinlich schöner,also ohne Sting und als Hashmap oder set machen
     public void speichern(Subtile subtile) {
-        // speichert x und y als String im Speicher
+        // speichert x und y als String 
         // und das Subtile in einem anderen Array, aber auf der selben position wie die
         // die dazugehörige koordinate
-        if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())))
-            ;
+        if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())));
         speicherKoords.add(subtile.getX() + " " + subtile.getY());
         if (!(speicherTiles.contains(subtile))) {
             speicherTiles.add(subtile);
@@ -165,6 +160,8 @@ public class Spielfeld extends JPanel implements KeyListener {
 
     }
 
+
+    //hier auch wieder als hash irgendwas 
     public void reihePruefen() {
         // Überprüft jede reihe, ob sie voll ist
 
@@ -290,7 +287,6 @@ public class Spielfeld extends JPanel implements KeyListener {
 
     public void deletAllKoords() {
         int laenge = speicherKoords.size();
-
         for (int i = 0; i < laenge; i++) {
             speicherKoords.remove(0);
         }

@@ -14,8 +14,6 @@ public class ExitButton extends JButton {
 
         ImageIcon icon = new ImageIcon("src\\main\\resources\\ExitSymbol.png");
 
-        System.out.println("Irgendwas mit dem Bild: "+ icon);
-
         this.setBounds(0, hintergrund.getHeight() - hoehe, breite, hoehe);
         this.addActionListener(e -> System.exit(0));
         this.setIcon(icon);

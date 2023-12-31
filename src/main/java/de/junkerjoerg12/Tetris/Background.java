@@ -18,8 +18,6 @@ public class Background extends JFrame {
     private Spielfeld spielfeld;
 
     public Background( int breite, int hoehe) {
-        System.out.println("Hintergrund wurde erstellt!");
-
         JLabel ueberschrift = new JLabel("Tetris by Jakob Engel");
         ueberschrift.setBounds(0, 0, 200, 200);
         this.add(ueberschrift);
@@ -47,7 +45,6 @@ public class Background extends JFrame {
     }
 
     public void spielfeldErstellen() {
-        System.out.println("Spielfeld wurde erstellt!");
         this.spielfeld = new Spielfeld(this, 20, 20);
         add(this.spielfeld);
     }
