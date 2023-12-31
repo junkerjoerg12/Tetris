@@ -198,7 +198,7 @@ public class Spielfeld extends JPanel implements KeyListener {
 
                 //
 
-                // hintergrund.scoreUpddate();
+                hintergrund.scoreUpdate();
 
             }
         }
@@ -277,6 +277,7 @@ public class Spielfeld extends JPanel implements KeyListener {
     }
 
     public void deletAllTiles() {
+        curentTile = null;
         int laenge = speicherTiles.size();
 
         for (int i = 0; i < laenge; i++) {

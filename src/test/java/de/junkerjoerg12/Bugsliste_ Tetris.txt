@@ -1,4 +1,5 @@
-im Hauptmenue werden die zwei Knöpfe erst gezeigt, solbald man mit der Mais über sie hovert
+score wird nach neustart nicht null gesetzt 
+tiles könne außerhalb des Spielfelds spawnen
 
 
 
