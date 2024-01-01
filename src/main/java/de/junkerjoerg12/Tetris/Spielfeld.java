@@ -36,6 +36,7 @@ public class Spielfeld extends JPanel implements KeyListener {
     Random random = new Random();
 
     public Spielfeld(Background hintergrund, int breite, int hoehe) {
+        score = 0;
 
         anzahlSpalten = breite;
         anzahlZeilen = hoehe;

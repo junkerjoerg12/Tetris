@@ -1,5 +1,5 @@
-score wird nach neustart nicht null gesetzt 
 tiles könne außerhalb des Spielfelds spawnen
+highscore wird nur im spielfeld gespeichert -> wenn aus dem Hauptmenue neugstartet wird ist der Highscore wider 0!
 
 
 
