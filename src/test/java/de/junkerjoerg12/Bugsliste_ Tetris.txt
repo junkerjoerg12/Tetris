@@ -1,5 +1,5 @@
-tiles könne außerhalb des Spielfelds spawnen
 highscore wird nur im spielfeld gespeichert -> wenn aus dem Hauptmenue neugstartet wird ist der Highscore wider 0!
+^^sollte ich dann mit einer Datei lösen, die Alle Highscores speichert
 
 
 

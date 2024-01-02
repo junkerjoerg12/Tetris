@@ -27,7 +27,7 @@ public class Tile {
         breite = spielfeld.getBreite();
         hoehe = spielfeld.getHoehe();
 
-        // x = 4;
+        x = 5;
         // einzelteile= new Subtile[1];
         // einzelteile[0]= new Subtile(Color.BLACK, 300, 00);
         // addTile(spielfeld);
@@ -78,16 +78,14 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[6];
-        int xKoord = random.nextInt(breite - 1) * 50;
+        int xKoord = random.nextInt(breite - 2) * 50;
 
-        // 4 Subtiles werden erstellt und ausgehend von der vorher
-        // generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
-        einzelteile[0] = new Subtile(farbe, xKoord, 0);
-        einzelteile[1] = new Subtile(farbe, xKoord, 50);
-        einzelteile[2] = new Subtile(farbe, xKoord, 100);
-        einzelteile[3] = new Subtile(farbe, xKoord, 150);
-        einzelteile[4] = new Subtile(farbe, xKoord - 50, 100);
-        einzelteile[5] = new Subtile(farbe, xKoord + 50, 100);
+        einzelteile[0] = new Subtile(farbe, xKoord + 50, 0);
+        einzelteile[1] = new Subtile(farbe, xKoord + 50, 50);
+        einzelteile[2] = new Subtile(farbe, xKoord + 50, 100);
+        einzelteile[3] = new Subtile(farbe, xKoord + 50, 150);
+        einzelteile[4] = new Subtile(farbe, xKoord, 100);
+        einzelteile[5] = new Subtile(farbe, xKoord + 100, 100);
 
         addTile(spielfeld);
         drehpunkErrechnen();
@@ -100,10 +98,8 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[3];
-        int xKoord = random.nextInt(breite) * 50;
+        int xKoord = random.nextInt(breite - 1) * 50;
 
-        // 4 Subtiles werden erstellt und ausgehend von der vorher
-        // generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
         einzelteile[0] = new Subtile(farbe, xKoord, 0);
         einzelteile[1] = new Subtile(farbe, xKoord, 50);
         einzelteile[2] = new Subtile(farbe, xKoord + 50, 50);
@@ -121,8 +117,6 @@ public class Tile {
         einzelteile = new Subtile[4];
         int xKoord = random.nextInt(breite) * 50;
 
-        // 4 Subtiles werden erstellt und ausgehend von der vorher
-        // generierten KOordinate zu einer 1x4 Linie zusammen gebaut
         einzelteile[0] = new Subtile(farbe, xKoord, 0);
         einzelteile[1] = new Subtile(farbe, xKoord, 50);
         einzelteile[2] = new Subtile(farbe, xKoord + 50, 50);
@@ -139,10 +133,8 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite) * 50;
+        int xKoord = random.nextInt(breite - 1) * 50;
 
-        // 4 Subtiles werden erstellt und ausgehend von der vorher
-        // generierten KOordinate zu einem 2x2 Quadrat zusammen gebaut
         einzelteile[0] = new Subtile(farbe, xKoord, 0);
         einzelteile[1] = new Subtile(farbe, xKoord + 50, 0);
         einzelteile[2] = new Subtile(farbe, xKoord, 50);
@@ -161,8 +153,6 @@ public class Tile {
         einzelteile = new Subtile[4];
         int xKoord = random.nextInt(breite) * 50;
 
-        // 4 Subtiles werden erstellt und ausgehend von der vorher
-        // generierten KOordinate zu einer 1x4 Linie zusammen gebaut
         einzelteile[0] = new Subtile(farbe, xKoord, 0);
         einzelteile[1] = new Subtile(farbe, xKoord, 50);
         einzelteile[2] = new Subtile(farbe, xKoord, 100);
@@ -179,10 +169,8 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite) * 50;
+        int xKoord = random.nextInt(breite - 1) * 50;
 
-        // 4 Subtiles werden erstellt und ausgehend von der vorher
-        // generierten KOordinate zu einem L zusammen gebaut
         einzelteile[0] = new Subtile(farbe, xKoord, 0);
         einzelteile[1] = new Subtile(farbe, xKoord, 50);
         einzelteile[2] = new Subtile(farbe, xKoord, 100);
