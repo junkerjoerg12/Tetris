@@ -2,7 +2,6 @@ package de.junkerjoerg12.Tetris;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class Background extends JFrame {
 
@@ -17,7 +16,7 @@ public class Background extends JFrame {
 
     private Spielfeld spielfeld;
 
-    public Background( int breite, int hoehe) {
+    public Background(int breite, int hoehe) {
 
         this.setLayout(null);
         this.setUndecorated(true); // kein
@@ -48,18 +47,19 @@ public class Background extends JFrame {
     public void spielfeldErstellen() {
         this.spielfeld = new Spielfeld(this, 20, 20);
         add(this.spielfeld);
-        if(scoreFeld == null){
+        if (scoreFeld == null) {
             addscorefeld();
         }
-        if (highscoreFeld == null){
+        if (highscoreFeld == null) {
             addHighscoreFeld();
         }
         scoreUpdate();
     }
 
-    public void tetrisSpielen(){
+    public void tetrisSpielen() {
         this.spielfeld.spawnTile();
     }
+
     public void addscorefeld() {
 
         System.err.println("scoreFeld erstellt");
@@ -68,7 +68,7 @@ public class Background extends JFrame {
 
         int hoehe = 100;
         int breite = getWidth() / 2;
-        int x = spielfeld.getX() +spielfeld.getWidth();
+        int x = spielfeld.getX() + spielfeld.getWidth();
         int y = getHeight() / 2 - hoehe;
 
         scoreFeld.setBounds(x, y, breite, hoehe);
@@ -77,7 +77,7 @@ public class Background extends JFrame {
 
     public void addHighscoreFeld() {
 
-        highscoreFeld = new JLabel("Highscore: " +spielfeld.getHighscore());
+        highscoreFeld = new JLabel("Highscore: " + spielfeld.getHighscore());
 
         int hoehe = 100;
         int breite = getWidth() / 2;
@@ -87,19 +87,21 @@ public class Background extends JFrame {
         highscoreFeld.setBounds(x, y, breite, hoehe);
         this.add(highscoreFeld);
     }
-//muss noch aufgerufen werden
+
+    // muss noch aufgerufen werden
     public void scoreUpdate() {
         scoreFeld.setText("Score: " + spielfeld.getScore());
         highscoreFeld.setText("HighScore: " + spielfeld.getHighscore());
     }
 
-    public Spielfeld getSpielfeld(){
+    public Spielfeld getSpielfeld() {
         return spielfeld;
     }
 
     public MainMenue getMainmenue() {
         return mainMenue;
     }
+
     public void deletSpielfeld() {
         spielfeld.deletAllTiles();
         spielfeld.deletAllKoords();
