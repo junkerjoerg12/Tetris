@@ -56,19 +56,16 @@ public class Spielfeld extends JPanel implements KeyListener {
 
         // Das Gitter im Hintergrund wird gezeichent
         for (int i = 0; i < anzahlSpalten + 1; i++) {
-            Line x = new Line(true, i * 50, anzahlZeilen * 50);
-            this.add(x);
+            add(new Line(true, i * 50, anzahlZeilen * 50));
         }
         for (int i = 0; i < anzahlZeilen + 1; i++) {
-            Line x = new Line(false, i * 50, anzahlSpalten * 50);
-            this.add(x);
+            add(new Line(false, i * 50, anzahlSpalten * 50));
         }
 
         this.setBounds((hintergrund.getWidth() - this.breite) / 2, (hintergrund.getHeight() - this.hoehe) / 2,
                 this.breite + 1, this.hoehe + 1);
 
         this.addKeyListener(this);
-        setFocusable(true);
         requestFocus();
     }
 
@@ -91,7 +88,7 @@ public class Spielfeld extends JPanel implements KeyListener {
                     // System.out.println("down");
                     curentTile.getTimerThread().interrupt();
                     curentTile.deleteTimer();
-                    curentTile.changeLocationDown(0, 50);
+                    curentTile.changeLocation(0, 50);
 
                     if (curentTile.getTimerThread() == null) {
                         curentTile.timerErstellen(timerZeit);
@@ -127,12 +124,14 @@ public class Spielfeld extends JPanel implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
-    //kann ich warscheinlich schöner,also ohne Sting und als Hashmap oder set machen
+    // kann ich warscheinlich schöner,also ohne Sting und als Hashmap oder set
+    // machen
     public void speichern(Subtile subtile) {
-        // speichert x und y als String 
+        // speichert x und y als String
         // und das Subtile in einem anderen Array, aber auf der selben position wie die
         // die dazugehörige koordinate
-        if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())));
+        if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())))
+            ;
         speicherKoords.add(subtile.getX() + " " + subtile.getY());
         if (!(speicherTiles.contains(subtile))) {
             speicherTiles.add(subtile);
@@ -161,8 +160,7 @@ public class Spielfeld extends JPanel implements KeyListener {
 
     }
 
-
-    //hier auch wieder als hash irgendwas 
+    // hier auch wieder als hash irgendwas
     public void reihePruefen() {
         // Überprüft jede reihe, ob sie voll ist
 
@@ -190,15 +188,7 @@ public class Spielfeld extends JPanel implements KeyListener {
 
                 // weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden
                 i++;
-
                 score += breite / 50;
-
-                // Sollte dringlichst wieder rein!!
-
-                //
-
-                //
-
                 hintergrund.scoreUpdate();
 
             }
@@ -210,7 +200,7 @@ public class Spielfeld extends JPanel implements KeyListener {
         int index;
 
         for (int j = 0; j < anzahlSpalten; j++) {
-            // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie
+            // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl die
             // koordinate als auch das Subtile
             index = getIndex(j * 50, y);
             speicherKoords.remove(index);
@@ -234,10 +224,8 @@ public class Spielfeld extends JPanel implements KeyListener {
     public void deleteTile(boolean verloren) {
         curentTile = null;
         // darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
-        if (!verloren){
+        if (!verloren) {
             spawnTile();
-        } else {
-            System.out.println("hier kommt nichts mehr");
         }
     }
 

@@ -11,8 +11,8 @@ import javax.swing.SwingConstants;
 public class Verloren extends JPanel {
 
     JLabel textFeld;
-    JButton hauptmenue;
-    JButton neustart;
+    JButton hauptmenueButton;
+    JButton neustartButton;
     Background hintergrund;
 
     public Verloren(Background hintergrund, int spielfeldbreite, int spielfeldhoehe) {
@@ -41,43 +41,43 @@ public class Verloren extends JPanel {
         this.setVisible(false);
         this.add(textFeld);
 
-        // Hauptmenue knopf
-
         int breiteKnopf = 100;
         int hoeheKnopf = 100;
 
+        // Hauptmenue knopf
+
         int xHauptmenue = this.getWidth() / 3;
         int yHauptmenue = this.getHeight() - hoeheKnopf;
-        hauptmenue = new JButton("Hauptmenue");
+        hauptmenueButton = new JButton("Hauptmenue");
 
-        hauptmenue.setBounds(xHauptmenue, yHauptmenue, breiteKnopf, hoeheKnopf);
-        hauptmenue.setHorizontalAlignment(SwingConstants.CENTER);
-        hauptmenue.setVerticalAlignment(SwingConstants.CENTER);
-        hauptmenue.addActionListener(e -> insHauptmenue());
-        hauptmenue.setVisible(false);
+        hauptmenueButton.setBounds(xHauptmenue, yHauptmenue, breiteKnopf, hoeheKnopf);
+        hauptmenueButton.setHorizontalAlignment(SwingConstants.CENTER);
+        hauptmenueButton.setVerticalAlignment(SwingConstants.CENTER);
+        hauptmenueButton.addActionListener(e -> insHauptmenue());
+        hauptmenueButton.setVisible(false);
 
-        this.add(hauptmenue);
+        this.add(hauptmenueButton);
 
         // neustart Knopf
 
         int xNeustart = this.getWidth() / 3 * 2 - breiteKnopf;
         int yNeustart = this.getHeight() - hoeheKnopf;
-        neustart = new JButton("neustarten");
+        neustartButton = new JButton("neustarten");
 
-        neustart.setBounds(xNeustart, yNeustart, breiteKnopf, hoeheKnopf);
-        neustart.setHorizontalAlignment(SwingConstants.CENTER);
-        neustart.setVerticalAlignment(SwingConstants.CENTER);
-        neustart.addActionListener(e -> neustarten());
-        neustart.setVisible(false);
+        neustartButton.setBounds(xNeustart, yNeustart, breiteKnopf, hoeheKnopf);
+        neustartButton.setHorizontalAlignment(SwingConstants.CENTER);
+        neustartButton.setVerticalAlignment(SwingConstants.CENTER);
+        neustartButton.addActionListener(e -> neustarten());
+        neustartButton.setVisible(false);
 
-        this.add(neustart);
+        this.add(neustartButton);
     }
 
     public void showVerloren() {
         this.setVisible(true);
         textFeld.setVisible(true);
-        neustart.setVisible(true);
-        hauptmenue.setVisible(true);
+        neustartButton.setVisible(true);
+        hauptmenueButton.setVisible(true);
     }
 
     private void neustarten() {
@@ -93,8 +93,8 @@ public class Verloren extends JPanel {
     private void hideVerloren() {
         this.setVisible(false);
         textFeld.setVisible(false);
-        neustart.setVisible(false);
-        hauptmenue.setVisible(false);
+        neustartButton.setVisible(false);
+        hauptmenueButton.setVisible(false);
     }
 
     private void insHauptmenue() {
@@ -104,7 +104,7 @@ public class Verloren extends JPanel {
         hintergrund.getSpielfeld().setScoreZero();
         hintergrund.deletSpielfeld();
         hintergrund.getMainmenue().setAllVisible(true);
-
+        hintergrund.extiButton.requestFocus();
         // Quasi alle UI objekte löschen, nur Highscore speichern und HIntergrund
         // behalten
     }

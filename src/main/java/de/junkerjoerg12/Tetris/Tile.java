@@ -189,28 +189,6 @@ public class Tile {
 
     }
 
-    // Position des Tiles ändern
-    public void changeLocationDown(int x, int y) {
-        if (outOfBounds(x, y) == true) {
-
-            for (int i = 0; i < einzelteile.length; i++) {
-                einzelteile[i].setLocation(einzelteile[i].getX() + x, einzelteile[i].getY() + y);
-            }
-
-            xMitte = xMitte + x;
-            yMitte = yMitte + y;
-        }
-
-        zugBeendet();
-
-        try {
-            timer.zeitStoppen(timerZeit);
-        } catch (IllegalThreadStateException e) {
-            System.out.println("Illigal THread State Exception");
-        } catch (NullPointerException e) {
-        }
-
-    }
 
     // Position des Tiles ändern
     public void changeLocation(int x, int y) {
@@ -225,6 +203,14 @@ public class Tile {
         }
 
         zugBeendet();
+
+        if(y == 50){      //wenn nach unten bewegt wurde wird der Timer neugestartet
+          try {
+            timer.zeitStoppen(timerZeit);
+        } catch (IllegalThreadStateException e) {
+        } catch (NullPointerException e) {
+        }
+    }
     }
 
     // Rechnet das Feld aus, um das sich das Tile dehen soll

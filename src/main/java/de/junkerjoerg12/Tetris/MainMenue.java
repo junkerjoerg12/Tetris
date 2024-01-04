@@ -1,8 +1,5 @@
 package de.junkerjoerg12.Tetris;
 
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,6 +47,7 @@ public class MainMenue extends JPanel {
     }
 
     private void knopfgedrueckt(JButton knopf) {
+        System.out.println("Wir wollen " + knopf.getText() + " spielen");
         // muss noch tatsächlich ausgearbeitet werden
         setAllVisible(false);
         hintergrund.spielfeldErstellen();
@@ -57,10 +55,11 @@ public class MainMenue extends JPanel {
     }
 
     public void setAllVisible(boolean visible) {
-        for (int i = 0; i < auswahlKnoepfe.length; i++) {
-            auswahlKnoepfe[i].setVisible(visible);
-            highscoreAnnzeigen[i].setVisible(visible);
-        }
+        // System.out.println("Sichtbar gesetzt!");
+        // for (int i = 0; i < auswahlKnoepfe.length; i++) {
+        // auswahlKnoepfe[i].setVisible(visible);
+        // highscoreAnnzeigen[i].setVisible(visible);
+        // }
         this.setVisible(visible);
     }
 

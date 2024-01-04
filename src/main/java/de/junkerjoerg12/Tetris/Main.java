@@ -4,6 +4,7 @@ import de.junkerjoerg12.Tetris.Background;
 
 public class Main {
 
+
     public static void main(String args[]) {
         /*
          * 
@@ -22,6 +23,10 @@ public class Main {
          */
         //System.out.println("Ich glaube ich habs!!!");
          //MainWindow mainWindow = new MainWindow(20, 20);
+        
+
         new Background(20, 20);
     }
+
+    
 }
