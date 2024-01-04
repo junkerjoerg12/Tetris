@@ -189,7 +189,6 @@ public class Tile {
 
     }
 
-
     // Position des Tiles ändern
     public void changeLocation(int x, int y) {
         if (outOfBounds(x, y) == true) {
@@ -204,13 +203,13 @@ public class Tile {
 
         zugBeendet();
 
-        if(y == 50){      //wenn nach unten bewegt wurde wird der Timer neugestartet
-          try {
-            timer.zeitStoppen(timerZeit);
-        } catch (IllegalThreadStateException e) {
-        } catch (NullPointerException e) {
+        if (y == 50) { // wenn nach unten bewegt wurde wird der Timer neugestartet
+            try {
+                timer.zeitStoppen(timerZeit);
+            } catch (IllegalThreadStateException e) {
+            } catch (NullPointerException e) {
+            }
         }
-    }
     }
 
     // Rechnet das Feld aus, um das sich das Tile dehen soll
@@ -392,42 +391,36 @@ public class Tile {
 
     public boolean kollisionUnten() {
 
-        boolean kollision = false;
-
         // Kollision nach unten wird geprüft
         for (int i = 0; i < einzelteile.length; i++) {
             if (spielfeld.getKoords().contains((einzelteile[i].getX()) + " " + (einzelteile[i].getY() + 50))) {
-                kollision = true;
+                return true;
             }
         }
-        return kollision;
+        return false;
     }
 
     // Überprüft, ob das Teil ein anderes nach recht berührt
     public boolean kollisionRechts() {
 
-        boolean kollision = false;
-
         for (int i = 0; i < einzelteile.length; i++) {
             if (spielfeld.getKoords().contains((einzelteile[i].getX() + 50) + " " + (einzelteile[i].getY()))) {
-                kollision = true;
+                return true;
             }
         }
-        return kollision;
+        return false;
     }
 
     // Überprüft, ob das Teil ein anderes nach links berührt
 
     public boolean kollisionLinks() {
 
-        boolean kollision = false;
-
         for (int i = 0; i < einzelteile.length; i++) {
             if (spielfeld.getKoords().contains((einzelteile[i].getX() - 50) + " " + (einzelteile[i].getY()))) {
-                kollision = true;
+                return true;
             }
         }
-        return kollision;
+        return false;
     }
 
     // Speichert die subtiles im Panel
