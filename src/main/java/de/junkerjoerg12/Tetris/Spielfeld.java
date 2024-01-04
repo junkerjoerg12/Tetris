@@ -157,7 +157,6 @@ public class Spielfeld extends JPanel implements KeyListener {
 
         index = speicherKoords.indexOf(x + " " + y);
         return index;
-
     }
 
     // hier auch wieder als hash irgendwas
@@ -173,14 +172,10 @@ public class Spielfeld extends JPanel implements KeyListener {
 
             // und jede Spalte in der betreffenden Reihe
             for (int j = 0; j < anzahlSpalten; j++) {
-                if (vergleichen(j * 50, i * 50) == true && reiheVoll == true) {
-
-                } else {
+                if (!vergleichen(j * 50, i * 50) || !reiheVoll) {
                     reiheVoll = false;
                 }
-
             }
-
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
                 reiheEntfernen(i * 50);
