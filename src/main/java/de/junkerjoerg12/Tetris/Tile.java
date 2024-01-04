@@ -27,7 +27,7 @@ public class Tile {
         breite = spielfeld.getBreite();
         hoehe = spielfeld.getHoehe();
 
-        // x = 5;
+        // x = 2;
 
         if (x == 0) {
             kreuzAdden();
@@ -110,7 +110,7 @@ public class Tile {
 
         // Spawn Koordinate wird random generiert
         einzelteile = new Subtile[4];
-        int xKoord = random.nextInt(breite) * 50;
+        int xKoord = random.nextInt(breite - 1) * 50;
 
         einzelteile[0] = new Subtile(farbe, xKoord, 0);
         einzelteile[1] = new Subtile(farbe, xKoord, 50);

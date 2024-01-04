@@ -99,6 +99,7 @@ public class Background extends JFrame {
     }
 
     public MainMenue getMainmenue() {
+        extiButton.setVisible(true);
         return mainMenue;
     }
 

@@ -104,7 +104,7 @@ public class Verloren extends JPanel {
         hintergrund.getSpielfeld().setScoreZero();
         hintergrund.deletSpielfeld();
         hintergrund.getMainmenue().setAllVisible(true);
-        hintergrund.extiButton.requestFocus();
+        hintergrund.requestFocus(); // sonst ist der Exitbutton nicht sichbar
         // Quasi alle UI objekte löschen, nur Highscore speichern und HIntergrund
         // behalten
     }
