@@ -1,4 +1,4 @@
-package main.java;
+package de.junkerjoerg12.Tetris;
 
 import java.awt.Color;
 
@@ -12,7 +12,7 @@ public class ExitButton extends JButton {
 
     public ExitButton(Background hintergrund) {
 
-        ImageIcon icon = new ImageIcon("resources\\ExitSymbol.png");
+        ImageIcon icon = new ImageIcon("src\\main\\resources\\ExitSymbol.png");
 
         this.setBounds(0, hintergrund.getHeight() - hoehe, breite, hoehe);
         this.addActionListener(e -> System.exit(0));

@@ -1,4 +1,4 @@
-package main.java;
+package de.junkerjoerg12.Tetris;
 
 public class ZeitMesser implements Runnable {
 
@@ -21,7 +21,7 @@ public class ZeitMesser implements Runnable {
 
         try {
             Thread.sleep(zeit);
-            tile.changeLocationDown(0, 50);
+            tile.changeLocation(0, 50);
 
         } catch (InterruptedException e) {
         } catch (NullPointerException e) {

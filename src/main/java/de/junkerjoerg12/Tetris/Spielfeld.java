@@ -1,12 +1,22 @@
-package main.java;
+package de.junkerjoerg12.Tetris;
 
 import java.awt.Dimension;
-
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
-public class Spielfeld extends JPanel {
+public class Spielfeld extends JPanel implements KeyListener {
+
+    // Key Codes für die Pfeiltasten
+    private final int down = 40;
+    private final int right = 39;
+    private final int left = 37;
+    private final int turn = 38;
+
+    private final int timerZeit = 1000;
 
     int anzahlSpalten;
     int anzahlZeilen;
@@ -19,10 +29,14 @@ public class Spielfeld extends JPanel {
 
     ArrayList<String> speicherKoords = new ArrayList<String>();
     ArrayList<Subtile> speicherTiles = new ArrayList<Subtile>();
+    Tile curentTile;
 
     Background hintergrund;
 
+    Random random = new Random();
+
     public Spielfeld(Background hintergrund, int breite, int hoehe) {
+        score = 0;
 
         anzahlSpalten = breite;
         anzahlZeilen = hoehe;
@@ -42,23 +56,78 @@ public class Spielfeld extends JPanel {
 
         // Das Gitter im Hintergrund wird gezeichent
         for (int i = 0; i < anzahlSpalten + 1; i++) {
-            Line x = new Line(true, i * 50, anzahlZeilen * 50);
-            this.add(x);
+            add(new Line(true, i * 50, anzahlZeilen * 50));
         }
         for (int i = 0; i < anzahlZeilen + 1; i++) {
-            Line x = new Line(false, i * 50, anzahlSpalten * 50);
-            this.add(x);
+            add(new Line(false, i * 50, anzahlSpalten * 50));
         }
 
         this.setBounds((hintergrund.getWidth() - this.breite) / 2, (hintergrund.getHeight() - this.hoehe) / 2,
                 this.breite + 1, this.hoehe + 1);
 
-        // this.addKeyListener(this);
-
+        this.addKeyListener(this);
+        requestFocus();
     }
 
+    public void spawnTile() {
+        curentTile = new Tile(this, random.nextInt(6));
+        repaint();
+        requestFocus();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) { // Pfeil nacch unten == 40, nach links==37, nach rechts == 39
+
+        try {
+            switch (e.getKeyCode()) {
+                case down:
+                    // System.out.println("down");
+                    curentTile.getTimerThread().interrupt();
+                    curentTile.deleteTimer();
+                    curentTile.changeLocation(0, 50);
+
+                    if (curentTile.getTimerThread() == null) {
+                        curentTile.timerErstellen(timerZeit);
+                    }
+
+                    this.repaint();
+                    break;
+
+                case left:
+                    if (curentTile.kollisionLinks() == false) {
+                        curentTile.changeLocation(-50, 0);
+                    }
+                    this.repaint();
+                    break;
+
+                case right:
+                    if (curentTile.kollisionRechts() == false) {
+                        curentTile.changeLocation(50, 0);
+                    }
+                    this.repaint();
+                    break;
+
+                case turn:
+                    curentTile.mitUhrDrehen();
+                    this.repaint();
+                    break;
+            }
+        } catch (NullPointerException exception) {
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    // kann ich warscheinlich schöner,also ohne Sting und als Hashmap oder set
+    // machen
     public void speichern(Subtile subtile) {
-        // speichert x und y als String im Speicher
+        // speichert x und y als String
         // und das Subtile in einem anderen Array, aber auf der selben position wie die
         // die dazugehörige koordinate
         if (!(speicherKoords.contains(subtile.getX() + " " + subtile.getY())))
@@ -88,9 +157,9 @@ public class Spielfeld extends JPanel {
 
         index = speicherKoords.indexOf(x + " " + y);
         return index;
-
     }
 
+    // hier auch wieder als hash irgendwas
     public void reihePruefen() {
         // Überprüft jede reihe, ob sie voll ist
 
@@ -103,14 +172,10 @@ public class Spielfeld extends JPanel {
 
             // und jede Spalte in der betreffenden Reihe
             for (int j = 0; j < anzahlSpalten; j++) {
-                if (vergleichen(j * 50, i * 50) == true && reiheVoll == true) {
-
-                } else {
+                if (!vergleichen(j * 50, i * 50) || !reiheVoll) {
                     reiheVoll = false;
                 }
-
             }
-
             // Wenn ja wird die Entsprechende Reihe gelöscht
             if (reiheVoll == true) {
                 reiheEntfernen(i * 50);
@@ -118,10 +183,8 @@ public class Spielfeld extends JPanel {
 
                 // weil aufgerutscht wurde muss die gelöschte zeile erneut überprüft werden
                 i++;
-
                 score += breite / 50;
-
-                hintergrund.scoreUpddate();
+                hintergrund.scoreUpdate();
 
             }
         }
@@ -132,7 +195,7 @@ public class Spielfeld extends JPanel {
         int index;
 
         for (int j = 0; j < anzahlSpalten; j++) {
-            // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl sie
+            // setz jedes Subtile der Reihe unsichtbar und löscht dannach sowohl die
             // koordinate als auch das Subtile
             index = getIndex(j * 50, y);
             speicherKoords.remove(index);
@@ -154,7 +217,11 @@ public class Spielfeld extends JPanel {
     }
 
     public void deleteTile(boolean verloren) {
-        hintergrund.getMainWindow().deleteTile(verloren);
+        curentTile = null;
+        // darf nur aufgerufen werden, wenn das Spiel noch nicht beendet ist
+        if (!verloren) {
+            spawnTile();
+        }
     }
 
     public ArrayList<String> getKoords() {
@@ -194,6 +261,7 @@ public class Spielfeld extends JPanel {
     }
 
     public void deletAllTiles() {
+        curentTile = null;
         int laenge = speicherTiles.size();
 
         for (int i = 0; i < laenge; i++) {
@@ -204,10 +272,8 @@ public class Spielfeld extends JPanel {
 
     public void deletAllKoords() {
         int laenge = speicherKoords.size();
-
         for (int i = 0; i < laenge; i++) {
             speicherKoords.remove(0);
         }
     }
-
 }

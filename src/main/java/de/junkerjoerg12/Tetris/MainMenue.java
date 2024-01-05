@@ -1,7 +1,4 @@
-package main.java;
-
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
+package de.junkerjoerg12.Tetris;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -31,45 +28,33 @@ public class MainMenue extends JPanel {
             auswahlKnoepfe[i] = new JButton();
             highscoreAnnzeigen[i] = new JLabel();
 
-            JButton knopfSpeicher = auswahlKnoepfe[i];
+            JButton knopfSpeicher = auswahlKnoepfe[i]; // Muss tastsächich da sein, kann nicht später ersetzt werden!!
 
             auswahlKnoepfe[i].setText(spielnamen[i]);
             auswahlKnoepfe[i].addActionListener(e -> knopfgedrueckt(knopfSpeicher));
             highscoreAnnzeigen[i].setText("Highscore: " + highscores[i]);
 
-            auswahlKnoepfe[i].setBounds(500, 500, 500, 500);
+            auswahlKnoepfe[i].setBounds(700, 500, 500, 500);
             highscoreAnnzeigen[i].setBounds(300, 0, 200, 200);
 
             this.add(auswahlKnoepfe[i]);
             this.add(highscoreAnnzeigen[i]);
 
-            System.out.println(spielnamen[i]);
-            System.out.println(highscores[i]);
-            auswahlKnoepfe[i].requestFocus();
         }
         hintergrund.add(this);
         setAllVisible(true);
 
-        System.out.println("Main Mennue: " + this.toString());
-        System.out.println("TetrisKnopF: " + auswahlKnoepfe[0].toString());
-        repaint();
-        requestFocus();
     }
 
     private void knopfgedrueckt(JButton knopf) {
         System.out.println("Wir wollen " + knopf.getText() + " spielen");
         // muss noch tatsächlich ausgearbeitet werden
         setAllVisible(false);
-        hintergrund.getMainWindow().spielfeldErstellen();
-        hintergrund.getMainWindow().tetrisSpielen();
+        hintergrund.spielfeldErstellen();
+        hintergrund.tetrisSpielen();
     }
 
     public void setAllVisible(boolean visible) {
-        System.out.println("Sichtbar gesetzt!");
-        for (int i = 0; i < auswahlKnoepfe.length; i++) {
-            auswahlKnoepfe[i].setVisible(visible);
-            highscoreAnnzeigen[i].setVisible(visible);
-        }
         this.setVisible(visible);
     }
 
