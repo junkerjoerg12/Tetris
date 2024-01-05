@@ -24,6 +24,7 @@ public class MainMenue extends JPanel {
         highscoreAnnzeigen = new JLabel[anzahlSpiele];
 
         for (int i = 0; i < auswahlKnoepfe.length; i++) {
+            highscores[i] = DataManger.getDataManger().getGeneralHighscore(); // Liest den Highscore aus der Datei
 
             auswahlKnoepfe[i] = new JButton();
             highscoreAnnzeigen[i] = new JLabel();
