@@ -40,8 +40,6 @@ public class Background extends JFrame {
         this.add(extiButton);
         extiButton.requestFocus(); // Ohne wird der Knopf nicht angezeigt
 
-        // repaint();
-        // setVisible(true);
     }
 
     public void spielfeldErstellen() {

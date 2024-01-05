@@ -55,11 +55,6 @@ public class MainMenue extends JPanel {
     }
 
     public void setAllVisible(boolean visible) {
-        // System.out.println("Sichtbar gesetzt!");
-        // for (int i = 0; i < auswahlKnoepfe.length; i++) {
-        // auswahlKnoepfe[i].setVisible(visible);
-        // highscoreAnnzeigen[i].setVisible(visible);
-        // }
         this.setVisible(visible);
     }
 
