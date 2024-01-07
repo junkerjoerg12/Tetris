@@ -4,15 +4,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 
 public class DataManger {
 
   private static DataManger mngr;
-  private static final String FILE_SCORES = "scores.txt";
+  private static final String DATA = "userdata.json";
 
   private DataManger() {
   }
@@ -24,36 +28,58 @@ public class DataManger {
     return mngr;
   }
 
-  public int getGeneralHighscore() {
-    try {
-      BufferedReader reader = new BufferedReader(new FileReader("scores.txt"));
-      String line;
-      while ((line = reader.readLine()) != null) {
-        if (line.contains("Abs Highscore: ")) {
-          reader.close();
-          System.out.println("found");
-          return Integer.parseInt(line.substring(line.indexOf(':') + 2));
-        }
-      }
-      reader.close();
-    } catch (IOException e) {
-      e.printStackTrace();
+  public int getGeneralHighscore() throws IOException {
+    String key = "Highscore";
+    String file = "";
+    BufferedReader reader = new BufferedReader(new FileReader(DATA));
+    String line;
+    while ((line = reader.readLine()) != null) {
+      file += line;
     }
-    return 0;
+    System.out.println(new JSONObject(file).getInt(key));
+    reader.close();
+    return new JSONObject(file).optInt(key);
+  }
+
+  public void saveGeneralHighscore(int highscore) throws IOException {
+    String file = "";
+    BufferedReader reader = new BufferedReader(new FileReader(DATA));
+    String line;
+    while ((line = reader.readLine()) != null) {
+      file += line;
+    }
+    reader.close();
+    JSONObject jsonObj = new JSONObject(file);
+    jsonObj.put("Highscore", highscore);
+    BufferedWriter writer = new BufferedWriter(new FileWriter(DATA));
+    System.out.println(jsonObj);
+    writer.write(jsonObj.toString());
+    writer.close();
   }
 
   public static void saveData(String data) throws IOException {
-    Path filePath = Paths.get(FILE_SCORES);
+    Path filePath = Paths.get(DATA);
     Files.write(filePath, data.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
   }
 
   public static String loadData() throws IOException {
-    Path filePath = Paths.get(FILE_SCORES);
+    Path filePath = Paths.get(DATA);
     return new String(Files.readAllBytes(filePath));
   }
 
   public static void main(String[] args) {
-    System.out.println(getDataManger().getGeneralHighscore());
+    try {
+      getDataManger().saveGeneralHighscore(0);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    try {
+      System.out.println(getDataManger().getGeneralHighscore() + "Absoluter highscore");
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     // try {
     // saveData("Hello, World!");
     // System.out.println("Data saved successfully.");
