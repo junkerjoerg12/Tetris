@@ -1,10 +1,6 @@
 package de.junkerjoerg12.Tetris;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -38,9 +34,15 @@ public class DataManger {
     while ((line = reader.readLine()) != null) {
       file += line;
     }
-    System.out.println(new JSONObject(file).getInt(key));
+    int highscore;
+    try {
+      highscore = (new JSONObject(file).getInt(key));
+    } catch (JSONException e) {
+      highscore = 0;
+      saveHighscore(modus, highscore); // nimmt den Modus direkt in die Datei auf
+    }
     reader.close();
-    return new JSONObject(file).optInt(key);
+    return highscore;
   }
 
   public void saveHighscore(String modus, int highscore) throws IOException {// muss in den IMplementierung noch
@@ -55,23 +57,19 @@ public class DataManger {
     JSONObject jsonObj = new JSONObject(file);
     jsonObj.put(modus, highscore);
     BufferedWriter writer = new BufferedWriter(new FileWriter(HIGHSCORES));
-    System.out.println(jsonObj);
     writer.write(jsonObj.toString());
     writer.close();
   }
 
-  public void checkFolders() {
-    File f = new File(USERDATA);
+  public void checkFolders() { // Überprüft die Orderstruktur und vervollständigt sie wenn nötig
+
+    File f = new File(USERDATA); // Überprüft den Order "userdata" und "savedData"
     if (!f.isDirectory()) {
       System.out.println("Userordner erstellt");
       f.mkdirs();
     }
 
-    if (!f.isDirectory()) {
-      f.mkdirs();
-    }
-    f = new File(HIGHSCORES);
-    if (!f.isFile()) {
+    if (!(new File(HIGHSCORES)).isFile()) { // Überprüft die Datei highscores.json
       try {
         BufferedWriter writer = new BufferedWriter(new FileWriter(HIGHSCORES));
         writer.write("{}");
@@ -80,7 +78,6 @@ public class DataManger {
         e.printStackTrace();
       }
     }
-
   }
 
   public static void main(String[] args) {
@@ -88,15 +85,15 @@ public class DataManger {
     DataManger.getDataManger().checkFolders();
 
     // Test zum saven
-    try {
-      getDataManger().saveHighscore("normal", 0);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    // try {
+    // getDataManger().saveHighscore("normal", 0);
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
 
     // Test zum auslesen
     try {
-      System.out.println(getDataManger().getHighscore("normal") + "Absoluter highscore");
+      System.out.println(getDataManger().getHighscore("normal") + "Absoluterhighscore");
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

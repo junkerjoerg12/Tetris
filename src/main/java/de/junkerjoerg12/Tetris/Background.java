@@ -33,6 +33,8 @@ public class Background extends JFrame {
         String spiele[] = { "Tetris" };
         int highscores[] = { 0 };
 
+        DataManger.getDataManger().checkFolders();// Ordner zum speichern von daten wird auf vollständigkeit überprüft
+                                                  // und ggf. vervollständigt
         mainMenue = new MainMenue(spiele, this, highscores);
         add(mainMenue);
 
