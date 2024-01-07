@@ -104,7 +104,7 @@ public class Verloren extends JPanel {
         hintergrund.getSpielfeld().deletAllTiles();
         hintergrund.getSpielfeld().setScoreZero();
         try {
-            DataManger.getDataManger().saveGeneralHighscore(hintergrund.getSpielfeld().getHighscore());
+            DataManger.getDataManger().saveHighscore("normal", hintergrund.getSpielfeld().getHighscore());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

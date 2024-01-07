@@ -28,7 +28,7 @@ public class MainMenue extends JPanel {
         // for (int i = 0; i < auswahlKnoepfe.length; i++) {
         int i = 0;
         try {
-            highscores[i] = DataManger.getDataManger().getGeneralHighscore();
+            highscores[i] = DataManger.getDataManger().getHighscore("normal");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class MainMenue extends JPanel {
 
     public void setAllVisible(boolean visible) {
         try {
-            highscoreAnnzeigen[0].setText("Highscore: " + DataManger.getDataManger().getGeneralHighscore());
+            highscoreAnnzeigen[0].setText("Highscore: " + DataManger.getDataManger().getHighscore("normal"));
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

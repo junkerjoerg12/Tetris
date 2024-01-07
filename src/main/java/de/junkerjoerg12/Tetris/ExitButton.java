@@ -25,7 +25,7 @@ public class ExitButton extends JButton {
 
     private void exit() {
         try {
-            DataManger.getDataManger().saveGeneralHighscore(hintergrund.getSpielfeld().getHighscore());
+            DataManger.getDataManger().saveHighscore("normal", hintergrund.getSpielfeld().getHighscore());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

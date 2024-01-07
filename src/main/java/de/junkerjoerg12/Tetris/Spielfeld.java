@@ -39,7 +39,7 @@ public class Spielfeld extends JPanel implements KeyListener {
     public Spielfeld(Background hintergrund, int breite, int hoehe) {
 
         try {
-            highscore = DataManger.getDataManger().getGeneralHighscore();
+            highscore = DataManger.getDataManger().getHighscore("normal");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
