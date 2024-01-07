@@ -325,10 +325,8 @@ public class Tile {
             if (verlorenPruefen() == true) {
 
                 spielfeld.verloren.showVerloren();
-                System.out.println("Sie haben verloren!!");
-                System.out.println("Ihr Highscore : " + spielfeld.getScore());
-
                 // Subtiles werden aufs panel gespeicehrt
+                // Test zum auslesen
                 umspeichern();
 
                 // Subtiles werden aus this gelöscht

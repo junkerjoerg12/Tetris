@@ -93,7 +93,6 @@ public class Spielfeld extends JPanel implements KeyListener {
         try {
             switch (e.getKeyCode()) {
                 case down:
-                    // System.out.println("down");
                     curentTile.getTimerThread().interrupt();
                     curentTile.deleteTimer();
                     curentTile.changeLocation(0, 50);

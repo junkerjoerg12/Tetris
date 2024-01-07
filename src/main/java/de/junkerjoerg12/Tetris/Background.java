@@ -60,8 +60,6 @@ public class Background extends JFrame {
 
     public void addscorefeld() {
 
-        System.err.println("scoreFeld erstellt");
-
         scoreFeld = new JLabel("Score: " + spielfeld.getScore());
 
         int hoehe = 100;

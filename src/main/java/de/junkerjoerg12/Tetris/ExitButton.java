@@ -30,8 +30,7 @@ public class ExitButton extends JButton {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (NullPointerException e) {// NullPointerExeption, wenn der Knopf gedrückt wird, solage man sich im HM
-                                          // befindet
-            e.printStackTrace();
+                                          // befindet, weil spielfeld gelöscht/ noch nicht initialiseirt ist
             System.exit(0);
         }
         System.exit(0);

@@ -55,7 +55,6 @@ public class MainMenue extends JPanel {
     }
 
     private void knopfgedrueckt(JButton knopf) {
-        System.out.println("Wir wollen " + knopf.getText() + " spielen");
         // muss noch tatsächlich ausgearbeitet werden
         setAllVisible(false);
         hintergrund.spielfeldErstellen();

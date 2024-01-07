@@ -68,37 +68,19 @@ public class DataManger {
   }
 
   public static void main(String[] args) {
+    // Test zum saven
     try {
       getDataManger().saveGeneralHighscore(0);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
+    // Test zum auslesen
     try {
       System.out.println(getDataManger().getGeneralHighscore() + "Absoluter highscore");
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    // try {
-    // saveData("Hello, World!");
-    // System.out.println("Data saved successfully.");
-
-    // String loadedData = loadData();
-    // System.out.println("Loaded data: " + loadedData);
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // String filePath = "scores.txt";
-
-    // try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-    // String line;
-    // while ((line = br.readLine()) != null) {
-    // // Process each line as needed
-    // System.out.println(line);
-    // }
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
   }
 }
