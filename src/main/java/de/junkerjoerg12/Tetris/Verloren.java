@@ -2,6 +2,7 @@ package de.junkerjoerg12.Tetris;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -102,6 +103,12 @@ public class Verloren extends JPanel {
         hintergrund.getSpielfeld().deletAllKoords();
         hintergrund.getSpielfeld().deletAllTiles();
         hintergrund.getSpielfeld().setScoreZero();
+        try {
+            DataManger.getDataManger().saveHighscore("normal", hintergrund.getSpielfeld().getHighscore());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         hintergrund.deletSpielfeld();
         hintergrund.getMainmenue().setAllVisible(true);
         hintergrund.requestFocus(); // sonst ist der Exitbutton nicht sichbar

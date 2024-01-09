@@ -87,4 +87,6 @@ nb-configuration.xml
 #############################
 ## Userdata
 ############################
-scores.txt
+userdata.json
+highscores.json
+savedData/

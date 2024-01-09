@@ -3,6 +3,7 @@ package de.junkerjoerg12.Tetris;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -36,6 +37,13 @@ public class Spielfeld extends JPanel implements KeyListener {
     Random random = new Random();
 
     public Spielfeld(Background hintergrund, int breite, int hoehe) {
+
+        try {
+            highscore = DataManger.getDataManger().getHighscore("normal");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         score = 0;
 
         anzahlSpalten = breite;
@@ -85,7 +93,6 @@ public class Spielfeld extends JPanel implements KeyListener {
         try {
             switch (e.getKeyCode()) {
                 case down:
-                    // System.out.println("down");
                     curentTile.getTimerThread().interrupt();
                     curentTile.deleteTimer();
                     curentTile.changeLocation(0, 50);
