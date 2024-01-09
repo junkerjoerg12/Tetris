@@ -171,32 +171,4 @@ public class DataManger {
     return USERDATA + "/" + encrypt(username) + ".json";
   }
 
-  public static void main(String[] args) {
-
-    try {
-      System.out.println(DataManger.getDataManger().getUserdata("junkerjoerg12"));
-    } catch (FileNotFoundException e) {
-      System.out.println(
-          "Der NUtzer ist noch nicht erstellt, überprüfen sie auf rechtschreibung oder erstellen sie einen neuen Nutzer");
-    }
-    DataManger.getDataManger().nutzerAnlegen("junkerjoerg12", "passwort");
-
-    System.err.println(DataManger.getDataManger().getUserHighscore("junkerjoerg12", "normal"));
-    // DataManger.getDataManger().checkFolders();
-
-    // Test zum saven
-    // try {
-    // getDataManger().saveHighscore("normal", 0);
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // }
-
-    // Test zum auslesen
-    // try {
-    // System.out.println(getDataManger().getHighscore("normal") +
-    // "Absoluterhighscore");
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-  }
 }
