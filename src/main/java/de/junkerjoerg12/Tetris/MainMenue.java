@@ -12,6 +12,7 @@ public class MainMenue extends JPanel {
     private JButton[] auswahlKnoepfe;
     private JLabel[] highscoreAnnzeigen;
     private Background hintergrund;
+    private Login login;
 
     public MainMenue(String[] spielnamen, Background hintergrund, int[] highscores) {
 
@@ -43,15 +44,31 @@ public class MainMenue extends JPanel {
         auswahlKnoepfe[i].addActionListener(e -> knopfgedrueckt(knopfSpeicher));
         highscoreAnnzeigen[i].setText("Highscore: " + highscores[i]);
 
-        auswahlKnoepfe[i].setBounds(700, 500, 500, 500);
+        auswahlKnoepfe[i].setBounds(700, 500, 200, 200);
         highscoreAnnzeigen[i].setBounds(300, 0, 200, 200);
 
         this.add(auswahlKnoepfe[i]);
         this.add(highscoreAnnzeigen[i]);
 
+        // Loginknopf
+        JButton loginButton = new JButton("login");
+        loginButton.setBounds(1000, 900, 100, 100);
+        loginButton.addActionListener(e -> showLogin());
+        this.add(loginButton);
+        // showLogin();
+
         hintergrund.add(this);
+
         setAllVisible(true);
 
+    }
+
+    private void showLogin() {
+        login = new Login(hintergrund);
+        this.add(login);
+        System.out.println("Login erstellt");
+        repaint();
+        hintergrund.extiButton.requestFocus();
     }
 
     private void knopfgedrueckt(JButton knopf) {
